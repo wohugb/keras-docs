@@ -1,4 +1,4 @@
-The example demonstrates how to write custom layers for Keras.
+该示例演示了如何为 Keras 编写自定义图层。
 
 We build a custom activation layer called 'Antirectifier',
 which modifies the shape of the tensor that passes through it.
@@ -8,7 +8,6 @@ Note that the same result can also be achieved via a Lambda layer.
 
 Because our custom layer is written with primitives from the Keras
 backend (`K`), our code can run both on TensorFlow and Theano.
-
 
 ```python
 from __future__ import print_function

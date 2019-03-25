@@ -47,7 +47,7 @@ extra:
 #       - 循环层 Recurrent: layers/recurrent.md
 #       - 嵌入层 Embedding: layers/embeddings.md
 #       - 融合层 Merge: layers/merge.md
-#       - 高级激活层 Advanced Activations: layers/advanced-activations.md
+#       - 高级激活层 Advanced Activations: layers/advanced-5.activations.md
 #       - 标准化层 Normalization: layers/normalization.md
 #       - 噪声层 Noise: layers/noise.md
 #       - 层封装器 wrappers: layers/wrappers.md
@@ -59,14 +59,14 @@ extra:
 #   - 损失函数 Losses: losses.md
 #   - 评估标准 Metrics: metrics.md
 #   - 优化器 Optimizers: optimizers.md
-#   - 激活函数 Activations: activations.md
+#   - 激活函数 Activations: 5.activations.md
 #   - 回调函数 Callbacks: callbacks.md
 #   - 常用数据集 Datasets: datasets.md
 #   - 应用 Applications: applications.md
 #   - 后端 Backend: backend.md
 #   - 初始化 Initializers: initializers.md
-#   - 正则化 Regularizers: regularizers.md
-#   - 约束 Constraints: constraints.md
+#   - 正则化 Regularizers: 91.regularizers.md
+#   - 约束 Constraints: 92.constraints.md
 #   - 可视化 Visualization: visualization.md
 #   - Scikit-learn API: scikit-learn-api.md
 #   - 工具: utils.md
