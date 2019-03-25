@@ -6,412 +6,412 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/activations/</loc>
+     <loc>http://keras.io/zh/1.why-use-keras/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/applications/</loc>
+     <loc>http://keras.io/zh/2.losses/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/backend/</loc>
+     <loc>http://keras.io/zh/3.metrics/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/callbacks/</loc>
+     <loc>http://keras.io/zh/4.optimizers/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/constraints/</loc>
+     <loc>http://keras.io/zh/5.activations/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/contributing/</loc>
+     <loc>http://keras.io/zh/6.callbacks/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/datasets/</loc>
+     <loc>http://keras.io/zh/7.datasets/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/initializers/</loc>
+     <loc>http://keras.io/zh/8.applications/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/losses/</loc>
+     <loc>http://keras.io/zh/9.backend/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/metrics/</loc>
+     <loc>http://keras.io/zh/90.initializers/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/optimizers/</loc>
+     <loc>http://keras.io/zh/91.regularizers/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/regularizers/</loc>
+     <loc>http://keras.io/zh/92.constraints/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/scikit-learn-api/</loc>
+     <loc>http://keras.io/zh/93.visualization/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/utils/</loc>
+     <loc>http://keras.io/zh/94.scikit-learn-api/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/visualization/</loc>
+     <loc>http://keras.io/zh/96.utils/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/why-use-keras/</loc>
+     <loc>http://keras.io/zh/97.contributing/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/0.getting-started/0.sequential-model-guide/</loc>
+     <loc>http://keras.io/zh/0-Getting-Started/0.sequential-model-guide/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/0.getting-started/1.functional-api-guide/</loc>
+     <loc>http://keras.io/zh/0-Getting-Started/1.functional-api-guide/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/0.getting-started/2.faq/</loc>
+     <loc>http://keras.io/zh/0-Getting-Started/2.faq/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/1.models/0.about-keras-models/</loc>
+     <loc>http://keras.io/zh/1-Models/0.about-keras-models/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/1.models/1.sequential/</loc>
+     <loc>http://keras.io/zh/1-Models/1.sequential/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/1.models/2.model/</loc>
+     <loc>http://keras.io/zh/1-Models/2.model/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/0.about-keras-layers/</loc>
+     <loc>http://keras.io/zh/2-Layers/0.about-keras-layers/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/1.core/</loc>
+     <loc>http://keras.io/zh/2-Layers/1.core/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/2.convolutional/</loc>
+     <loc>http://keras.io/zh/2-Layers/2.convolutional/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/3.pooling/</loc>
+     <loc>http://keras.io/zh/2-Layers/3.pooling/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/4.local/</loc>
+     <loc>http://keras.io/zh/2-Layers/4.local/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/5.recurrent/</loc>
+     <loc>http://keras.io/zh/2-Layers/5.recurrent/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/6.embeddings/</loc>
+     <loc>http://keras.io/zh/2-Layers/6.embeddings/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/7.merge/</loc>
+     <loc>http://keras.io/zh/2-Layers/7.merge/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/8.advanced-activations/</loc>
+     <loc>http://keras.io/zh/2-Layers/8.advanced-activations/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/9.normalization/</loc>
+     <loc>http://keras.io/zh/2-Layers/9.normalization/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/90.noise/</loc>
+     <loc>http://keras.io/zh/2-Layers/90.noise/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/91.wrappers/</loc>
+     <loc>http://keras.io/zh/2-Layers/91.wrappers/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/2.layers/92.writing-your-own-keras-layers/</loc>
+     <loc>http://keras.io/zh/2-Layers/92.writing-your-own-keras-layers/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/3.preprocessing/0.sequence/</loc>
+     <loc>http://keras.io/zh/3-Preprocessing/0.sequence/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/3.preprocessing/1.text/</loc>
+     <loc>http://keras.io/zh/3-Preprocessing/1.text/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/3.preprocessing/2.image/</loc>
+     <loc>http://keras.io/zh/3-Preprocessing/2.image/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/</loc>
+     <loc>http://keras.io/zh/4-Examples/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/addition_rnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/0.pretrained_word_embeddings/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/antirectifier/</loc>
+     <loc>http://keras.io/zh/4-Examples/addition_rnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/babi_memnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/antirectifier/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/babi_rnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/babi_memnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/cifar10_cnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/babi_rnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/cifar10_cnn_capsule/</loc>
+     <loc>http://keras.io/zh/4-Examples/cifar10_cnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/cifar10_cnn_tfaugment2d/</loc>
+     <loc>http://keras.io/zh/4-Examples/cifar10_cnn_capsule/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/cifar10_resnet/</loc>
+     <loc>http://keras.io/zh/4-Examples/cifar10_cnn_tfaugment2d/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/class_activation_maps/</loc>
+     <loc>http://keras.io/zh/4-Examples/cifar10_resnet/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/conv_filter_visualization/</loc>
+     <loc>http://keras.io/zh/4-Examples/class_activation_maps/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/conv_lstm/</loc>
+     <loc>http://keras.io/zh/4-Examples/conv_filter_visualization/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/deep_dream/</loc>
+     <loc>http://keras.io/zh/4-Examples/conv_lstm/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/image_ocr/</loc>
+     <loc>http://keras.io/zh/4-Examples/deep_dream/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/imdb_bidirectional_lstm/</loc>
+     <loc>http://keras.io/zh/4-Examples/image_ocr/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/imdb_cnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/imdb_bidirectional_lstm/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/imdb_cnn_lstm/</loc>
+     <loc>http://keras.io/zh/4-Examples/imdb_cnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/imdb_fasttext/</loc>
+     <loc>http://keras.io/zh/4-Examples/imdb_cnn_lstm/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/imdb_lstm/</loc>
+     <loc>http://keras.io/zh/4-Examples/imdb_fasttext/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/lstm_seq2seq/</loc>
+     <loc>http://keras.io/zh/4-Examples/imdb_lstm/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/lstm_seq2seq_restore/</loc>
+     <loc>http://keras.io/zh/4-Examples/lstm_seq2seq/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/lstm_stateful/</loc>
+     <loc>http://keras.io/zh/4-Examples/lstm_seq2seq_restore/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/lstm_text_generation/</loc>
+     <loc>http://keras.io/zh/4-Examples/lstm_stateful/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_acgan/</loc>
+     <loc>http://keras.io/zh/4-Examples/lstm_text_generation/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_cnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_acgan/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_dataset_api/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_cnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_denoising_autoencoder/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_dataset_api/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_hierarchical_rnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_denoising_autoencoder/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_irnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_hierarchical_rnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_mlp/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_irnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_net2net/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_mlp/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_siamese/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_net2net/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_sklearn_wrapper/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_siamese/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_swwae/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_sklearn_wrapper/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_tfrecord/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_swwae/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/mnist_transfer_cnn/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_tfrecord/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/neural_doodle/</loc>
+     <loc>http://keras.io/zh/4-Examples/mnist_transfer_cnn/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/neural_style_transfer/</loc>
+     <loc>http://keras.io/zh/4-Examples/neural_doodle/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/pretrained_word_embeddings/</loc>
+     <loc>http://keras.io/zh/4-Examples/neural_style_transfer/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/reuters_mlp/</loc>
+     <loc>http://keras.io/zh/4-Examples/reuters_mlp/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/reuters_mlp_relu_vs_selu/</loc>
+     <loc>http://keras.io/zh/4-Examples/reuters_mlp_relu_vs_selu/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/tensorboard_embeddings_mnist/</loc>
+     <loc>http://keras.io/zh/4-Examples/tensorboard_embeddings_mnist/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/variational_autoencoder/</loc>
+     <loc>http://keras.io/zh/4-Examples/variational_autoencoder/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>http://keras.io/zh/4.examples/variational_autoencoder_deconv/</loc>
+     <loc>http://keras.io/zh/4-Examples/variational_autoencoder_deconv/</loc>
      <lastmod>2019-03-25</lastmod>
      <changefreq>daily</changefreq>
     </url>

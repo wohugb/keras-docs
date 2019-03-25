@@ -1,0 +1,2194 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Keras，Python 深度学习库中文文档。">
+      
+      
+        <link rel="canonical" href="http://keras.io/zh/3-Preprocessing/2.image/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>图像预处理 - Keras 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-61785484-1", "keras.io")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Keras 中文文档
+            </span>
+            <span class="md-header-nav__topic">
+              图像预处理
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Keras 文档" class="md-tabs__link">
+        Keras 文档
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../0-Getting-Started/0.sequential-model-guide/" title="0 Getting Started" class="md-tabs__link">
+          0 Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../1-Models/0.about-keras-models/" title="1 Models" class="md-tabs__link">
+          1 Models
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../2-Layers/0.about-keras-layers/" title="2 Layers" class="md-tabs__link">
+          2 Layers
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0.sequence/" title="3 Preprocessing" class="md-tabs__link md-tabs__link--active">
+          3 Preprocessing
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../4-Examples/" title="4 Examples" class="md-tabs__link">
+          4 Examples
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Keras 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Keras 文档" class="md-nav__link">
+      Keras 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1.why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+      为什么选择 Keras？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2.losses/" title="损失函数 Losses" class="md-nav__link">
+      损失函数 Losses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../3.metrics/" title="评估标准 Metrics" class="md-nav__link">
+      评估标准 Metrics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../4.optimizers/" title="优化器 Optimizers" class="md-nav__link">
+      优化器 Optimizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../5.activations/" title="激活函数 Activations" class="md-nav__link">
+      激活函数 Activations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../6.callbacks/" title="回调函数 Callbacks" class="md-nav__link">
+      回调函数 Callbacks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../7.datasets/" title="常用数据集 Datasets" class="md-nav__link">
+      常用数据集 Datasets
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../8.applications/" title="应用 Applications" class="md-nav__link">
+      应用 Applications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../9.backend/" title="Keras 后端" class="md-nav__link">
+      Keras 后端
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../90.initializers/" title="初始化 Initializers" class="md-nav__link">
+      初始化 Initializers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../91.regularizers/" title="正则化 Regularizers" class="md-nav__link">
+      正则化 Regularizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../92.constraints/" title="约束 Constraints" class="md-nav__link">
+      约束 Constraints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../93.visualization/" title="可视化 Visualization" class="md-nav__link">
+      可视化 Visualization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../94.scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+      Scikit-Learn API 的封装器
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../96.utils/" title="工具" class="md-nav__link">
+      工具
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../97.contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+      关于 Github Issues 和 Pull Requests
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      0 Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        0 Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-Getting-Started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+      开始使用 Keras Sequential 顺序模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-Getting-Started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+      开始使用 Keras 函数式 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-Getting-Started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+      Keras FAQ: 常见问题解答
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      1 Models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        1 Models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1-Models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+      关于 Keras 模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1-Models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+      Sequential 模型 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1-Models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+      Model 类（函数式 API）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      2 Layers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        2 Layers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+      关于 Keras 网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/1.core/" title="核心网络层" class="md-nav__link">
+      核心网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/2.convolutional/" title="卷积层" class="md-nav__link">
+      卷积层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/3.pooling/" title="池化层" class="md-nav__link">
+      池化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/4.local/" title="局部连接层" class="md-nav__link">
+      局部连接层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/5.recurrent/" title="循环层" class="md-nav__link">
+      循环层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+      嵌入层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/7.merge/" title="融合层" class="md-nav__link">
+      融合层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+      高级激活层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/9.normalization/" title="标准化层" class="md-nav__link">
+      标准化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/90.noise/" title="噪声层" class="md-nav__link">
+      噪声层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/91.wrappers/" title="层封装器" class="md-nav__link">
+      层封装器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2-Layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+      编写你自己的 Keras 层
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21" checked>
+    
+    <label class="md-nav__link" for="nav-21">
+      3 Preprocessing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        3 Preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.sequence/" title="序列预处理" class="md-nav__link">
+      序列预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.text/" title="文本预处理" class="md-nav__link">
+      文本预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        图像预处理
+      </label>
+    
+    <a href="./" title="图像预处理" class="md-nav__link md-nav__link--active">
+      图像预处理
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imagedatagenerator" title="ImageDataGenerator 类" class="md-nav__link">
+    ImageDataGenerator 类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagedatagenerator_1" title="ImageDataGenerator 类方法" class="md-nav__link">
+    ImageDataGenerator 类方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply_transform" title="apply_transform" class="md-nav__link">
+    apply_transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fit" title="fit" class="md-nav__link">
+    fit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow" title="flow" class="md-nav__link">
+    flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow_from_dataframe" title="flow_from_dataframe" class="md-nav__link">
+    flow_from_dataframe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow_from_directory" title="flow_from_directory" class="md-nav__link">
+    flow_from_directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_random_transform" title="get_random_transform" class="md-nav__link">
+    get_random_transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_transform" title="random_transform" class="md-nav__link">
+    random_transform
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standardize" title="standardize" class="md-nav__link">
+    standardize
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      4 Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        4 Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/" title="经典样例" class="md-nav__link">
+      经典样例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/0.pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+      预训练的单词嵌入
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+      实现一个用来执行加法的序列到序列学习模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/antirectifier/" title="Antirectifier" class="md-nav__link">
+      Antirectifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+      在 bAbI 数据集上训练一个记忆网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+      基于故事和问题训练两个循环神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+      Cifar10 cnn tfaugment2d
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+      Cifar10 resnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/class_activation_maps/" title="Class activation maps" class="md-nav__link">
+      Class activation maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+      Conv filter visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/conv_lstm/" title="Conv lstm" class="md-nav__link">
+      Conv lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/deep_dream/" title="Deep dream" class="md-nav__link">
+      Deep dream
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/image_ocr/" title="Optical character recognition" class="md-nav__link">
+      Optical character recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+      Imdb bidirectional lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+      Imdb cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+      Imdb cnn lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+      Imdb fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+      Imdb lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+      Lstm seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+      Lstm seq2seq restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+      Lstm stateful
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+      Lstm text generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+      Mnist acgan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+      Mnist cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+      Mnist dataset api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+      Mnist denoising autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+      Mnist hierarchical rnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+      Mnist irnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+      Mnist mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_net2net/" title="Mnist net2net" class="md-nav__link">
+      Mnist net2net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+      Mnist siamese
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+      Mnist sklearn wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+      Mnist swwae
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+      Mnist tfrecord
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+      Mnist transfer cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/neural_doodle/" title="Neural doodle" class="md-nav__link">
+      Neural doodle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+      Neural style transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+      Reuters mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+      Reuters mlp relu vs selu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+      Tensorboard embeddings mnist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+      Variational autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-Examples/variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+      Variational autoencoder deconv
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imagedatagenerator" title="ImageDataGenerator 类" class="md-nav__link">
+    ImageDataGenerator 类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagedatagenerator_1" title="ImageDataGenerator 类方法" class="md-nav__link">
+    ImageDataGenerator 类方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply_transform" title="apply_transform" class="md-nav__link">
+    apply_transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fit" title="fit" class="md-nav__link">
+    fit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow" title="flow" class="md-nav__link">
+    flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow_from_dataframe" title="flow_from_dataframe" class="md-nav__link">
+    flow_from_dataframe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow_from_directory" title="flow_from_directory" class="md-nav__link">
+    flow_from_directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_random_transform" title="get_random_transform" class="md-nav__link">
+    get_random_transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_transform" title="random_transform" class="md-nav__link">
+    random_transform
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standardize" title="standardize" class="md-nav__link">
+    standardize
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/3-Preprocessing/2.image.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">图像预处理</h1>
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/preprocessing/image.py#L232">[source]</a></span></p>
+<h2 id="imagedatagenerator">ImageDataGenerator 类</h2>
+<pre><code class="python">keras.preprocessing.image.ImageDataGenerator(featurewise_center=False,  
+                                             samplewise_center=False, 
+                                             featurewise_std_normalization=False, 
+                                             samplewise_std_normalization=False, 
+                                             zca_whitening=False, 
+                                             zca_epsilon=1e-06, 
+                                             rotation_range=0, 
+                                             width_shift_range=0.0, 
+                                             height_shift_range=0.0, 
+                                             brightness_range=None, 
+                                             shear_range=0.0, 
+                                             zoom_range=0.0, 
+                                             channel_shift_range=0.0, 
+                                             fill_mode='nearest', 
+                                             cval=0.0, 
+                                             horizontal_flip=False, 
+                                             vertical_flip=False, 
+                                             rescale=None, 
+                                             preprocessing_function=None, 
+                                             data_format=None, 
+                                             validation_split=0.0, 
+                                             dtype=None)
+</code></pre>
+
+<p>通过实时数据增强生成张量图像数据批次。数据将不断循环（按批次）。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>featurewise_center</strong>: 布尔值。将输入数据的均值设置为 0，逐特征进行。</li>
+<li><strong>samplewise_center</strong>: 布尔值。将每个样本的均值设置为 0。</li>
+<li><strong>featurewise_std_normalization</strong>: Boolean. 布尔值。将输入除以数据标准差，逐特征进行。</li>
+<li><strong>samplewise_std_normalization</strong>: 布尔值。将每个输入除以其标准差。</li>
+<li><strong>zca_epsilon</strong>: ZCA 白化的 epsilon 值，默认为 1e-6。</li>
+<li><strong>zca_whitening</strong>: 布尔值。是否应用 ZCA 白化。</li>
+<li><strong>rotation_range</strong>: 整数。随机旋转的度数范围。</li>
+<li><strong>width_shift_range</strong>: 浮点数、一维数组或整数<ul>
+<li>float: 如果 &lt;1，则是除以总宽度的值，或者如果 &gt;=1，则为像素值。</li>
+<li>1-D 数组: 数组中的随机元素。</li>
+<li>int: 来自间隔 <code>(-width_shift_range, +width_shift_range)</code> 之间的整数个像素。</li>
+<li><code>width_shift_range=2</code> 时，可能值是整数 <code>[-1, 0, +1]</code>，与 <code>width_shift_range=[-1, 0, +1]</code> 相同；而 <code>width_shift_range=1.0</code> 时，可能值是 <code>[-1.0, +1.0)</code> 之间的浮点数。</li>
+</ul>
+</li>
+<li><strong>height_shift_range</strong>: 浮点数、一维数组或整数<ul>
+<li>float: 如果 &lt;1，则是除以总宽度的值，或者如果 &gt;=1，则为像素值。</li>
+<li>1-D array-like: 数组中的随机元素。</li>
+<li>int: 来自间隔 <code>(-height_shift_range, +height_shift_range)</code> 之间的整数个像素。</li>
+<li><code>height_shift_range=2</code> 时，可能值是整数 <code>[-1, 0, +1]</code>，与 <code>height_shift_range=[-1, 0, +1]</code> 相同；而 <code>height_shift_range=1.0</code> 时，可能值是 <code>[-1.0, +1.0)</code> 之间的浮点数。</li>
+</ul>
+</li>
+<li><strong>shear_range</strong>: 浮点数。剪切强度（以弧度逆时针方向剪切角度）。</li>
+<li><strong>zoom_range</strong>: 浮点数 或 <code>[lower, upper]</code>。随机缩放范围。如果是浮点数，<code>[lower, upper] = [1-zoom_range, 1+zoom_range]</code>。</li>
+<li><strong>channel_shift_range</strong>: 浮点数。随机通道转换的范围。</li>
+<li><strong>fill_mode</strong>: {"constant", "nearest", "reflect" or "wrap"} 之一。默认为 'nearest'。输入边界以外的点根据给定的模式填充：<ul>
+<li>'constant': kkkkkkkk|abcd|kkkkkkkk (cval=k)</li>
+<li>'nearest': aaaaaaaa|abcd|dddddddd</li>
+<li>'reflect': abcddcba|abcd|dcbaabcd</li>
+<li>'wrap': abcdabcd|abcd|abcdabcd</li>
+</ul>
+</li>
+<li><strong>cval</strong>: 浮点数或整数。用于边界之外的点的值，当 <code>fill_mode = "constant"</code> 时。</li>
+<li><strong>horizontal_flip</strong>: 布尔值。随机水平翻转。</li>
+<li><strong>vertical_flip</strong>: 布尔值。随机垂直翻转。</li>
+<li><strong>rescale</strong>: 重缩放因子。默认为 None。如果是 None 或 0，不进行缩放，否则将数据乘以所提供的值（在应用任何其他转换之前）。</li>
+<li><strong>preprocessing_function</strong>: 应用于每个输入的函数。这个函数会在任何其他改变之前运行。这个函数需要一个参数：一张图像（秩为 3 的 Numpy 张量），并且应该输出一个同尺寸的 Numpy 张量。</li>
+<li><strong>data_format</strong>: 图像数据格式，{"channels_first", "channels_last"} 之一。"channels_last" 模式表示图像输入尺寸应该为 <code>(samples, height, width, channels)</code>，"channels_first" 模式表示输入尺寸应该为 <code>(samples, channels, height, width)</code>。默认为 在 Keras 配置文件 <code>~/.keras/keras.json</code> 中的 <code>image_data_format</code> 值。如果你从未设置它，那它就是 "channels_last"。</li>
+<li><strong>validation_split</strong>: 浮点数。Float. 保留用于验证的图像的比例（严格在0和1之间）。</li>
+<li><strong>dtype</strong>: 生成数组使用的数据类型。</li>
+</ul>
+<p><strong>例子</strong></p>
+<p>使用 <code>.flow(x, y)</code> 的例子：</p>
+<pre><code class="python">(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+y_train = np_utils.to_categorical(y_train, num_classes)
+y_test = np_utils.to_categorical(y_test, num_classes)
+
+datagen = ImageDataGenerator(
+    featurewise_center=True,
+    featurewise_std_normalization=True,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True)
+
+# 计算特征归一化所需的数量
+# （如果应用 ZCA 白化，将计算标准差，均值，主成分）
+datagen.fit(x_train)
+
+# 使用实时数据增益的批数据对模型进行拟合：
+model.fit_generator(datagen.flow(x_train, y_train, batch_size=32),
+                    steps_per_epoch=len(x_train) / 32, epochs=epochs)
+
+# 这里有一个更 「手动」的例子
+for e in range(epochs):
+    print('Epoch', e)
+    batches = 0
+    for x_batch, y_batch in datagen.flow(x_train, y_train, batch_size=32):
+        model.fit(x_batch, y_batch)
+        batches += 1
+        if batches &gt;= len(x_train) / 32:
+            # 我们需要手动打破循环，
+            # 因为生成器会无限循环
+            break
+</code></pre>
+
+<p>使用 <code>.flow_from_directory(directory)</code> 的例子：</p>
+<pre><code class="python">train_datagen = ImageDataGenerator(
+        rescale=1./255,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True)
+
+test_datagen = ImageDataGenerator(rescale=1./255)
+
+train_generator = train_datagen.flow_from_directory(
+        'data/train',
+        target_size=(150, 150),
+        batch_size=32,
+        class_mode='binary')
+
+validation_generator = test_datagen.flow_from_directory(
+        'data/validation',
+        target_size=(150, 150),
+        batch_size=32,
+        class_mode='binary')
+
+model.fit_generator(
+        train_generator,
+        steps_per_epoch=2000,
+        epochs=50,
+        validation_data=validation_generator,
+        validation_steps=800)
+</code></pre>
+
+<p>同时转换图像和蒙版 (mask) 的例子。</p>
+<pre><code class="python"># 创建两个相同参数的实例
+data_gen_args = dict(featurewise_center=True,
+                     featurewise_std_normalization=True,
+                     rotation_range=90,
+                     width_shift_range=0.1,
+                     height_shift_range=0.1,
+                     zoom_range=0.2)
+image_datagen = ImageDataGenerator(**data_gen_args)
+mask_datagen = ImageDataGenerator(**data_gen_args)
+
+# 为 fit 和 flow 函数提供相同的种子和关键字参数
+seed = 1
+image_datagen.fit(images, augment=True, seed=seed)
+mask_datagen.fit(masks, augment=True, seed=seed)
+
+image_generator = image_datagen.flow_from_directory(
+    'data/images',
+    class_mode=None,
+    seed=seed)
+
+mask_generator = mask_datagen.flow_from_directory(
+    'data/masks',
+    class_mode=None,
+    seed=seed)
+
+# 将生成器组合成一个产生图像和蒙版（mask）的生成器
+train_generator = zip(image_generator, mask_generator)
+
+model.fit_generator(
+    train_generator,
+    steps_per_epoch=2000,
+    epochs=50)
+</code></pre>
+
+<hr />
+<h3 id="imagedatagenerator_1">ImageDataGenerator 类方法</h3>
+<h3 id="apply_transform">apply_transform</h3>
+<pre><code class="python">apply_transform(x, transform_parameters)
+</code></pre>
+
+<p>根据给定的参数将变换应用于图像。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 3D 张量，单张图像。</li>
+<li><strong>transform_parameters</strong>: 字符串 - 参数 对表示的字典，用于描述转换。目前，使用字典中的以下参数：<ul>
+<li>'theta': 浮点数。旋转角度（度）。</li>
+<li>'tx': 浮点数。在 x 方向上移动。</li>
+<li>'ty': 浮点数。在 y 方向上移动。</li>
+<li>shear': 浮点数。剪切角度（度）。</li>
+<li>'zx': 浮点数。放大 x 方向。</li>
+<li>'zy': 浮点数。放大 y 方向。</li>
+<li>'flip_horizontal': 布尔 值。水平翻转。</li>
+<li>'flip_vertical': 布尔值。垂直翻转。</li>
+<li>'channel_shift_intencity': 浮点数。频道转换强度。</li>
+<li>'brightness': 浮点数。亮度转换强度。</li>
+</ul>
+</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输入的转换后版本（相同尺寸）。</p>
+<hr />
+<h3 id="fit">fit</h3>
+<pre><code class="python">fit(x, augment=False, rounds=1, seed=None)
+</code></pre>
+
+<p>将数据生成器用于某些示例数据。</p>
+<p>它基于一组样本数据，计算与数据转换相关的内部数据统计。</p>
+<p>当且仅当 <code>featurewise_center</code> 或 <code>featurewise_std_normalization</code> 或 <code>zca_whitening</code> 设置为 True 时才需要。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 样本数据。秩应该为 4。对于灰度数据，通道轴的值应该为 1；对于 RGB 数据，值应该为 3。</li>
+<li><strong>augment</strong>: 布尔值（默认为 False）。是否使用随机样本扩张。</li>
+<li><strong>rounds</strong>: 整数（默认为 1）。如果数据数据增强（augment=True），表明在数据上进行多少次增强。</li>
+<li><strong>seed</strong>: 整数（默认 None）。随机种子。</li>
+</ul>
+<hr />
+<h3 id="flow">flow</h3>
+<pre><code class="python">flow(x, y=None, batch_size=32, shuffle=True, sample_weight=None, seed=None, save_to_dir=None, save_prefix='', save_format='png', subset=None)
+</code></pre>
+
+<p>采集数据和标签数组，生成批量增强数据。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入数据。秩为 4 的 Numpy 矩阵或元组。如果是元组，第一个元素应该包含图像，第二个元素是另一个 Numpy 数组或一列 Numpy 数组，它们不经过任何修改就传递给输出。可用于将模型杂项数据与图像一起输入。对于灰度数据，图像数组的通道轴的值应该为 1，而对于 RGB 数据，其值应该为 3。</li>
+<li><strong>y</strong>: 标签。</li>
+<li><strong>batch_size</strong>: 整数 (默认为 32)。</li>
+<li><strong>shuffle</strong>: 布尔值 (默认为 True)。</li>
+<li><strong>sample_weight</strong>: 样本权重。</li>
+<li><strong>seed</strong>: 整数（默认为 None）。</li>
+<li><strong>save_to_dir</strong>: None 或 字符串（默认为 None）。这使您可以选择指定要保存的正在生成的增强图片的目录（用于可视化您正在执行的操作）。</li>
+<li><strong>save_prefix</strong>: 字符串（默认 <code>''</code>）。保存图片的文件名前缀（仅当 <code>save_to_dir</code> 设置时可用）。</li>
+<li><strong>save_format</strong>: "png", "jpeg" 之一（仅当 <code>save_to_dir</code> 设置时可用）。默认："png"。</li>
+<li><strong>subset</strong>: 数据子集 ("training" 或 "validation")，如果 在 <code>ImageDataGenerator</code> 中设置了 <code>validation_split</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个生成元组 <code>(x, y)</code> 的 <code>Iterator</code>，其中 <code>x</code> 是图像数据的 Numpy 数组（在单张图像输入时），或 Numpy 数组列表（在额外多个输入时），<code>y</code> 是对应的标签的 Numpy 数组。如果 'sample_weight' 不是 None，生成的元组形式为 <code>(x, y, sample_weight)</code>。如果 <code>y</code> 是 None, 只有 Numpy 数组 <code>x</code> 被返回。</p>
+<hr />
+<h3 id="flow_from_dataframe">flow_from_dataframe</h3>
+<pre><code class="python">flow_from_dataframe(dataframe, directory, x_col='filename', y_col='class', has_ext=True, target_size=(256, 256), color_mode='rgb', classes=None, class_mode='categorical', batch_size=32, shuffle=True, seed=None, save_to_dir=None, save_prefix='', save_format='png', subset=None, interpolation='nearest')
+</code></pre>
+
+<p>输入 dataframe 和目录的路径，并生成批量的增强/标准化的数据。</p>
+<p>这里有一个简单的教程： <a href="http://bit.ly/keras_flow_from_dataframe">http://bit.ly/keras_flow_from_dataframe</a></p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>dataframe</strong>: Pandas dataframe，一列为图像的文件名，另一列为图像的类别，
+或者是可以作为原始目标数据多个列。</li>
+<li><strong>directory</strong>: 字符串，目标目录的路径，其中包含在 dataframe 中映射的所有图像。</li>
+<li><strong>x_col</strong>: 字符串，dataframe 中包含目标图像文件夹的目录的列。</li>
+<li><strong>y_col</strong>: 字符串或字符串列表，dataframe 中将作为目标数据的列。</li>
+<li><strong>has_ext</strong>: 布尔值，如果 dataframe[x_col] 中的文件名具有扩展名则为 True，否则为 False。</li>
+<li><strong>target_size</strong>: 整数元组 <code>(height, width)</code>，默认为 <code>(256, 256)</code>。
+                 所有找到的图都会调整到这个维度。</li>
+<li><strong>color_mode</strong>: "grayscale", "rbg" 之一。默认："rgb"。
+                图像是否转换为 1 个或 3 个颜色通道。</li>
+<li><strong>classes</strong>: 可选的类别列表
+    (例如， <code>['dogs', 'cats']</code>)。默认：None。
+     如未提供，类比列表将自动从 y_col 中推理出来，y_col 将会被映射为类别索引）。
+     包含从类名到类索引的映射的字典可以通过属性 <code>class_indices</code> 获得。</li>
+<li><strong>class_mode</strong>: "categorical", "binary", "sparse", "input", "other" or None 之一。
+     默认："categorical"。决定返回标签数组的类型：<ul>
+<li><code>"categorical"</code> 将是 2D one-hot 编码标签，</li>
+<li><code>"binary"</code> 将是 1D 二进制标签，</li>
+<li><code>"sparse"</code> 将是 1D 整数标签，</li>
+<li><code>"input"</code> 将是与输入图像相同的图像（主要用于与自动编码器一起使用），</li>
+<li><code>"other"</code> 将是 y_col 数据的 numpy 数组，</li>
+<li>None, 不返回任何标签（生成器只会产生批量的图像数据，这对使用 <code>model.predict_generator()</code>, <code>model.evaluate_generator()</code> 等很有用）。</li>
+</ul>
+</li>
+<li><strong>batch_size</strong>: 批量数据的尺寸（默认：32）。</li>
+<li><strong>shuffle</strong>: 是否混洗数据（默认：True）</li>
+<li><strong>seed</strong>: 可选的混洗和转换的随即种子。</li>
+<li><strong>save_to_dir</strong>: None 或 str (默认: None).
+                 这允许你可选地指定要保存正在生成的增强图片的目录（用于可视化您正在执行的操作）。</li>
+<li><strong>save_prefix</strong>: 字符串。保存图片的文件名前缀（仅当 <code>save_to_dir</code> 设置时可用）。</li>
+<li><strong>save_format</strong>: "png", "jpeg" 之一（仅当 <code>save_to_dir</code> 设置时可用）。默认："png"。</li>
+<li><strong>follow_links</strong>: 是否跟随类子目录中的符号链接（默认：False）。</li>
+<li><strong>subset</strong>: 数据子集 (<code>"training"</code> 或 <code>"validation"</code>)，如果在 <code>ImageDataGenerator</code> 中设置了 <code>validation_split</code>。</li>
+<li><strong>interpolation</strong>: 在目标大小与加载图像的大小不同时，用于重新采样图像的插值方法。
+     支持的方法有 <code>"nearest"</code>, <code>"bilinear"</code>, and <code>"bicubic"</code>。
+     如果安装了 1.1.3 以上版本的 PIL 的话，同样支持 <code>"lanczos"</code>。
+     如果安装了 3.4.0 以上版本的 PIL 的话，同样支持 <code>"box"</code> 和 <code>"hamming"</code>。
+     默认情况下，使用 <code>"nearest"</code>。</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>一个生成 <code>(x, y)</code> 元组的 DataFrameIterator，
+其中 <code>x</code> 是一个包含一批尺寸为 <code>(batch_size, *target_size, channels)</code> 
+的图像样本的 numpy 数组，<code>y</code> 是对应的标签的 numpy 数组。</p>
+<hr />
+<h3 id="flow_from_directory">flow_from_directory</h3>
+<pre><code class="python">flow_from_directory(directory, target_size=(256, 256), color_mode='rgb', classes=None, class_mode='categorical', batch_size=32, shuffle=True, seed=None, save_to_dir=None, save_prefix='', save_format='png', follow_links=False, subset=None, interpolation='nearest')
+</code></pre>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>directory</strong>: 目标目录的路径。每个类应该包含一个子目录。任何在子目录树下的 PNG, JPG, BMP, PPM 或 TIF 图像，都将被包含在生成器中。更多细节，详见 <a href="https://gist.github.com/fchollet/%20%20%20%20%20%20%20%200830affa1f7f19fd47b06d4cf89ed44d">此脚本</a>。</li>
+<li><strong>target_size</strong>: 整数元组 <code>(height, width)</code>，默认：<code>(256, 256)</code>。所有的图像将被调整到的尺寸。</li>
+<li><strong>color_mode</strong>: "grayscale", "rbg" 之一。默认："rgb"。图像是否被转换成 1 或 3 个颜色通道。</li>
+<li><strong>classes</strong>: 可选的类的子目录列表（例如 <code>['dogs', 'cats']</code>）。默认：None。如果未提供，类的列表将自动从 <code>directory</code> 下的 子目录名称/结构 中推断出来，其中每个子目录都将被作为不同的类（类名将按字典序映射到标签的索引）。包含从类名到类索引的映射的字典可以通过 <code>class_indices</code> 属性获得。</li>
+<li><strong>class_mode</strong>:  "categorical", "binary", "sparse", "input" 或 None 之一。默认："categorical"。决定返回的标签数组的类型：<ul>
+<li>"categorical" 将是 2D one-hot 编码标签，</li>
+<li>"binary" 将是 1D 二进制标签，"sparse" 将是 1D 整数标签，</li>
+<li>"input" 将是与输入图像相同的图像（主要用于自动编码器）。</li>
+<li>如果为 None，不返回标签（生成器将只产生批量的图像数据，对于 <code>model.predict_generator()</code>, <code>model.evaluate_generator()</code> 等很有用）。请注意，如果 <code>class_mode</code> 为 None，那么数据仍然需要驻留在 <code>directory</code> 的子目录中才能正常工作。</li>
+</ul>
+</li>
+<li><strong>batch_size</strong>: 一批数据的大小（默认 32）。</li>
+<li><strong>shuffle</strong>: 是否混洗数据（默认 True）。</li>
+<li><strong>seed</strong>: 可选随机种子，用于混洗和转换。</li>
+<li><strong>save_to_dir</strong>: None 或 字符串（默认 None）。这使你可以最佳地指定正在生成的增强图片要保存的目录（用于可视化你在做什么）。</li>
+<li><strong>save_prefix</strong>: 字符串。 保存图片的文件名前缀（仅当 <code>save_to_dir</code> 设置时可用）。</li>
+<li><strong>save_format</strong>: "png", "jpeg" 之一（仅当 <code>save_to_dir</code> 设置时可用）。默认："png"。</li>
+<li><strong>follow_links</strong>: 是否跟踪类子目录中的符号链接（默认为 False）。</li>
+<li><strong>subset</strong>: 数据子集 ("training" 或 "validation")，如果 在 <code>ImageDataGenerator</code> 中设置了 <code>validation_split</code>。</li>
+<li><strong>interpolation</strong>: 在目标大小与加载图像的大小不同时，用于重新采样图像的插值方法。
+     支持的方法有 <code>"nearest"</code>, <code>"bilinear"</code>, and <code>"bicubic"</code>。
+     如果安装了 1.1.3 以上版本的 PIL 的话，同样支持 <code>"lanczos"</code>。
+     如果安装了 3.4.0 以上版本的 PIL 的话，同样支持 <code>"box"</code> 和 <code>"hamming"</code>。
+     默认情况下，使用 <code>"nearest"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个生成 <code>(x, y)</code> 元组的 <code>DirectoryIterator</code>，其中 <code>x</code> 是一个包含一批尺寸为 <code>(batch_size, *target_size, channels)</code>的图像的 Numpy 数组，<code>y</code> 是对应标签的 Numpy 数组。</p>
+<hr />
+<h3 id="get_random_transform">get_random_transform</h3>
+<pre><code class="python">get_random_transform(img_shape, seed=None)
+</code></pre>
+
+<p>为转换生成随机参数。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>seed</strong>: 随机种子</li>
+<li><strong>img_shape</strong>: 整数元组。被转换的图像的尺寸。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>包含随机选择的描述变换的参数的字典。</p>
+<hr />
+<h3 id="random_transform">random_transform</h3>
+<pre><code class="python">random_transform(x, seed=None)
+</code></pre>
+
+<p>将随机变换应用于图像。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 3D 张量，单张图像。</li>
+<li><strong>seed</strong>: 随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输入的随机转换版本（相同形状）。</p>
+<hr />
+<h4 id="standardize">standardize</h4>
+<pre><code class="python">standardize(x)
+</code></pre>
+
+<p>将标准化配置应用于一批输入。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要标准化的一批输入。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>标准化后的输入。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../1.text/" title="文本预处理" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                文本预处理
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../4-Examples/" title="经典样例" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                经典样例
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/wohugb" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/wohugb" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/wohugb" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.2ba8dec4.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

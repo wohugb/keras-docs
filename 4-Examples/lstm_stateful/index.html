@@ -13,6 +13,8 @@
         <meta name="description" content="Keras，Python 深度学习库中文文档。">
       
       
+        <link rel="canonical" href="http://keras.io/zh/4-Examples/lstm_stateful/">
+      
       
       
         <meta name="lang:clipboard.copy" content="复制">
@@ -33,18 +35,18 @@
       
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
-      <link rel="shortcut icon" href="/zh/assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
     
     
       
-        <title>Keras 中文文档</title>
+        <title>Lstm stateful - Keras 中文文档</title>
       
     
     
-      <link rel="stylesheet" href="/zh/assets/stylesheets/application.982221ab.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
       
-        <link rel="stylesheet" href="/zh/assets/stylesheets/application-palette.224b79ff.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -53,7 +55,7 @@
       
     
     
-      <script src="/zh/assets/javascripts/modernizr.01ccdecf.js"></script>
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
     
     
       
@@ -62,7 +64,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="/zh/assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
     
@@ -150,7 +152,7 @@
               Keras 中文文档
             </span>
             <span class="md-header-nav__topic">
-              
+              Lstm stateful
             </span>
           
         </div>
@@ -217,14 +219,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="/zh/." title="Keras 文档" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Keras 文档" class="md-tabs__link">
         Keras 文档
       </a>
     
@@ -268,7 +272,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/zh/0-Getting-Started/0.sequential-model-guide/" title="0 Getting Started" class="md-tabs__link">
+        <a href="../../0-Getting-Started/0.sequential-model-guide/" title="0 Getting Started" class="md-tabs__link">
           0 Getting Started
         </a>
       
@@ -281,7 +285,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/zh/1-Models/0.about-keras-models/" title="1 Models" class="md-tabs__link">
+        <a href="../../1-Models/0.about-keras-models/" title="1 Models" class="md-tabs__link">
           1 Models
         </a>
       
@@ -294,7 +298,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/zh/2-Layers/0.about-keras-layers/" title="2 Layers" class="md-tabs__link">
+        <a href="../../2-Layers/0.about-keras-layers/" title="2 Layers" class="md-tabs__link">
           2 Layers
         </a>
       
@@ -307,7 +311,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/zh/3-Preprocessing/0.sequence/" title="3 Preprocessing" class="md-tabs__link">
+        <a href="../../3-Preprocessing/0.sequence/" title="3 Preprocessing" class="md-tabs__link">
           3 Preprocessing
         </a>
       
@@ -320,7 +324,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/zh/4-Examples/" title="4 Examples" class="md-tabs__link">
+        <a href="../" title="4 Examples" class="md-tabs__link md-tabs__link--active">
           4 Examples
         </a>
       
@@ -377,7 +381,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/." title="Keras 文档" class="md-nav__link">
+    <a href="../.." title="Keras 文档" class="md-nav__link">
       Keras 文档
     </a>
   </li>
@@ -389,7 +393,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/1.why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+    <a href="../../1.why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
       为什么选择 Keras？
     </a>
   </li>
@@ -401,7 +405,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2.losses/" title="损失函数 Losses" class="md-nav__link">
+    <a href="../../2.losses/" title="损失函数 Losses" class="md-nav__link">
       损失函数 Losses
     </a>
   </li>
@@ -413,7 +417,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/3.metrics/" title="评估标准 Metrics" class="md-nav__link">
+    <a href="../../3.metrics/" title="评估标准 Metrics" class="md-nav__link">
       评估标准 Metrics
     </a>
   </li>
@@ -425,7 +429,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4.optimizers/" title="优化器 Optimizers" class="md-nav__link">
+    <a href="../../4.optimizers/" title="优化器 Optimizers" class="md-nav__link">
       优化器 Optimizers
     </a>
   </li>
@@ -437,7 +441,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/5.activations/" title="激活函数 Activations" class="md-nav__link">
+    <a href="../../5.activations/" title="激活函数 Activations" class="md-nav__link">
       激活函数 Activations
     </a>
   </li>
@@ -449,7 +453,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/6.callbacks/" title="回调函数 Callbacks" class="md-nav__link">
+    <a href="../../6.callbacks/" title="回调函数 Callbacks" class="md-nav__link">
       回调函数 Callbacks
     </a>
   </li>
@@ -461,7 +465,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/7.datasets/" title="常用数据集 Datasets" class="md-nav__link">
+    <a href="../../7.datasets/" title="常用数据集 Datasets" class="md-nav__link">
       常用数据集 Datasets
     </a>
   </li>
@@ -473,7 +477,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/8.applications/" title="应用 Applications" class="md-nav__link">
+    <a href="../../8.applications/" title="应用 Applications" class="md-nav__link">
       应用 Applications
     </a>
   </li>
@@ -485,7 +489,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/9.backend/" title="Keras 后端" class="md-nav__link">
+    <a href="../../9.backend/" title="Keras 后端" class="md-nav__link">
       Keras 后端
     </a>
   </li>
@@ -497,7 +501,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/90.initializers/" title="初始化 Initializers" class="md-nav__link">
+    <a href="../../90.initializers/" title="初始化 Initializers" class="md-nav__link">
       初始化 Initializers
     </a>
   </li>
@@ -509,7 +513,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/91.regularizers/" title="正则化 Regularizers" class="md-nav__link">
+    <a href="../../91.regularizers/" title="正则化 Regularizers" class="md-nav__link">
       正则化 Regularizers
     </a>
   </li>
@@ -521,7 +525,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/92.constraints/" title="约束 Constraints" class="md-nav__link">
+    <a href="../../92.constraints/" title="约束 Constraints" class="md-nav__link">
       约束 Constraints
     </a>
   </li>
@@ -533,7 +537,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/93.visualization/" title="可视化 Visualization" class="md-nav__link">
+    <a href="../../93.visualization/" title="可视化 Visualization" class="md-nav__link">
       可视化 Visualization
     </a>
   </li>
@@ -545,7 +549,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/94.scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+    <a href="../../94.scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
       Scikit-Learn API 的封装器
     </a>
   </li>
@@ -557,7 +561,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/96.utils/" title="工具" class="md-nav__link">
+    <a href="../../96.utils/" title="工具" class="md-nav__link">
       工具
     </a>
   </li>
@@ -569,7 +573,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/97.contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+    <a href="../../97.contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
       关于 Github Issues 和 Pull Requests
     </a>
   </li>
@@ -600,7 +604,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/0-Getting-Started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+    <a href="../../0-Getting-Started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
       开始使用 Keras Sequential 顺序模型
     </a>
   </li>
@@ -612,7 +616,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/0-Getting-Started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+    <a href="../../0-Getting-Started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
       开始使用 Keras 函数式 API
     </a>
   </li>
@@ -624,7 +628,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/0-Getting-Started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+    <a href="../../0-Getting-Started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
       Keras FAQ: 常见问题解答
     </a>
   </li>
@@ -660,7 +664,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/1-Models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+    <a href="../../1-Models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
       关于 Keras 模型
     </a>
   </li>
@@ -672,7 +676,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/1-Models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+    <a href="../../1-Models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
       Sequential 模型 API
     </a>
   </li>
@@ -684,7 +688,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/1-Models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+    <a href="../../1-Models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
       Model 类（函数式 API）
     </a>
   </li>
@@ -720,7 +724,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+    <a href="../../2-Layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
       关于 Keras 网络层
     </a>
   </li>
@@ -732,7 +736,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/1.core/" title="核心网络层" class="md-nav__link">
+    <a href="../../2-Layers/1.core/" title="核心网络层" class="md-nav__link">
       核心网络层
     </a>
   </li>
@@ -744,7 +748,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/2.convolutional/" title="卷积层" class="md-nav__link">
+    <a href="../../2-Layers/2.convolutional/" title="卷积层" class="md-nav__link">
       卷积层
     </a>
   </li>
@@ -756,7 +760,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/3.pooling/" title="池化层" class="md-nav__link">
+    <a href="../../2-Layers/3.pooling/" title="池化层" class="md-nav__link">
       池化层
     </a>
   </li>
@@ -768,7 +772,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/4.local/" title="局部连接层" class="md-nav__link">
+    <a href="../../2-Layers/4.local/" title="局部连接层" class="md-nav__link">
       局部连接层
     </a>
   </li>
@@ -780,7 +784,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/5.recurrent/" title="循环层" class="md-nav__link">
+    <a href="../../2-Layers/5.recurrent/" title="循环层" class="md-nav__link">
       循环层
     </a>
   </li>
@@ -792,7 +796,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+    <a href="../../2-Layers/6.embeddings/" title="嵌入层" class="md-nav__link">
       嵌入层
     </a>
   </li>
@@ -804,7 +808,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/7.merge/" title="融合层" class="md-nav__link">
+    <a href="../../2-Layers/7.merge/" title="融合层" class="md-nav__link">
       融合层
     </a>
   </li>
@@ -816,7 +820,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+    <a href="../../2-Layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
       高级激活层
     </a>
   </li>
@@ -828,7 +832,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/9.normalization/" title="标准化层" class="md-nav__link">
+    <a href="../../2-Layers/9.normalization/" title="标准化层" class="md-nav__link">
       标准化层
     </a>
   </li>
@@ -840,7 +844,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/90.noise/" title="噪声层" class="md-nav__link">
+    <a href="../../2-Layers/90.noise/" title="噪声层" class="md-nav__link">
       噪声层
     </a>
   </li>
@@ -852,7 +856,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/91.wrappers/" title="层封装器" class="md-nav__link">
+    <a href="../../2-Layers/91.wrappers/" title="层封装器" class="md-nav__link">
       层封装器
     </a>
   </li>
@@ -864,7 +868,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/2-Layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+    <a href="../../2-Layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
       编写你自己的 Keras 层
     </a>
   </li>
@@ -900,7 +904,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/3-Preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
+    <a href="../../3-Preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
       序列预处理
     </a>
   </li>
@@ -912,7 +916,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/3-Preprocessing/1.text/" title="文本预处理" class="md-nav__link">
+    <a href="../../3-Preprocessing/1.text/" title="文本预处理" class="md-nav__link">
       文本预处理
     </a>
   </li>
@@ -924,7 +928,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/3-Preprocessing/2.image/" title="图像预处理" class="md-nav__link">
+    <a href="../../3-Preprocessing/2.image/" title="图像预处理" class="md-nav__link">
       图像预处理
     </a>
   </li>
@@ -939,10 +943,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22" checked>
     
     <label class="md-nav__link" for="nav-22">
       4 Examples
@@ -960,7 +966,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/" title="经典样例" class="md-nav__link">
+    <a href="../" title="经典样例" class="md-nav__link">
       经典样例
     </a>
   </li>
@@ -972,7 +978,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/0.pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+    <a href="../0.pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
       预训练的单词嵌入
     </a>
   </li>
@@ -984,7 +990,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+    <a href="../addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
       实现一个用来执行加法的序列到序列学习模型
     </a>
   </li>
@@ -996,7 +1002,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/antirectifier/" title="Antirectifier" class="md-nav__link">
+    <a href="../antirectifier/" title="Antirectifier" class="md-nav__link">
       Antirectifier
     </a>
   </li>
@@ -1008,7 +1014,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+    <a href="../babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
       在 bAbI 数据集上训练一个记忆网络。
     </a>
   </li>
@@ -1020,7 +1026,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+    <a href="../babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
       基于故事和问题训练两个循环神经网络。
     </a>
   </li>
@@ -1032,7 +1038,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+    <a href="../cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
       在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
     </a>
   </li>
@@ -1044,7 +1050,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+    <a href="../cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
       在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
     </a>
   </li>
@@ -1056,7 +1062,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+    <a href="../cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
       Cifar10 cnn tfaugment2d
     </a>
   </li>
@@ -1068,7 +1074,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+    <a href="../cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
       Cifar10 resnet
     </a>
   </li>
@@ -1080,7 +1086,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/class_activation_maps/" title="Class activation maps" class="md-nav__link">
+    <a href="../class_activation_maps/" title="Class activation maps" class="md-nav__link">
       Class activation maps
     </a>
   </li>
@@ -1092,7 +1098,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+    <a href="../conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
       Conv filter visualization
     </a>
   </li>
@@ -1104,7 +1110,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/conv_lstm/" title="Conv lstm" class="md-nav__link">
+    <a href="../conv_lstm/" title="Conv lstm" class="md-nav__link">
       Conv lstm
     </a>
   </li>
@@ -1116,7 +1122,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/deep_dream/" title="Deep dream" class="md-nav__link">
+    <a href="../deep_dream/" title="Deep dream" class="md-nav__link">
       Deep dream
     </a>
   </li>
@@ -1128,7 +1134,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/image_ocr/" title="Optical character recognition" class="md-nav__link">
+    <a href="../image_ocr/" title="Optical character recognition" class="md-nav__link">
       Optical character recognition
     </a>
   </li>
@@ -1140,7 +1146,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+    <a href="../imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
       Imdb bidirectional lstm
     </a>
   </li>
@@ -1152,7 +1158,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+    <a href="../imdb_cnn/" title="Imdb cnn" class="md-nav__link">
       Imdb cnn
     </a>
   </li>
@@ -1164,7 +1170,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+    <a href="../imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
       Imdb cnn lstm
     </a>
   </li>
@@ -1176,7 +1182,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+    <a href="../imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
       Imdb fasttext
     </a>
   </li>
@@ -1188,7 +1194,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+    <a href="../imdb_lstm/" title="Imdb lstm" class="md-nav__link">
       Imdb lstm
     </a>
   </li>
@@ -1200,7 +1206,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+    <a href="../lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
       Lstm seq2seq
     </a>
   </li>
@@ -1212,7 +1218,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+    <a href="../lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
       Lstm seq2seq restore
     </a>
   </li>
@@ -1222,11 +1228,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="/zh/4-Examples/lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Lstm stateful" class="md-nav__link md-nav__link--active">
       Lstm stateful
     </a>
+    
   </li>
 
         
@@ -1236,7 +1249,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+    <a href="../lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
       Lstm text generation
     </a>
   </li>
@@ -1248,7 +1261,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+    <a href="../mnist_acgan/" title="Mnist acgan" class="md-nav__link">
       Mnist acgan
     </a>
   </li>
@@ -1260,7 +1273,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+    <a href="../mnist_cnn/" title="Mnist cnn" class="md-nav__link">
       Mnist cnn
     </a>
   </li>
@@ -1272,7 +1285,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+    <a href="../mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
       Mnist dataset api
     </a>
   </li>
@@ -1284,7 +1297,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+    <a href="../mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
       Mnist denoising autoencoder
     </a>
   </li>
@@ -1296,7 +1309,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+    <a href="../mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
       Mnist hierarchical rnn
     </a>
   </li>
@@ -1308,7 +1321,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+    <a href="../mnist_irnn/" title="Mnist irnn" class="md-nav__link">
       Mnist irnn
     </a>
   </li>
@@ -1320,7 +1333,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+    <a href="../mnist_mlp/" title="Mnist mlp" class="md-nav__link">
       Mnist mlp
     </a>
   </li>
@@ -1332,7 +1345,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_net2net/" title="Mnist net2net" class="md-nav__link">
+    <a href="../mnist_net2net/" title="Mnist net2net" class="md-nav__link">
       Mnist net2net
     </a>
   </li>
@@ -1344,7 +1357,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+    <a href="../mnist_siamese/" title="Mnist siamese" class="md-nav__link">
       Mnist siamese
     </a>
   </li>
@@ -1356,7 +1369,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+    <a href="../mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
       Mnist sklearn wrapper
     </a>
   </li>
@@ -1368,7 +1381,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+    <a href="../mnist_swwae/" title="Mnist swwae" class="md-nav__link">
       Mnist swwae
     </a>
   </li>
@@ -1380,7 +1393,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+    <a href="../mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
       Mnist tfrecord
     </a>
   </li>
@@ -1392,7 +1405,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+    <a href="../mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
       Mnist transfer cnn
     </a>
   </li>
@@ -1404,7 +1417,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/neural_doodle/" title="Neural doodle" class="md-nav__link">
+    <a href="../neural_doodle/" title="Neural doodle" class="md-nav__link">
       Neural doodle
     </a>
   </li>
@@ -1416,7 +1429,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+    <a href="../neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
       Neural style transfer
     </a>
   </li>
@@ -1428,7 +1441,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+    <a href="../reuters_mlp/" title="Reuters mlp" class="md-nav__link">
       Reuters mlp
     </a>
   </li>
@@ -1440,7 +1453,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+    <a href="../reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
       Reuters mlp relu vs selu
     </a>
   </li>
@@ -1452,7 +1465,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+    <a href="../tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
       Tensorboard embeddings mnist
     </a>
   </li>
@@ -1464,7 +1477,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+    <a href="../variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
       Variational autoencoder
     </a>
   </li>
@@ -1476,7 +1489,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zh/4-Examples/variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+    <a href="../variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
       Variational autoencoder deconv
     </a>
   </li>
@@ -1498,8 +1511,250 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/4-Examples/lstm_stateful.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Lstm stateful</h1>
+                
+                <p>Example script showing how to use a stateful LSTM model
+and how its stateless counterpart performs.</p>
+<p>More documentation about the Keras LSTM model can be found at
+https://keras.io/layers/recurrent/#lstm</p>
+<p>The models are trained on an input/output pair, where
+the input is a generated uniformly distributed
+random sequence of length = "input_len",
+and the output is a moving average of the input with window length = "tsteps".
+Both "input_len" and "tsteps" are defined in the "editable parameters" section.</p>
+<p>A larger "tsteps" value means that the LSTM will need more memory
+to figure out the input-output relationship.
+This memory length is controlled by the "lahead" variable (more details below).</p>
+<p>The rest of the parameters are:
+- input_len: the length of the generated input sequence
+- lahead: the input sequence length that the LSTM
+  is trained on for each output point
+- batch_size, epochs: same parameters as in the model.fit(...) function</p>
+<p>When lahead &gt; 1, the model input is preprocessed to a "rolling window view"
+of the data, with the window length = "lahead".
+This is similar to sklearn's "view_as_windows"
+with "window_shape" being a single number
+Ref: http://scikit-image.org/docs/0.10.x/api/skimage.util.html#view-as-windows</p>
+<p>When lahead &lt; tsteps, only the stateful LSTM converges because its
+statefulness allows it to see beyond the capability that lahead
+gave it to fit the n-point average. The stateless LSTM does not have
+this capability, and hence is limited by its "lahead" parameter,
+which is not sufficient to see the n-point average.</p>
+<p>When lahead &gt;= tsteps, both the stateful and stateless LSTM converge.</p>
+<pre><code class="python">from __future__ import print_function
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from keras.models import Sequential
+from keras.layers import Dense, LSTM
 
+# ----------------------------------------------------------
+# EDITABLE PARAMETERS
+# Read the documentation in the script head for more details
+# ----------------------------------------------------------
+
+# length of input
+input_len = 1000
+
+# The window length of the moving average used to generate
+# the output from the input in the input/output pair used
+# to train the LSTM
+# e.g. if tsteps=2 and input=[1, 2, 3, 4, 5],
+#      then output=[1.5, 2.5, 3.5, 4.5]
+tsteps = 2
+
+# The input sequence length that the LSTM is trained on for each output point
+lahead = 1
+
+# training parameters passed to &quot;model.fit(...)&quot;
+batch_size = 1
+epochs = 10
+
+# ------------
+# MAIN PROGRAM
+# ------------
+
+print(&quot;*&quot; * 33)
+if lahead &gt;= tsteps:
+    print(&quot;STATELESS LSTM WILL ALSO CONVERGE&quot;)
+else:
+    print(&quot;STATELESS LSTM WILL NOT CONVERGE&quot;)
+print(&quot;*&quot; * 33)
+
+np.random.seed(1986)
+
+print('Generating Data...')
+
+
+def gen_uniform_amp(amp=1, xn=10000):
+    &quot;&quot;&quot;Generates uniform random data between
+    -amp and +amp
+    and of length xn
+
+    Arguments:
+        amp: maximum/minimum range of uniform data
+        xn: length of series
+    &quot;&quot;&quot;
+    data_input = np.random.uniform(-1 * amp, +1 * amp, xn)
+    data_input = pd.DataFrame(data_input)
+    return data_input
+
+# Since the output is a moving average of the input,
+# the first few points of output will be NaN
+# and will be dropped from the generated data
+# before training the LSTM.
+# Also, when lahead &gt; 1,
+# the preprocessing step later of &quot;rolling window view&quot;
+# will also cause some points to be lost.
+# For aesthetic reasons,
+# in order to maintain generated data length = input_len after pre-processing,
+# add a few points to account for the values that will be lost.
+to_drop = max(tsteps - 1, lahead - 1)
+data_input = gen_uniform_amp(amp=0.1, xn=input_len + to_drop)
+
+# set the target to be a N-point average of the input
+expected_output = data_input.rolling(window=tsteps, center=False).mean()
+
+# when lahead &gt; 1, need to convert the input to &quot;rolling window view&quot;
+# https://docs.scipy.org/doc/numpy/reference/generated/numpy.repeat.html
+if lahead &gt; 1:
+    data_input = np.repeat(data_input.values, repeats=lahead, axis=1)
+    data_input = pd.DataFrame(data_input)
+    for i, c in enumerate(data_input.columns):
+        data_input[c] = data_input[c].shift(i)
+
+# drop the nan
+expected_output = expected_output[to_drop:]
+data_input = data_input[to_drop:]
+
+print('Input shape:', data_input.shape)
+print('Output shape:', expected_output.shape)
+print('Input head: ')
+print(data_input.head())
+print('Output head: ')
+print(expected_output.head())
+print('Input tail: ')
+print(data_input.tail())
+print('Output tail: ')
+print(expected_output.tail())
+
+print('Plotting input and expected output')
+plt.plot(data_input[0][:10], '.')
+plt.plot(expected_output[0][:10], '-')
+plt.legend(['Input', 'Expected output'])
+plt.title('Input')
+plt.show()
+
+
+def create_model(stateful):
+    model = Sequential()
+    model.add(LSTM(20,
+              input_shape=(lahead, 1),
+              batch_size=batch_size,
+              stateful=stateful))
+    model.add(Dense(1))
+    model.compile(loss='mse', optimizer='adam')
+    return model
+
+print('Creating Stateful Model...')
+model_stateful = create_model(stateful=True)
+
+
+# split train/test data
+def split_data(x, y, ratio=0.8):
+    to_train = int(input_len * ratio)
+    # tweak to match with batch_size
+    to_train -= to_train % batch_size
+
+    x_train = x[:to_train]
+    y_train = y[:to_train]
+    x_test = x[to_train:]
+    y_test = y[to_train:]
+
+    # tweak to match with batch_size
+    to_drop = x.shape[0] % batch_size
+    if to_drop &gt; 0:
+        x_test = x_test[:-1 * to_drop]
+        y_test = y_test[:-1 * to_drop]
+
+    # some reshaping
+    reshape_3 = lambda x: x.values.reshape((x.shape[0], x.shape[1], 1))
+    x_train = reshape_3(x_train)
+    x_test = reshape_3(x_test)
+
+    reshape_2 = lambda x: x.values.reshape((x.shape[0], 1))
+    y_train = reshape_2(y_train)
+    y_test = reshape_2(y_test)
+
+    return (x_train, y_train), (x_test, y_test)
+
+
+(x_train, y_train), (x_test, y_test) = split_data(data_input, expected_output)
+print('x_train.shape: ', x_train.shape)
+print('y_train.shape: ', y_train.shape)
+print('x_test.shape: ', x_test.shape)
+print('y_test.shape: ', y_test.shape)
+
+print('Training')
+for i in range(epochs):
+    print('Epoch', i + 1, '/', epochs)
+    # Note that the last state for sample i in a batch will
+    # be used as initial state for sample i in the next batch.
+    # Thus we are simultaneously training on batch_size series with
+    # lower resolution than the original series contained in data_input.
+    # Each of these series are offset by one step and can be
+    # extracted with data_input[i::batch_size].
+    model_stateful.fit(x_train,
+                       y_train,
+                       batch_size=batch_size,
+                       epochs=1,
+                       verbose=1,
+                       validation_data=(x_test, y_test),
+                       shuffle=False)
+    model_stateful.reset_states()
+
+print('Predicting')
+predicted_stateful = model_stateful.predict(x_test, batch_size=batch_size)
+
+print('Creating Stateless Model...')
+model_stateless = create_model(stateful=False)
+
+print('Training')
+model_stateless.fit(x_train,
+                    y_train,
+                    batch_size=batch_size,
+                    epochs=epochs,
+                    verbose=1,
+                    validation_data=(x_test, y_test),
+                    shuffle=False)
+
+print('Predicting')
+predicted_stateless = model_stateless.predict(x_test, batch_size=batch_size)
+
+# ----------------------------
+
+print('Plotting Results')
+plt.subplot(3, 1, 1)
+plt.plot(y_test)
+plt.title('Expected')
+plt.subplot(3, 1, 2)
+# drop the first &quot;tsteps-1&quot; because it is not possible to predict them
+# since the &quot;previous&quot; timesteps to use do not exist
+plt.plot((y_test - predicted_stateful).flatten()[tsteps - 1:])
+plt.title('Stateful: Expected - Predicted')
+plt.subplot(3, 1, 3)
+plt.plot((y_test - predicted_stateless).flatten())
+plt.title('Stateless: Expected - Predicted')
+plt.show()
+</code></pre>
+                
+                  
+                
+              
               
                 
 
@@ -1513,6 +1768,41 @@
         
 <footer class="md-footer">
   
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Lstm seq2seq restore
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../lstm_text_generation/" title="Lstm text generation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Lstm text generation
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -1525,7 +1815,7 @@
       </div>
       
   <div class="md-footer-social">
-    <link rel="stylesheet" href="/zh/assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
     
@@ -1543,26 +1833,26 @@
       
     </div>
     
-      <script src="/zh/assets/javascripts/application.2ba8dec4.js"></script>
+      <script src="../../assets/javascripts/application.2ba8dec4.js"></script>
       
         
         
           
-          <script src="/zh/assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
-                <script src="/zh/assets/javascripts/lunr/tinyseg.js"></script>
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
               
               
-                <script src="/zh/assets/javascripts/lunr/lunr.ja.js"></script>
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
               
             
           
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"/zh/"}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
   </body>
