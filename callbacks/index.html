@@ -1,0 +1,2194 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Keras，Python 深度学习库中文文档。">
+      
+      
+        <link rel="canonical" href="http://keras.io/zh/callbacks/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>Callbacks - Keras 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-61785484-1", "keras.io")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Keras 中文文档
+            </span>
+            <span class="md-header-nav__topic">
+              Callbacks
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Keras 文档" class="md-tabs__link md-tabs__link--active">
+        Keras 文档
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0.getting-started/0.sequential-model-guide/" title="0.getting started" class="md-tabs__link">
+          0.getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../1.models/0.about-keras-models/" title="1.models" class="md-tabs__link">
+          1.models
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../2.layers/0.about-keras-layers/" title="2.layers" class="md-tabs__link">
+          2.layers
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../3.preprocessing/0.sequence/" title="3.preprocessing" class="md-tabs__link">
+          3.preprocessing
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../4.examples/" title="4.examples" class="md-tabs__link">
+          4.examples
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Keras 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Keras 文档" class="md-nav__link">
+      Keras 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../activations/" title="Activations" class="md-nav__link">
+      Activations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../applications/" title="应用 Applications" class="md-nav__link">
+      应用 Applications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Keras 后端" class="md-nav__link">
+      Keras 后端
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Callbacks
+      </label>
+    
+    <a href="./" title="Callbacks" class="md-nav__link md-nav__link--active">
+      Callbacks
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#callback" title="Callback" class="md-nav__link">
+    Callback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#baselogger" title="BaseLogger" class="md-nav__link">
+    BaseLogger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminateonnan" title="TerminateOnNaN" class="md-nav__link">
+    TerminateOnNaN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progbarlogger" title="ProgbarLogger" class="md-nav__link">
+    ProgbarLogger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history" title="History" class="md-nav__link">
+    History
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelcheckpoint" title="ModelCheckpoint" class="md-nav__link">
+    ModelCheckpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earlystopping" title="EarlyStopping" class="md-nav__link">
+    EarlyStopping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remotemonitor" title="RemoteMonitor" class="md-nav__link">
+    RemoteMonitor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learningratescheduler" title="LearningRateScheduler" class="md-nav__link">
+    LearningRateScheduler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorboard" title="TensorBoard" class="md-nav__link">
+    TensorBoard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reducelronplateau" title="ReduceLROnPlateau" class="md-nav__link">
+    ReduceLROnPlateau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csvlogger" title="CSVLogger" class="md-nav__link">
+    CSVLogger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambdacallback" title="LambdaCallback" class="md-nav__link">
+    LambdaCallback
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../constraints/" title="Constraints" class="md-nav__link">
+      Constraints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+      关于 Github Issues 和 Pull Requests
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/" title="数据集" class="md-nav__link">
+      数据集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../initializers/" title="Initializers" class="md-nav__link">
+      Initializers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../losses/" title="Losses" class="md-nav__link">
+      Losses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/" title="Metrics" class="md-nav__link">
+      Metrics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../optimizers/" title="Optimizers" class="md-nav__link">
+      Optimizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../regularizers/" title="Regularizers" class="md-nav__link">
+      Regularizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+      Scikit-Learn API 的封装器
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../utils/" title="Utils" class="md-nav__link">
+      Utils
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../visualization/" title="Visualization" class="md-nav__link">
+      Visualization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+      为什么选择 Keras？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      0.getting started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        0.getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+      开始使用 Keras Sequential 顺序模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+      开始使用 Keras 函数式 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+      Keras FAQ: 常见问题解答
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      1.models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        1.models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+      关于 Keras 模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+      Sequential 模型 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+      Model 类（函数式 API）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      2.layers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        2.layers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+      关于 Keras 网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/1.core/" title="核心网络层" class="md-nav__link">
+      核心网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/2.convolutional/" title="卷积层" class="md-nav__link">
+      卷积层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/3.pooling/" title="池化层" class="md-nav__link">
+      池化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/4.local/" title="局部连接层" class="md-nav__link">
+      局部连接层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/5.recurrent/" title="循环层" class="md-nav__link">
+      循环层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+      嵌入层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/7.merge/" title="融合层" class="md-nav__link">
+      融合层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+      高级激活层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/9.normalization/" title="标准化层" class="md-nav__link">
+      标准化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/90.noise/" title="噪声层" class="md-nav__link">
+      噪声层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/91.wrappers/" title="层封装器" class="md-nav__link">
+      层封装器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+      编写你自己的 Keras 层
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21">
+    
+    <label class="md-nav__link" for="nav-21">
+      3.preprocessing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        3.preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
+      序列预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/1.text/" title="文本预处理" class="md-nav__link">
+      文本预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/2.image/" title="图像预处理" class="md-nav__link">
+      图像预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      4.examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        4.examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/" title="经典样例" class="md-nav__link">
+      经典样例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+      实现一个用来执行加法的序列到序列学习模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/antirectifier/" title="Antirectifier" class="md-nav__link">
+      Antirectifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+      在 bAbI 数据集上训练一个记忆网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+      基于故事和问题训练两个循环神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+      Cifar10 cnn tfaugment2d
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+      Cifar10 resnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/class_activation_maps/" title="Class activation maps" class="md-nav__link">
+      Class activation maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+      Conv filter visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/conv_lstm/" title="Conv lstm" class="md-nav__link">
+      Conv lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/deep_dream/" title="Deep dream" class="md-nav__link">
+      Deep dream
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/image_ocr/" title="Optical character recognition" class="md-nav__link">
+      Optical character recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+      Imdb bidirectional lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+      Imdb cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+      Imdb cnn lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+      Imdb fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+      Imdb lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+      Lstm seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+      Lstm seq2seq restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+      Lstm stateful
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+      Lstm text generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+      Mnist acgan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+      Mnist cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+      Mnist dataset api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+      Mnist denoising autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+      Mnist hierarchical rnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+      Mnist irnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+      Mnist mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_net2net/" title="Mnist net2net" class="md-nav__link">
+      Mnist net2net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+      Mnist siamese
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+      Mnist sklearn wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+      Mnist swwae
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+      Mnist tfrecord
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+      Mnist transfer cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/neural_doodle/" title="Neural doodle" class="md-nav__link">
+      Neural doodle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+      Neural style transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+      预训练的单词嵌入
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+      Reuters mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+      Reuters mlp relu vs selu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+      Tensorboard embeddings mnist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+      Variational autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+      Variational autoencoder deconv
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#callback" title="Callback" class="md-nav__link">
+    Callback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#baselogger" title="BaseLogger" class="md-nav__link">
+    BaseLogger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminateonnan" title="TerminateOnNaN" class="md-nav__link">
+    TerminateOnNaN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progbarlogger" title="ProgbarLogger" class="md-nav__link">
+    ProgbarLogger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history" title="History" class="md-nav__link">
+    History
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelcheckpoint" title="ModelCheckpoint" class="md-nav__link">
+    ModelCheckpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earlystopping" title="EarlyStopping" class="md-nav__link">
+    EarlyStopping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remotemonitor" title="RemoteMonitor" class="md-nav__link">
+    RemoteMonitor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learningratescheduler" title="LearningRateScheduler" class="md-nav__link">
+    LearningRateScheduler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorboard" title="TensorBoard" class="md-nav__link">
+    TensorBoard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reducelronplateau" title="ReduceLROnPlateau" class="md-nav__link">
+    ReduceLROnPlateau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csvlogger" title="CSVLogger" class="md-nav__link">
+    CSVLogger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambdacallback" title="LambdaCallback" class="md-nav__link">
+    LambdaCallback
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/callbacks.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h2 id="_1">回调函数使用</h2>
+<p>回调函数是一个函数的合集，会在训练的阶段中所使用。你可以使用回调函数来查看训练模型的内在状态和统计。你可以传递一个列表的回调函数（作为 <code>callbacks</code> 关键字参数）到 <code>Sequential</code> 或 <code>Model</code> 类型的 <code>.fit()</code> 方法。在训练时，相应的回调函数的方法就会被在各自的阶段被调用。</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L148">[source]</a></span></p>
+<h3 id="callback">Callback</h3>
+<pre><code class="python">keras.callbacks.Callback()
+</code></pre>
+
+<p>用来组建新的回调函数的抽象基类。</p>
+<p><strong>属性</strong></p>
+<ul>
+<li><strong>params</strong>: 字典。训练参数，
+(例如，verbosity, batch size, number of epochs...)。</li>
+<li><strong>model</strong>: <code>keras.models.Model</code> 的实例。
+指代被训练模型。</li>
+</ul>
+<p>被回调函数作为参数的 <code>logs</code> 字典，它会含有于当前批量或训练轮相关数据的键。</p>
+<p>目前，<code>Sequential</code> 模型类的 <code>.fit()</code> 方法会在传入到回调函数的 <code>logs</code> 里面包含以下的数据：</p>
+<ul>
+<li><strong>on_epoch_end</strong>: 包括 <code>acc</code> 和 <code>loss</code> 的日志， 也可以选择性的包括 <code>val_loss</code>（如果在 <code>fit</code> 中启用验证），和 <code>val_acc</code>（如果启用验证和监测精确值）。</li>
+<li><strong>on_batch_begin</strong>: 包括 <code>size</code> 的日志，在当前批量内的样本数量。</li>
+<li><strong>on_batch_end</strong>: 包括 <code>loss</code> 的日志，也可以选择性的包括 <code>acc</code>（如果启用监测精确值）。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L204">[source]</a></span></p>
+<h3 id="baselogger">BaseLogger</h3>
+<pre><code class="python">keras.callbacks.BaseLogger(stateful_metrics=None)
+</code></pre>
+
+<p>会积累训练轮平均评估的回调函数。</p>
+<p>这个回调函数被自动应用到每一个 Keras 模型上面。</p>
+<p><strong>参数</strong></p>
+<p><strong>stateful_metrics</strong>: 可重复使用不应在一个 epoch 上平均的指标的字符串名称。
+此列表中的度量标准将按原样记录在 <code>on_epoch_end</code> 中。
+所有其他指标将在 <code>on_epoch_end</code> 中取平均值。</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L251">[source]</a></span></p>
+<h3 id="terminateonnan">TerminateOnNaN</h3>
+<pre><code class="python">keras.callbacks.TerminateOnNaN()
+</code></pre>
+
+<p>当遇到 NaN 损失会停止训练的回调函数。</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L264">[source]</a></span></p>
+<h3 id="progbarlogger">ProgbarLogger</h3>
+<pre><code class="python">keras.callbacks.ProgbarLogger(count_mode='samples', stateful_metrics=None)
+</code></pre>
+
+<p>会把评估以标准输出打印的回调函数。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>count_mode</strong>: "steps" 或者 "samples"。
+进度条是否应该计数看见的样本或步骤（批量）。
+<strong>stateful_metrics</strong>: 可重复使用不应在一个 epoch 上平均的指标的字符串名称。
+此列表中的度量标准将按原样记录在 <code>on_epoch_end</code> 中。
+所有其他指标将在 <code>on_epoch_end</code> 中取平均值。</li>
+</ul>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>count_mode</code></li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L341">[source]</a></span></p>
+<h3 id="history">History</h3>
+<pre><code class="python">keras.callbacks.History()
+</code></pre>
+
+<p>把所有事件都记录到 <code>History</code> 对象的回调函数。</p>
+<p>这个回调函数被自动启用到每一个 Keras 模型。<code>History</code> 对象会被模型的 <code>fit</code> 方法返回。</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L360">[source]</a></span></p>
+<h3 id="modelcheckpoint">ModelCheckpoint</h3>
+<pre><code class="python">keras.callbacks.ModelCheckpoint(filepath, monitor='val_loss', verbose=0, save_best_only=False, save_weights_only=False, mode='auto', period=1)
+</code></pre>
+
+<p>在每个训练期之后保存模型。</p>
+<p><code>filepath</code> 可以包括命名格式选项，可以由 <code>epoch</code> 的值和 <code>logs</code> 的键（由 <code>on_epoch_end</code> 参数传递）来填充。</p>
+<p>例如：如果 <code>filepath</code> 是 <code>weights.{epoch:02d}-{val_loss:.2f}.hdf5</code>，
+那么模型被保存的的文件名就会有训练轮数和验证损失。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>filepath</strong>: 字符串，保存模型的路径。</li>
+<li><strong>monitor</strong>: 被监测的数据。</li>
+<li><strong>verbose</strong>: 详细信息模式，0 或者 1 。</li>
+<li><strong>save_best_only</strong>: 如果 <code>save_best_only=True</code>，
+被监测数据的最佳模型就不会被覆盖。</li>
+<li><strong>mode</strong>: {auto, min, max} 的其中之一。
+如果 <code>save_best_only=True</code>，那么是否覆盖保存文件的决定就取决于被监测数据的最大或者最小值。
+对于 <code>val_acc</code>，模式就会是 <code>max</code>，而对于 <code>val_loss</code>，模式就需要是 <code>min</code>，等等。
+在 <code>auto</code> 模式中，方向会自动从被监测的数据的名字中判断出来。</li>
+<li><strong>save_weights_only</strong>: 如果 True，那么只有模型的权重会被保存 (<code>model.save_weights(filepath)</code>)，
+否则的话，整个模型会被保存 (<code>model.save(filepath)</code>)。</li>
+<li><strong>period</strong>: 每个检查点之间的间隔（训练轮数）。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L460">[source]</a></span></p>
+<h3 id="earlystopping">EarlyStopping</h3>
+<pre><code class="python">keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
+</code></pre>
+
+<p>当被监测的数量不再提升，则停止训练。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>monitor</strong>: 被监测的数据。</li>
+<li><strong>min_delta</strong>: 在被监测的数据中被认为是提升的最小变化，
+例如，小于 min_delta 的绝对变化会被认为没有提升。</li>
+<li><strong>patience</strong>: 没有进步的训练轮数，在这之后训练就会被停止。</li>
+<li><strong>verbose</strong>: 详细信息模式。</li>
+<li><strong>mode</strong>: {auto, min, max} 其中之一。 在 <code>min</code> 模式中，
+当被监测的数据停止下降，训练就会停止；在 <code>max</code>
+模式中，当被监测的数据停止上升，训练就会停止；在 <code>auto</code>
+模式中，方向会自动从被监测的数据的名字中判断出来。</li>
+<li><strong>baseline</strong>: 要监控的数量的基准值。
+如果模型没有显示基准的改善，训练将停止。</li>
+<li><strong>restore_best_weights</strong>: 是否从具有监测数量的最佳值的时期恢复模型权重。
+如果为 False，则使用在训练的最后一步获得的模型权重。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L574">[source]</a></span></p>
+<h3 id="remotemonitor">RemoteMonitor</h3>
+<pre><code class="python">keras.callbacks.RemoteMonitor(root='http://localhost:9000', path='/publish/epoch/end/', field='data', headers=None, send_as_json=False)
+</code></pre>
+
+<p>将事件数据流到服务器的回调函数。</p>
+<p>需要 <code>requests</code> 库。
+事件被默认发送到 <code>root + '/publish/epoch/end/'</code>。
+采用 HTTP POST ，其中的 <code>data</code> 参数是以 JSON 编码的事件数据字典。
+如果 send_as_json 设置为 True，请求的 content type 是 application/json。否则，将在表单中发送序列化的 JSON。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>root</strong>: 字符串；目标服务器的根地址。</li>
+<li><strong>path</strong>: 字符串；相对于 <code>root</code> 的路径，事件数据被送达的地址。</li>
+<li><strong>field</strong>: 字符串；JSON ，数据被保存的领域。</li>
+<li><strong>headers</strong>: 字典；可选自定义的 HTTP 的头字段。</li>
+<li><strong>send_as_json</strong>: 布尔值；请求是否应该以 application/json 格式发送。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L633">[source]</a></span></p>
+<h3 id="learningratescheduler">LearningRateScheduler</h3>
+<pre><code class="python">keras.callbacks.LearningRateScheduler(schedule, verbose=0)
+</code></pre>
+
+<p>学习速率定时器。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>schedule</strong>: 一个函数，接受轮索引数作为输入（整数，从 0 开始迭代）
+然后返回一个学习速率作为输出（浮点数）。</li>
+<li><strong>verbose</strong>: 整数。 0：安静，1：更新信息。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L669">[source]</a></span></p>
+<h3 id="tensorboard">TensorBoard</h3>
+<pre><code class="python">keras.callbacks.TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=32, write_graph=True, write_grads=False, write_images=False, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None, embeddings_data=None, update_freq='epoch')
+</code></pre>
+
+<p>Tensorboard 基本可视化。</p>
+<p><a href="https://www.tensorflow.org/get_started/summaries_and_tensorboard">TensorBoard</a>
+是由 Tensorflow 提供的一个可视化工具。</p>
+<p>这个回调函数为 Tensorboard 编写一个日志，
+这样你可以可视化测试和训练的标准评估的动态图像，
+也可以可视化模型中不同层的激活值直方图。</p>
+<p>如果你已经使用 pip 安装了 Tensorflow，你应该可以从命令行启动 Tensorflow：</p>
+<pre><code class="sh">tensorboard --logdir=/full_path_to_your_logs
+</code></pre>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>log_dir</strong>: 用来保存被 TensorBoard 分析的日志文件的文件名。</li>
+<li><strong>histogram_freq</strong>: 对于模型中各个层计算激活值和模型权重直方图的频率（训练轮数中）。
+如果设置成 0 ，直方图不会被计算。对于直方图可视化的验证数据（或分离数据）一定要明确的指出。</li>
+<li><strong>write_graph</strong>: 是否在 TensorBoard 中可视化图像。
+如果 write_graph 被设置为 True，日志文件会变得非常大。</li>
+<li><strong>write_grads</strong>: 是否在 TensorBoard  中可视化梯度值直方图。
+<code>histogram_freq</code> 必须要大于 0 。</li>
+<li><strong>batch_size</strong>: 用以直方图计算的传入神经元网络输入批的大小。</li>
+<li><strong>write_images</strong>: 是否在 TensorBoard 中将模型权重以图片可视化。</li>
+<li><strong>embeddings_freq</strong>: 被选中的嵌入层会被保存的频率（在训练轮中）。</li>
+<li><strong>embeddings_layer_names</strong>: 一个列表，会被监测层的名字。
+如果是 None 或空列表，那么所有的嵌入层都会被监测。</li>
+<li><strong>embeddings_metadata</strong>: 一个字典，对应层的名字到保存有这个嵌入层元数据文件的名字。
+查看 <a href="https://www.tensorflow.org/how_tos/embedding_viz/#metadata_optional">详情</a>
+关于元数据的数据格式。
+以防同样的元数据被用于所用的嵌入层，字符串可以被传入。</li>
+<li><strong>embeddings_data</strong>: 要嵌入在 <code>embeddings_layer_names</code> 指定的层的数据。
+Numpy 数组（如果模型有单个输入）或 Numpy 数组列表（如果模型有多个输入）。
+<a href="https://www.tensorflow.org/programmers_guide/embedding">Learn ore about embeddings</a>。</li>
+<li><strong>update_freq</strong>: <code>'batch'</code> 或 <code>'epoch'</code> 或 整数。当使用 <code>'batch'</code> 时，在每个 batch 之后将损失和评估值写入到 TensorBoard 中。同样的情况应用到 <code>'epoch'</code> 中。如果使用整数，例如 <code>10000</code>，这个回调会在每 10000 个样本之后将损失和评估值写入到 TensorBoard 中。注意，频繁地写入到 TensorBoard 会减缓你的训练。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L1017">[source]</a></span></p>
+<h3 id="reducelronplateau">ReduceLROnPlateau</h3>
+<pre><code class="python">keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=10, verbose=0, mode='auto', min_delta=0.0001, cooldown=0, min_lr=0)
+</code></pre>
+
+<p>当标准评估停止提升时，降低学习速率。</p>
+<p>当学习停止时，模型总是会受益于降低 2-10 倍的学习速率。
+这个回调函数监测一个数据并且当这个数据在一定「有耐心」的训练轮之后还没有进步，
+那么学习速率就会被降低。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2,
+                              patience=5, min_lr=0.001)
+model.fit(X_train, Y_train, callbacks=[reduce_lr])
+</code></pre>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>monitor</strong>: 被监测的数据。</li>
+<li><strong>factor</strong>: 学习速率被降低的因数。新的学习速率 = 学习速率 * 因数</li>
+<li><strong>patience</strong>: 没有进步的训练轮数，在这之后训练速率会被降低。</li>
+<li><strong>verbose</strong>: 整数。0：安静，1：更新信息。</li>
+<li><strong>mode</strong>: {auto, min, max} 其中之一。如果是 <code>min</code> 模式，学习速率会被降低如果被监测的数据已经停止下降；
+在 <code>max</code> 模式，学习塑料会被降低如果被监测的数据已经停止上升；
+在 <code>auto</code> 模式，方向会被从被监测的数据中自动推断出来。</li>
+<li><strong>min_delta</strong>: 对于测量新的最优化的阀值，只关注巨大的改变。</li>
+<li><strong>cooldown</strong>: 在学习速率被降低之后，重新恢复正常操作之前等待的训练轮数量。</li>
+<li><strong>min_lr</strong>: 学习速率的下边界。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L1138">[source]</a></span></p>
+<h3 id="csvlogger">CSVLogger</h3>
+<pre><code class="python">keras.callbacks.CSVLogger(filename, separator=',', append=False)
+</code></pre>
+
+<p>把训练轮结果数据流到 csv 文件的回调函数。</p>
+<p>支持所有可以被作为字符串表示的值，包括 1D 可迭代数据，例如，np.ndarray。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">csv_logger = CSVLogger('training.log')
+model.fit(X_train, Y_train, callbacks=[csv_logger])
+</code></pre>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>filename</strong>: csv 文件的文件名，例如 'run/log.csv'。</li>
+<li><strong>separator</strong>: 用来隔离 csv 文件中元素的字符串。</li>
+<li><strong>append</strong>: True：如果文件存在则增加（可以被用于继续训练）。False：覆盖存在的文件。</li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/callbacks.py#L1226">[source]</a></span></p>
+<h3 id="lambdacallback">LambdaCallback</h3>
+<pre><code class="python">keras.callbacks.LambdaCallback(on_epoch_begin=None, on_epoch_end=None, on_batch_begin=None, on_batch_end=None, on_train_begin=None, on_train_end=None)
+</code></pre>
+
+<p>在训练进行中创建简单，自定义的回调函数的回调函数。</p>
+<p>这个回调函数和匿名函数在合适的时间被创建。
+需要注意的是回调函数要求位置型参数，如下：</p>
+<ul>
+<li><code>on_epoch_begin</code> 和 <code>on_epoch_end</code> 要求两个位置型的参数：
+<code>epoch</code>, <code>logs</code></li>
+<li><code>on_batch_begin</code> 和 <code>on_batch_end</code> 要求两个位置型的参数：
+<code>batch</code>, <code>logs</code></li>
+<li><code>on_train_begin</code> 和 <code>on_train_end</code> 要求一个位置型的参数：
+<code>logs</code></li>
+</ul>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>on_epoch_begin</strong>: 在每轮开始时被调用。</li>
+<li><strong>on_epoch_end</strong>: 在每轮结束时被调用。</li>
+<li><strong>on_batch_begin</strong>: 在每批开始时被调用。</li>
+<li><strong>on_batch_end</strong>: 在每批结束时被调用。</li>
+<li><strong>on_train_begin</strong>: 在模型训练开始时被调用。</li>
+<li><strong>on_train_end</strong>: 在模型训练结束时被调用。</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre><code class="python"># 在每一个批开始时，打印出批数。
+batch_print_callback = LambdaCallback(
+    on_batch_begin=lambda batch,logs: print(batch))
+
+# 把训练轮损失数据流到 JSON 格式的文件。文件的内容
+# 不是完美的 JSON 格式，但是时每一行都是 JSON 对象。
+import json
+json_log = open('loss_log.json', mode='wt', buffering=1)
+json_logging_callback = LambdaCallback(
+    on_epoch_end=lambda epoch, logs: json_log.write(
+        json.dumps({'epoch': epoch, 'loss': logs['loss']}) + '\n'),
+    on_train_end=lambda logs: json_log.close()
+)
+
+# 在完成模型训练之后，结束一些进程。
+processes = ...
+cleanup_callback = LambdaCallback(
+    on_train_end=lambda logs: [
+        p.terminate() for p in processes if p.is_alive()])
+
+model.fit(...,
+          callbacks=[batch_print_callback,
+                     json_logging_callback,
+                     cleanup_callback])
+</code></pre>
+
+<hr />
+<h1 id="_2">创建一个回调函数</h1>
+<p>你可以通过扩展 <code>keras.callbacks.Callback</code> 基类来创建一个自定义的回调函数。
+通过类的属性 <code>self.model</code>，回调函数可以获得它所联系的模型。</p>
+<p>下面是一个简单的例子，在训练时，保存一个列表的批量损失值：</p>
+<pre><code class="python">class LossHistory(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.losses = []
+
+    def on_batch_end(self, batch, logs={}):
+        self.losses.append(logs.get('loss'))
+</code></pre>
+
+<hr />
+<h3 id="_3">例: 记录损失历史</h3>
+<pre><code class="python">class LossHistory(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.losses = []
+
+    def on_batch_end(self, batch, logs={}):
+        self.losses.append(logs.get('loss'))
+
+model = Sequential()
+model.add(Dense(10, input_dim=784, kernel_initializer='uniform'))
+model.add(Activation('softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+
+history = LossHistory()
+model.fit(x_train, y_train, batch_size=128, epochs=20, verbose=0, callbacks=[history])
+
+print(history.losses)
+# 输出
+'''
+[0.66047596406559383, 0.3547245744908703, ..., 0.25953155204159617, 0.25901699725311789]
+'''
+</code></pre>
+
+<hr />
+<h3 id="_4">例: 模型检查点</h3>
+<pre><code class="python">from keras.callbacks import ModelCheckpoint
+
+model = Sequential()
+model.add(Dense(10, input_dim=784, kernel_initializer='uniform'))
+model.add(Activation('softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+
+'''
+如果验证损失下降， 那么在每个训练轮之后保存模型。
+'''
+checkpointer = ModelCheckpoint(filepath='/tmp/weights.hdf5', verbose=1, save_best_only=True)
+model.fit(x_train, y_train, batch_size=128, epochs=20, verbose=0, validation_data=(X_test, Y_test), callbacks=[checkpointer])
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../backend/" title="Keras 后端" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Keras 后端
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../constraints/" title="Constraints" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Constraints
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/wohugb" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/wohugb" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/wohugb" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2213 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Keras，Python 深度学习库中文文档。">
+      
+      
+        <link rel="canonical" href="http://keras.io/zh/4.examples/image_ocr/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>Optical character recognition - Keras 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-61785484-1", "keras.io")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#optical-character-recognition" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Keras 中文文档
+            </span>
+            <span class="md-header-nav__topic">
+              Optical character recognition
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Keras 文档" class="md-tabs__link">
+        Keras 文档
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../0.getting-started/0.sequential-model-guide/" title="0.getting started" class="md-tabs__link">
+          0.getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../1.models/0.about-keras-models/" title="1.models" class="md-tabs__link">
+          1.models
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../2.layers/0.about-keras-layers/" title="2.layers" class="md-tabs__link">
+          2.layers
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../3.preprocessing/0.sequence/" title="3.preprocessing" class="md-tabs__link">
+          3.preprocessing
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../" title="4.examples" class="md-tabs__link md-tabs__link--active">
+          4.examples
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Keras 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Keras 文档" class="md-nav__link">
+      Keras 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../activations/" title="Activations" class="md-nav__link">
+      Activations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../applications/" title="应用 Applications" class="md-nav__link">
+      应用 Applications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../backend/" title="Keras 后端" class="md-nav__link">
+      Keras 后端
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../callbacks/" title="Callbacks" class="md-nav__link">
+      Callbacks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../constraints/" title="Constraints" class="md-nav__link">
+      Constraints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+      关于 Github Issues 和 Pull Requests
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../datasets/" title="数据集" class="md-nav__link">
+      数据集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../initializers/" title="Initializers" class="md-nav__link">
+      Initializers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../losses/" title="Losses" class="md-nav__link">
+      Losses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../metrics/" title="Metrics" class="md-nav__link">
+      Metrics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../optimizers/" title="Optimizers" class="md-nav__link">
+      Optimizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../regularizers/" title="Regularizers" class="md-nav__link">
+      Regularizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+      Scikit-Learn API 的封装器
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../utils/" title="Utils" class="md-nav__link">
+      Utils
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../visualization/" title="Visualization" class="md-nav__link">
+      Visualization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+      为什么选择 Keras？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      0.getting started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        0.getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0.getting-started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+      开始使用 Keras Sequential 顺序模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0.getting-started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+      开始使用 Keras 函数式 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0.getting-started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+      Keras FAQ: 常见问题解答
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      1.models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        1.models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1.models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+      关于 Keras 模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1.models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+      Sequential 模型 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1.models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+      Model 类（函数式 API）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      2.layers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        2.layers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+      关于 Keras 网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/1.core/" title="核心网络层" class="md-nav__link">
+      核心网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/2.convolutional/" title="卷积层" class="md-nav__link">
+      卷积层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/3.pooling/" title="池化层" class="md-nav__link">
+      池化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/4.local/" title="局部连接层" class="md-nav__link">
+      局部连接层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/5.recurrent/" title="循环层" class="md-nav__link">
+      循环层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+      嵌入层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/7.merge/" title="融合层" class="md-nav__link">
+      融合层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+      高级激活层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/9.normalization/" title="标准化层" class="md-nav__link">
+      标准化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/90.noise/" title="噪声层" class="md-nav__link">
+      噪声层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/91.wrappers/" title="层封装器" class="md-nav__link">
+      层封装器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+      编写你自己的 Keras 层
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21">
+    
+    <label class="md-nav__link" for="nav-21">
+      3.preprocessing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        3.preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
+      序列预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.preprocessing/1.text/" title="文本预处理" class="md-nav__link">
+      文本预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.preprocessing/2.image/" title="图像预处理" class="md-nav__link">
+      图像预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22" checked>
+    
+    <label class="md-nav__link" for="nav-22">
+      4.examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        4.examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="经典样例" class="md-nav__link">
+      经典样例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+      实现一个用来执行加法的序列到序列学习模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../antirectifier/" title="Antirectifier" class="md-nav__link">
+      Antirectifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+      在 bAbI 数据集上训练一个记忆网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+      基于故事和问题训练两个循环神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+      Cifar10 cnn tfaugment2d
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+      Cifar10 resnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../class_activation_maps/" title="Class activation maps" class="md-nav__link">
+      Class activation maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+      Conv filter visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conv_lstm/" title="Conv lstm" class="md-nav__link">
+      Conv lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deep_dream/" title="Deep dream" class="md-nav__link">
+      Deep dream
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Optical character recognition" class="md-nav__link md-nav__link--active">
+      Optical character recognition
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+      Imdb bidirectional lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+      Imdb cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+      Imdb cnn lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+      Imdb fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+      Imdb lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+      Lstm seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+      Lstm seq2seq restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+      Lstm stateful
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+      Lstm text generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+      Mnist acgan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+      Mnist cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+      Mnist dataset api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+      Mnist denoising autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+      Mnist hierarchical rnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+      Mnist irnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+      Mnist mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_net2net/" title="Mnist net2net" class="md-nav__link">
+      Mnist net2net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+      Mnist siamese
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+      Mnist sklearn wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+      Mnist swwae
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+      Mnist tfrecord
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+      Mnist transfer cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../neural_doodle/" title="Neural doodle" class="md-nav__link">
+      Neural doodle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+      Neural style transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+      预训练的单词嵌入
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+      Reuters mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+      Reuters mlp relu vs selu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+      Tensorboard embeddings mnist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+      Variational autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+      Variational autoencoder deconv
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/4.examples/image_ocr.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="optical-character-recognition">Optical character recognition</h1>
+<p>This example uses a convolutional stack followed by a recurrent stack
+and a CTC logloss function to perform optical character recognition
+of generated text images. I have no evidence of whether it actually
+learns general shapes of text, or just is able to recognize all
+the different fonts thrown at it...the purpose is more to demonstrate CTC
+inside of Keras.  Note that the font list may need to be updated
+for the particular OS in use.</p>
+<p>This starts off with 4 letter words.  For the first 12 epochs, the
+difficulty is gradually increased using the TextImageGenerator class
+which is both a generator class for test/train data and a Keras
+callback class. After 20 epochs, longer sequences are thrown at it
+by recompiling the model to handle a wider image and rebuilding
+the word list to include two words separated by a space.</p>
+<p>The table below shows normalized edit distance values. Theano uses
+a slightly different CTC implementation, hence the different results.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Epoch</th>
+<th align="right">TF</th>
+<th align="right">TH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">10</td>
+<td align="right">0.027</td>
+<td align="right">0.064</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="right">0.038</td>
+<td align="right">0.035</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="right">0.043</td>
+<td align="right">0.045</td>
+</tr>
+<tr>
+<td align="right">25</td>
+<td align="right">0.014</td>
+<td align="right">0.019</td>
+</tr>
+</tbody>
+</table>
+<p>This requires <code>cairo</code> and <code>editdistance</code> packages:</p>
+<pre><code class="python">pip install cairocffi
+pip install editdistance
+</code></pre>
+
+<p>Created by Mike Henry
+https://github.com/mbhenry/</p>
+<pre><code class="python">import os
+import itertools
+import codecs
+import re
+import datetime
+import cairocffi as cairo
+import editdistance
+import numpy as np
+from scipy import ndimage
+import pylab
+from keras import backend as K
+from keras.layers.convolutional import Conv2D, MaxPooling2D
+from keras.layers import Input, Dense, Activation
+from keras.layers import Reshape, Lambda
+from keras.layers.merge import add, concatenate
+from keras.models import Model
+from keras.layers.recurrent import GRU
+from keras.optimizers import SGD
+from keras.utils.data_utils import get_file
+from keras.preprocessing import image
+import keras.callbacks
+
+
+OUTPUT_DIR = 'image_ocr'
+
+# character classes and matching regex filter
+regex = r'^[a-z ]+$'
+alphabet = u'abcdefghijklmnopqrstuvwxyz '
+
+np.random.seed(55)
+
+
+# this creates larger &quot;blotches&quot; of noise which look
+# more realistic than just adding gaussian noise
+# assumes greyscale with pixels ranging from 0 to 1
+
+def speckle(img):
+    severity = np.random.uniform(0, 0.6)
+    blur = ndimage.gaussian_filter(np.random.randn(*img.shape) * severity, 1)
+    img_speck = (img + blur)
+    img_speck[img_speck &gt; 1] = 1
+    img_speck[img_speck &lt;= 0] = 0
+    return img_speck
+
+
+# paints the string in a random location the bounding box
+# also uses a random font, a slight random rotation,
+# and a random amount of speckle noise
+
+def paint_text(text, w, h, rotate=False, ud=False, multi_fonts=False):
+    surface = cairo.ImageSurface(cairo.FORMAT_RGB24, w, h)
+    with cairo.Context(surface) as context:
+        context.set_source_rgb(1, 1, 1)  # White
+        context.paint()
+        # this font list works in CentOS 7
+        if multi_fonts:
+            fonts = [
+                'Century Schoolbook', 'Courier', 'STIX',
+                'URW Chancery L', 'FreeMono']
+            context.select_font_face(
+                np.random.choice(fonts),
+                cairo.FONT_SLANT_NORMAL,
+                np.random.choice([cairo.FONT_WEIGHT_BOLD, cairo.FONT_WEIGHT_NORMAL]))
+        else:
+            context.select_font_face('Courier',
+                                     cairo.FONT_SLANT_NORMAL,
+                                     cairo.FONT_WEIGHT_BOLD)
+        context.set_font_size(25)
+        box = context.text_extents(text)
+        border_w_h = (4, 4)
+        if box[2] &gt; (w - 2 * border_w_h[1]) or box[3] &gt; (h - 2 * border_w_h[0]):
+            raise IOError(('Could not fit string into image.'
+                           'Max char count is too large for given image width.'))
+
+        # teach the RNN translational invariance by
+        # fitting text box randomly on canvas, with some room to rotate
+        max_shift_x = w - box[2] - border_w_h[0]
+        max_shift_y = h - box[3] - border_w_h[1]
+        top_left_x = np.random.randint(0, int(max_shift_x))
+        if ud:
+            top_left_y = np.random.randint(0, int(max_shift_y))
+        else:
+            top_left_y = h // 2
+        context.move_to(top_left_x - int(box[0]), top_left_y - int(box[1]))
+        context.set_source_rgb(0, 0, 0)
+        context.show_text(text)
+
+    buf = surface.get_data()
+    a = np.frombuffer(buf, np.uint8)
+    a.shape = (h, w, 4)
+    a = a[:, :, 0]  # grab single channel
+    a = a.astype(np.float32) / 255
+    a = np.expand_dims(a, 0)
+    if rotate:
+        a = image.random_rotation(a, 3 * (w - top_left_x) / w + 1)
+    a = speckle(a)
+
+    return a
+
+
+def shuffle_mats_or_lists(matrix_list, stop_ind=None):
+    ret = []
+    assert all([len(i) == len(matrix_list[0]) for i in matrix_list])
+    len_val = len(matrix_list[0])
+    if stop_ind is None:
+        stop_ind = len_val
+    assert stop_ind &lt;= len_val
+
+    a = list(range(stop_ind))
+    np.random.shuffle(a)
+    a += list(range(stop_ind, len_val))
+    for mat in matrix_list:
+        if isinstance(mat, np.ndarray):
+            ret.append(mat[a])
+        elif isinstance(mat, list):
+            ret.append([mat[i] for i in a])
+        else:
+            raise TypeError('`shuffle_mats_or_lists` only supports '
+                            'numpy.array and list objects.')
+    return ret
+
+
+# Translation of characters to unique integer values
+def text_to_labels(text):
+    ret = []
+    for char in text:
+        ret.append(alphabet.find(char))
+    return ret
+
+
+# Reverse translation of numerical classes back to characters
+def labels_to_text(labels):
+    ret = []
+    for c in labels:
+        if c == len(alphabet):  # CTC Blank
+            ret.append(&quot;&quot;)
+        else:
+            ret.append(alphabet[c])
+    return &quot;&quot;.join(ret)
+
+
+# only a-z and space..probably not to difficult
+# to expand to uppercase and symbols
+
+def is_valid_str(in_str):
+    search = re.compile(regex, re.UNICODE).search
+    return bool(search(in_str))
+
+
+# Uses generator functions to supply train/test with
+# data. Image renderings and text are created on the fly
+# each time with random perturbations
+
+class TextImageGenerator(keras.callbacks.Callback):
+
+    def __init__(self, monogram_file, bigram_file, minibatch_size,
+                 img_w, img_h, downsample_factor, val_split,
+                 absolute_max_string_len=16):
+
+        self.minibatch_size = minibatch_size
+        self.img_w = img_w
+        self.img_h = img_h
+        self.monogram_file = monogram_file
+        self.bigram_file = bigram_file
+        self.downsample_factor = downsample_factor
+        self.val_split = val_split
+        self.blank_label = self.get_output_size() - 1
+        self.absolute_max_string_len = absolute_max_string_len
+
+    def get_output_size(self):
+        return len(alphabet) + 1
+
+    # num_words can be independent of the epoch size due to the use of generators
+    # as max_string_len grows, num_words can grow
+    def build_word_list(self, num_words, max_string_len=None, mono_fraction=0.5):
+        assert max_string_len &lt;= self.absolute_max_string_len
+        assert num_words % self.minibatch_size == 0
+        assert (self.val_split * num_words) % self.minibatch_size == 0
+        self.num_words = num_words
+        self.string_list = [''] * self.num_words
+        tmp_string_list = []
+        self.max_string_len = max_string_len
+        self.Y_data = np.ones([self.num_words, self.absolute_max_string_len]) * -1
+        self.X_text = []
+        self.Y_len = [0] * self.num_words
+
+        def _is_length_of_word_valid(word):
+            return (max_string_len == -1 or
+                    max_string_len is None or
+                    len(word) &lt;= max_string_len)
+
+        # monogram file is sorted by frequency in english speech
+        with codecs.open(self.monogram_file, mode='r', encoding='utf-8') as f:
+            for line in f:
+                if len(tmp_string_list) == int(self.num_words * mono_fraction):
+                    break
+                word = line.rstrip()
+                if _is_length_of_word_valid(word):
+                    tmp_string_list.append(word)
+
+        # bigram file contains common word pairings in english speech
+        with codecs.open(self.bigram_file, mode='r', encoding='utf-8') as f:
+            lines = f.readlines()
+            for line in lines:
+                if len(tmp_string_list) == self.num_words:
+                    break
+                columns = line.lower().split()
+                word = columns[0] + ' ' + columns[1]
+                if is_valid_str(word) and _is_length_of_word_valid(word):
+                    tmp_string_list.append(word)
+        if len(tmp_string_list) != self.num_words:
+            raise IOError('Could not pull enough words'
+                          'from supplied monogram and bigram files.')
+        # interlace to mix up the easy and hard words
+        self.string_list[::2] = tmp_string_list[:self.num_words // 2]
+        self.string_list[1::2] = tmp_string_list[self.num_words // 2:]
+
+        for i, word in enumerate(self.string_list):
+            self.Y_len[i] = len(word)
+            self.Y_data[i, 0:len(word)] = text_to_labels(word)
+            self.X_text.append(word)
+        self.Y_len = np.expand_dims(np.array(self.Y_len), 1)
+
+        self.cur_val_index = self.val_split
+        self.cur_train_index = 0
+
+    # each time an image is requested from train/val/test, a new random
+    # painting of the text is performed
+    def get_batch(self, index, size, train):
+        # width and height are backwards from typical Keras convention
+        # because width is the time dimension when it gets fed into the RNN
+        if K.image_data_format() == 'channels_first':
+            X_data = np.ones([size, 1, self.img_w, self.img_h])
+        else:
+            X_data = np.ones([size, self.img_w, self.img_h, 1])
+
+        labels = np.ones([size, self.absolute_max_string_len])
+        input_length = np.zeros([size, 1])
+        label_length = np.zeros([size, 1])
+        source_str = []
+        for i in range(size):
+            # Mix in some blank inputs.  This seems to be important for
+            # achieving translational invariance
+            if train and i &gt; size - 4:
+                if K.image_data_format() == 'channels_first':
+                    X_data[i, 0, 0:self.img_w, :] = self.paint_func('')[0, :, :].T
+                else:
+                    X_data[i, 0:self.img_w, :, 0] = self.paint_func('',)[0, :, :].T
+                labels[i, 0] = self.blank_label
+                input_length[i] = self.img_w // self.downsample_factor - 2
+                label_length[i] = 1
+                source_str.append('')
+            else:
+                if K.image_data_format() == 'channels_first':
+                    X_data[i, 0, 0:self.img_w, :] = (
+                        self.paint_func(self.X_text[index + i])[0, :, :].T)
+                else:
+                    X_data[i, 0:self.img_w, :, 0] = (
+                        self.paint_func(self.X_text[index + i])[0, :, :].T)
+                labels[i, :] = self.Y_data[index + i]
+                input_length[i] = self.img_w // self.downsample_factor - 2
+                label_length[i] = self.Y_len[index + i]
+                source_str.append(self.X_text[index + i])
+        inputs = {'the_input': X_data,
+                  'the_labels': labels,
+                  'input_length': input_length,
+                  'label_length': label_length,
+                  'source_str': source_str  # used for visualization only
+                  }
+        outputs = {'ctc': np.zeros([size])}  # dummy data for dummy loss function
+        return (inputs, outputs)
+
+    def next_train(self):
+        while 1:
+            ret = self.get_batch(self.cur_train_index,
+                                 self.minibatch_size, train=True)
+            self.cur_train_index += self.minibatch_size
+            if self.cur_train_index &gt;= self.val_split:
+                self.cur_train_index = self.cur_train_index % 32
+                (self.X_text, self.Y_data, self.Y_len) = shuffle_mats_or_lists(
+                    [self.X_text, self.Y_data, self.Y_len], self.val_split)
+            yield ret
+
+    def next_val(self):
+        while 1:
+            ret = self.get_batch(self.cur_val_index,
+                                 self.minibatch_size, train=False)
+            self.cur_val_index += self.minibatch_size
+            if self.cur_val_index &gt;= self.num_words:
+                self.cur_val_index = self.val_split + self.cur_val_index % 32
+            yield ret
+
+    def on_train_begin(self, logs={}):
+        self.build_word_list(16000, 4, 1)
+        self.paint_func = lambda text: paint_text(
+            text, self.img_w, self.img_h,
+            rotate=False, ud=False, multi_fonts=False)
+
+    def on_epoch_begin(self, epoch, logs={}):
+        # rebind the paint function to implement curriculum learning
+        if 3 &lt;= epoch &lt; 6:
+            self.paint_func = lambda text: paint_text(
+                text, self.img_w, self.img_h,
+                rotate=False, ud=True, multi_fonts=False)
+        elif 6 &lt;= epoch &lt; 9:
+            self.paint_func = lambda text: paint_text(
+                text, self.img_w, self.img_h,
+                rotate=False, ud=True, multi_fonts=True)
+        elif epoch &gt;= 9:
+            self.paint_func = lambda text: paint_text(
+                text, self.img_w, self.img_h,
+                rotate=True, ud=True, multi_fonts=True)
+        if epoch &gt;= 21 and self.max_string_len &lt; 12:
+            self.build_word_list(32000, 12, 0.5)
+
+
+# the actual loss calc occurs here despite it not being
+# an internal Keras loss function
+
+def ctc_lambda_func(args):
+    y_pred, labels, input_length, label_length = args
+    # the 2 is critical here since the first couple outputs of the RNN
+    # tend to be garbage:
+    y_pred = y_pred[:, 2:, :]
+    return K.ctc_batch_cost(labels, y_pred, input_length, label_length)
+
+
+# For a real OCR application, this should be beam search with a dictionary
+# and language model.  For this example, best path is sufficient.
+
+def decode_batch(test_func, word_batch):
+    out = test_func([word_batch])[0]
+    ret = []
+    for j in range(out.shape[0]):
+        out_best = list(np.argmax(out[j, 2:], 1))
+        out_best = [k for k, g in itertools.groupby(out_best)]
+        outstr = labels_to_text(out_best)
+        ret.append(outstr)
+    return ret
+
+
+class VizCallback(keras.callbacks.Callback):
+
+    def __init__(self, run_name, test_func, text_img_gen, num_display_words=6):
+        self.test_func = test_func
+        self.output_dir = os.path.join(
+            OUTPUT_DIR, run_name)
+        self.text_img_gen = text_img_gen
+        self.num_display_words = num_display_words
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
+
+    def show_edit_distance(self, num):
+        num_left = num
+        mean_norm_ed = 0.0
+        mean_ed = 0.0
+        while num_left &gt; 0:
+            word_batch = next(self.text_img_gen)[0]
+            num_proc = min(word_batch['the_input'].shape[0], num_left)
+            decoded_res = decode_batch(self.test_func,
+                                       word_batch['the_input'][0:num_proc])
+            for j in range(num_proc):
+                edit_dist = editdistance.eval(decoded_res[j],
+                                              word_batch['source_str'][j])
+                mean_ed += float(edit_dist)
+                mean_norm_ed += float(edit_dist) / len(word_batch['source_str'][j])
+            num_left -= num_proc
+        mean_norm_ed = mean_norm_ed / num
+        mean_ed = mean_ed / num
+        print('\nOut of %d samples:  Mean edit distance:'
+              '%.3f Mean normalized edit distance: %0.3f'
+              % (num, mean_ed, mean_norm_ed))
+
+    def on_epoch_end(self, epoch, logs={}):
+        self.model.save_weights(
+            os.path.join(self.output_dir, 'weights%02d.h5' % (epoch)))
+        self.show_edit_distance(256)
+        word_batch = next(self.text_img_gen)[0]
+        res = decode_batch(self.test_func,
+                           word_batch['the_input'][0:self.num_display_words])
+        if word_batch['the_input'][0].shape[0] &lt; 256:
+            cols = 2
+        else:
+            cols = 1
+        for i in range(self.num_display_words):
+            pylab.subplot(self.num_display_words // cols, cols, i + 1)
+            if K.image_data_format() == 'channels_first':
+                the_input = word_batch['the_input'][i, 0, :, :]
+            else:
+                the_input = word_batch['the_input'][i, :, :, 0]
+            pylab.imshow(the_input.T, cmap='Greys_r')
+            pylab.xlabel(
+                'Truth = \'%s\'\nDecoded = \'%s\'' %
+                (word_batch['source_str'][i], res[i]))
+        fig = pylab.gcf()
+        fig.set_size_inches(10, 13)
+        pylab.savefig(os.path.join(self.output_dir, 'e%02d.png' % (epoch)))
+        pylab.close()
+
+
+def train(run_name, start_epoch, stop_epoch, img_w):
+    # Input Parameters
+    img_h = 64
+    words_per_epoch = 16000
+    val_split = 0.2
+    val_words = int(words_per_epoch * (val_split))
+
+    # Network parameters
+    conv_filters = 16
+    kernel_size = (3, 3)
+    pool_size = 2
+    time_dense_size = 32
+    rnn_size = 512
+    minibatch_size = 32
+
+    if K.image_data_format() == 'channels_first':
+        input_shape = (1, img_w, img_h)
+    else:
+        input_shape = (img_w, img_h, 1)
+
+    fdir = os.path.dirname(
+        get_file('wordlists.tgz',
+                 origin='http://www.mythic-ai.com/datasets/wordlists.tgz',
+                 untar=True))
+
+    img_gen = TextImageGenerator(
+        monogram_file=os.path.join(fdir, 'wordlist_mono_clean.txt'),
+        bigram_file=os.path.join(fdir, 'wordlist_bi_clean.txt'),
+        minibatch_size=minibatch_size,
+        img_w=img_w,
+        img_h=img_h,
+        downsample_factor=(pool_size ** 2),
+        val_split=words_per_epoch - val_words)
+    act = 'relu'
+    input_data = Input(name='the_input', shape=input_shape, dtype='float32')
+    inner = Conv2D(conv_filters, kernel_size, padding='same',
+                   activation=act, kernel_initializer='he_normal',
+                   name='conv1')(input_data)
+    inner = MaxPooling2D(pool_size=(pool_size, pool_size), name='max1')(inner)
+    inner = Conv2D(conv_filters, kernel_size, padding='same',
+                   activation=act, kernel_initializer='he_normal',
+                   name='conv2')(inner)
+    inner = MaxPooling2D(pool_size=(pool_size, pool_size), name='max2')(inner)
+
+    conv_to_rnn_dims = (img_w // (pool_size ** 2),
+                        (img_h // (pool_size ** 2)) * conv_filters)
+    inner = Reshape(target_shape=conv_to_rnn_dims, name='reshape')(inner)
+
+    # cuts down input size going into RNN:
+    inner = Dense(time_dense_size, activation=act, name='dense1')(inner)
+
+    # Two layers of bidirectional GRUs
+    # GRU seems to work as well, if not better than LSTM:
+    gru_1 = GRU(rnn_size, return_sequences=True,
+                kernel_initializer='he_normal', name='gru1')(inner)
+    gru_1b = GRU(rnn_size, return_sequences=True,
+                 go_backwards=True, kernel_initializer='he_normal',
+                 name='gru1_b')(inner)
+    gru1_merged = add([gru_1, gru_1b])
+    gru_2 = GRU(rnn_size, return_sequences=True,
+                kernel_initializer='he_normal', name='gru2')(gru1_merged)
+    gru_2b = GRU(rnn_size, return_sequences=True, go_backwards=True,
+                 kernel_initializer='he_normal', name='gru2_b')(gru1_merged)
+
+    # transforms RNN output to character activations:
+    inner = Dense(img_gen.get_output_size(), kernel_initializer='he_normal',
+                  name='dense2')(concatenate([gru_2, gru_2b]))
+    y_pred = Activation('softmax', name='softmax')(inner)
+    Model(inputs=input_data, outputs=y_pred).summary()
+
+    labels = Input(name='the_labels',
+                   shape=[img_gen.absolute_max_string_len], dtype='float32')
+    input_length = Input(name='input_length', shape=[1], dtype='int64')
+    label_length = Input(name='label_length', shape=[1], dtype='int64')
+    # Keras doesn't currently support loss funcs with extra parameters
+    # so CTC loss is implemented in a lambda layer
+    loss_out = Lambda(
+        ctc_lambda_func, output_shape=(1,),
+        name='ctc')([y_pred, labels, input_length, label_length])
+
+    # clipnorm seems to speeds up convergence
+    sgd = SGD(lr=0.02, decay=1e-6, momentum=0.9, nesterov=True, clipnorm=5)
+
+    model = Model(inputs=[input_data, labels, input_length, label_length],
+                  outputs=loss_out)
+
+    # the loss calc occurs elsewhere, so use a dummy lambda func for the loss
+    model.compile(loss={'ctc': lambda y_true, y_pred: y_pred}, optimizer=sgd)
+    if start_epoch &gt; 0:
+        weight_file = os.path.join(
+            OUTPUT_DIR,
+            os.path.join(run_name, 'weights%02d.h5' % (start_epoch - 1)))
+        model.load_weights(weight_file)
+    # captures output of softmax so we can decode the output during visualization
+    test_func = K.function([input_data], [y_pred])
+
+    viz_cb = VizCallback(run_name, test_func, img_gen.next_val())
+
+    model.fit_generator(
+        generator=img_gen.next_train(),
+        steps_per_epoch=(words_per_epoch - val_words) // minibatch_size,
+        epochs=stop_epoch,
+        validation_data=img_gen.next_val(),
+        validation_steps=val_words // minibatch_size,
+        callbacks=[viz_cb, img_gen],
+        initial_epoch=start_epoch)
+
+
+if __name__ == '__main__':
+    run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
+    train(run_name, 0, 20, 128)
+    # increase to wider images and start at epoch 20.
+    # The learned weights are reloaded
+    train(run_name, 20, 25, 512)
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../deep_dream/" title="Deep dream" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Deep dream
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Imdb bidirectional lstm
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/wohugb" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/wohugb" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/wohugb" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.2ba8dec4.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

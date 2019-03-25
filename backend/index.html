@@ -1,0 +1,6668 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Keras，Python 深度学习库中文文档。">
+      
+      
+        <link rel="canonical" href="http://keras.io/zh/backend/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>Keras 后端 - Keras 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-61785484-1", "keras.io")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#keras" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Keras 中文文档
+            </span>
+            <span class="md-header-nav__topic">
+              Keras 后端
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Keras 文档" class="md-tabs__link md-tabs__link--active">
+        Keras 文档
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0.getting-started/0.sequential-model-guide/" title="0.getting started" class="md-tabs__link">
+          0.getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../1.models/0.about-keras-models/" title="1.models" class="md-tabs__link">
+          1.models
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../2.layers/0.about-keras-layers/" title="2.layers" class="md-tabs__link">
+          2.layers
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../3.preprocessing/0.sequence/" title="3.preprocessing" class="md-tabs__link">
+          3.preprocessing
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../4.examples/" title="4.examples" class="md-tabs__link">
+          4.examples
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Keras 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Keras 文档" class="md-nav__link">
+      Keras 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../activations/" title="Activations" class="md-nav__link">
+      Activations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../applications/" title="应用 Applications" class="md-nav__link">
+      应用 Applications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Keras 后端
+      </label>
+    
+    <a href="./" title="Keras 后端" class="md-nav__link md-nav__link--active">
+      Keras 后端
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="什么是 「后端」？" class="md-nav__link">
+    什么是 「后端」？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="从一个后端切换到另一个后端" class="md-nav__link">
+    从一个后端切换到另一个后端
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kerasjson" title="keras.json 详细配置" class="md-nav__link">
+    keras.json 详细配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keras_1" title="使用抽象 Keras 后端编写新代码" class="md-nav__link">
+    使用抽象 Keras 后端编写新代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="后端函数" class="md-nav__link">
+    后端函数
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epsilon" title="epsilon" class="md-nav__link">
+    epsilon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_epsilon" title="set_epsilon" class="md-nav__link">
+    set_epsilon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floatx" title="floatx" class="md-nav__link">
+    floatx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_floatx" title="set_floatx" class="md-nav__link">
+    set_floatx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast_to_floatx" title="cast_to_floatx" class="md-nav__link">
+    cast_to_floatx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image_data_format" title="image_data_format" class="md-nav__link">
+    image_data_format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_image_data_format" title="set_image_data_format" class="md-nav__link">
+    set_image_data_format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_uids" title="reset_uids" class="md-nav__link">
+    reset_uids
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_uid" title="get_uid" class="md-nav__link">
+    get_uid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear_session" title="clear_session" class="md-nav__link">
+    clear_session
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual_variable_initialization" title="manual_variable_initialization" class="md-nav__link">
+    manual_variable_initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning_phase" title="learning_phase" class="md-nav__link">
+    learning_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_learning_phase" title="set_learning_phase" class="md-nav__link">
+    set_learning_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_sparse" title="is_sparse" class="md-nav__link">
+    is_sparse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_dense" title="to_dense" class="md-nav__link">
+    to_dense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable" title="variable" class="md-nav__link">
+    variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant" title="constant" class="md-nav__link">
+    constant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_keras_tensor" title="is_keras_tensor" class="md-nav__link">
+    is_keras_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_tensor" title="is_tensor" class="md-nav__link">
+    is_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placeholder" title="placeholder" class="md-nav__link">
+    placeholder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_placeholder" title="is_placeholder" class="md-nav__link">
+    is_placeholder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shape" title="shape" class="md-nav__link">
+    shape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#int_shape" title="int_shape" class="md-nav__link">
+    int_shape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ndim" title="ndim" class="md-nav__link">
+    ndim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dtype" title="dtype" class="md-nav__link">
+    dtype
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eval" title="eval" class="md-nav__link">
+    eval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zeros" title="zeros" class="md-nav__link">
+    zeros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones" title="ones" class="md-nav__link">
+    ones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye" title="eye" class="md-nav__link">
+    eye
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zeros_like" title="zeros_like" class="md-nav__link">
+    zeros_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones_like" title="ones_like" class="md-nav__link">
+    ones_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity" title="identity" class="md-nav__link">
+    identity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_uniform_variable" title="random_uniform_variable" class="md-nav__link">
+    random_uniform_variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_normal_variable" title="random_normal_variable" class="md-nav__link">
+    random_normal_variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_params" title="count_params" class="md-nav__link">
+    count_params
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast" title="cast" class="md-nav__link">
+    cast
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" title="update" class="md-nav__link">
+    update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_add" title="update_add" class="md-nav__link">
+    update_add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_sub" title="update_sub" class="md-nav__link">
+    update_sub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving_average_update" title="moving_average_update" class="md-nav__link">
+    moving_average_update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dot" title="dot" class="md-nav__link">
+    dot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_dot" title="batch_dot" class="md-nav__link">
+    batch_dot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transpose" title="transpose" class="md-nav__link">
+    transpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gather" title="gather" class="md-nav__link">
+    gather
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max" title="max" class="md-nav__link">
+    max
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min" title="min" class="md-nav__link">
+    min
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum" title="sum" class="md-nav__link">
+    sum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod" title="prod" class="md-nav__link">
+    prod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumsum" title="cumsum" class="md-nav__link">
+    cumsum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumprod" title="cumprod" class="md-nav__link">
+    cumprod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var" title="var" class="md-nav__link">
+    var
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#std" title="std" class="md-nav__link">
+    std
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean" title="mean" class="md-nav__link">
+    mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" title="any" class="md-nav__link">
+    any
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all" title="all" class="md-nav__link">
+    all
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argmax" title="argmax" class="md-nav__link">
+    argmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argmin" title="argmin" class="md-nav__link">
+    argmin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#square" title="square" class="md-nav__link">
+    square
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abs" title="abs" class="md-nav__link">
+    abs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt" title="sqrt" class="md-nav__link">
+    sqrt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" title="exp" class="md-nav__link">
+    exp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" title="log" class="md-nav__link">
+    log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logsumexp" title="logsumexp" class="md-nav__link">
+    logsumexp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round" title="round" class="md-nav__link">
+    round
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign" title="sign" class="md-nav__link">
+    sign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pow" title="pow" class="md-nav__link">
+    pow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clip" title="clip" class="md-nav__link">
+    clip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equal" title="equal" class="md-nav__link">
+    equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_equal" title="not_equal" class="md-nav__link">
+    not_equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater" title="greater" class="md-nav__link">
+    greater
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater_equal" title="greater_equal" class="md-nav__link">
+    greater_equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less" title="less" class="md-nav__link">
+    less
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less_equal" title="less_equal" class="md-nav__link">
+    less_equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum" title="maximum" class="md-nav__link">
+    maximum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum" title="minimum" class="md-nav__link">
+    minimum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sin" title="sin" class="md-nav__link">
+    sin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cos" title="cos" class="md-nav__link">
+    cos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalize_batch_in_training" title="normalize_batch_in_training" class="md-nav__link">
+    normalize_batch_in_training
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_normalization" title="batch_normalization" class="md-nav__link">
+    batch_normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concatenate" title="concatenate" class="md-nav__link">
+    concatenate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reshape" title="reshape" class="md-nav__link">
+    reshape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permute_dimensions" title="permute_dimensions" class="md-nav__link">
+    permute_dimensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize_images" title="resize_images" class="md-nav__link">
+    resize_images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize_volumes" title="resize_volumes" class="md-nav__link">
+    resize_volumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat_elements" title="repeat_elements" class="md-nav__link">
+    repeat_elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat" title="repeat" class="md-nav__link">
+    repeat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arange" title="arange" class="md-nav__link">
+    arange
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tile" title="tile" class="md-nav__link">
+    tile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flatten" title="flatten" class="md-nav__link">
+    flatten
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_flatten" title="batch_flatten" class="md-nav__link">
+    batch_flatten
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand_dims" title="expand_dims" class="md-nav__link">
+    expand_dims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#squeeze" title="squeeze" class="md-nav__link">
+    squeeze
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_padding" title="temporal_padding" class="md-nav__link">
+    temporal_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial_2d_padding" title="spatial_2d_padding" class="md-nav__link">
+    spatial_2d_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial_3d_padding" title="spatial_3d_padding" class="md-nav__link">
+    spatial_3d_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack" title="stack" class="md-nav__link">
+    stack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one_hot" title="one_hot" class="md-nav__link">
+    one_hot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse" title="reverse" class="md-nav__link">
+    reverse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice" title="slice" class="md-nav__link">
+    slice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_value" title="get_value" class="md-nav__link">
+    get_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_get_value" title="batch_get_value" class="md-nav__link">
+    batch_get_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_value" title="set_value" class="md-nav__link">
+    set_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_set_value" title="batch_set_value" class="md-nav__link">
+    batch_set_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print_tensor" title="print_tensor" class="md-nav__link">
+    print_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" title="function" class="md-nav__link">
+    function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradients" title="gradients" class="md-nav__link">
+    gradients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop_gradient" title="stop_gradient" class="md-nav__link">
+    stop_gradient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnn" title="rnn" class="md-nav__link">
+    rnn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" title="switch" class="md-nav__link">
+    switch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_train_phase" title="in_train_phase" class="md-nav__link">
+    in_train_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_test_phase" title="in_test_phase" class="md-nav__link">
+    in_test_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relu" title="relu" class="md-nav__link">
+    relu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elu" title="elu" class="md-nav__link">
+    elu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softmax" title="softmax" class="md-nav__link">
+    softmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softplus" title="softplus" class="md-nav__link">
+    softplus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softsign" title="softsign" class="md-nav__link">
+    softsign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorical_crossentropy" title="categorical_crossentropy" class="md-nav__link">
+    categorical_crossentropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse_categorical_crossentropy" title="sparse_categorical_crossentropy" class="md-nav__link">
+    sparse_categorical_crossentropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary_crossentropy" title="binary_crossentropy" class="md-nav__link">
+    binary_crossentropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigmoid" title="sigmoid" class="md-nav__link">
+    sigmoid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard_sigmoid" title="hard_sigmoid" class="md-nav__link">
+    hard_sigmoid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tanh" title="tanh" class="md-nav__link">
+    tanh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropout" title="dropout" class="md-nav__link">
+    dropout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l2_normalize" title="l2_normalize" class="md-nav__link">
+    l2_normalize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_top_k" title="in_top_k" class="md-nav__link">
+    in_top_k
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv1d" title="conv1d" class="md-nav__link">
+    conv1d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv2d" title="conv2d" class="md-nav__link">
+    conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv2d_transpose" title="conv2d_transpose" class="md-nav__link">
+    conv2d_transpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separable_conv1d" title="separable_conv1d" class="md-nav__link">
+    separable_conv1d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separable_conv2d" title="separable_conv2d" class="md-nav__link">
+    separable_conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depthwise_conv2d" title="depthwise_conv2d" class="md-nav__link">
+    depthwise_conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv3d" title="conv3d" class="md-nav__link">
+    conv3d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv3d_transpose" title="conv3d_transpose" class="md-nav__link">
+    conv3d_transpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pool2d" title="pool2d" class="md-nav__link">
+    pool2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pool3d" title="pool3d" class="md-nav__link">
+    pool3d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias_add" title="bias_add" class="md-nav__link">
+    bias_add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_normal" title="random_normal" class="md-nav__link">
+    random_normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_uniform" title="random_uniform" class="md-nav__link">
+    random_uniform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_binomial" title="random_binomial" class="md-nav__link">
+    random_binomial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truncated_normal" title="truncated_normal" class="md-nav__link">
+    truncated_normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctc_label_dense_to_sparse" title="ctc_label_dense_to_sparse" class="md-nav__link">
+    ctc_label_dense_to_sparse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctc_batch_cost" title="ctc_batch_cost" class="md-nav__link">
+    ctc_batch_cost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctc_decode" title="ctc_decode" class="md-nav__link">
+    ctc_decode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map_fn" title="map_fn" class="md-nav__link">
+    map_fn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldl" title="foldl" class="md-nav__link">
+    foldl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldr" title="foldr" class="md-nav__link">
+    foldr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_conv1d" title="local_conv1d" class="md-nav__link">
+    local_conv1d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_conv2d" title="local_conv2d" class="md-nav__link">
+    local_conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend" title="backend" class="md-nav__link">
+    backend
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../callbacks/" title="Callbacks" class="md-nav__link">
+      Callbacks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../constraints/" title="Constraints" class="md-nav__link">
+      Constraints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+      关于 Github Issues 和 Pull Requests
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/" title="数据集" class="md-nav__link">
+      数据集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../initializers/" title="Initializers" class="md-nav__link">
+      Initializers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../losses/" title="Losses" class="md-nav__link">
+      Losses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/" title="Metrics" class="md-nav__link">
+      Metrics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../optimizers/" title="Optimizers" class="md-nav__link">
+      Optimizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../regularizers/" title="Regularizers" class="md-nav__link">
+      Regularizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+      Scikit-Learn API 的封装器
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../utils/" title="Utils" class="md-nav__link">
+      Utils
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../visualization/" title="Visualization" class="md-nav__link">
+      Visualization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+      为什么选择 Keras？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      0.getting started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        0.getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+      开始使用 Keras Sequential 顺序模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+      开始使用 Keras 函数式 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+      Keras FAQ: 常见问题解答
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      1.models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        1.models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+      关于 Keras 模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+      Sequential 模型 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+      Model 类（函数式 API）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      2.layers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        2.layers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+      关于 Keras 网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/1.core/" title="核心网络层" class="md-nav__link">
+      核心网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/2.convolutional/" title="卷积层" class="md-nav__link">
+      卷积层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/3.pooling/" title="池化层" class="md-nav__link">
+      池化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/4.local/" title="局部连接层" class="md-nav__link">
+      局部连接层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/5.recurrent/" title="循环层" class="md-nav__link">
+      循环层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+      嵌入层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/7.merge/" title="融合层" class="md-nav__link">
+      融合层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+      高级激活层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/9.normalization/" title="标准化层" class="md-nav__link">
+      标准化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/90.noise/" title="噪声层" class="md-nav__link">
+      噪声层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/91.wrappers/" title="层封装器" class="md-nav__link">
+      层封装器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+      编写你自己的 Keras 层
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21">
+    
+    <label class="md-nav__link" for="nav-21">
+      3.preprocessing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        3.preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
+      序列预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/1.text/" title="文本预处理" class="md-nav__link">
+      文本预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/2.image/" title="图像预处理" class="md-nav__link">
+      图像预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      4.examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        4.examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/" title="经典样例" class="md-nav__link">
+      经典样例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+      实现一个用来执行加法的序列到序列学习模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/antirectifier/" title="Antirectifier" class="md-nav__link">
+      Antirectifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+      在 bAbI 数据集上训练一个记忆网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+      基于故事和问题训练两个循环神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+      Cifar10 cnn tfaugment2d
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+      Cifar10 resnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/class_activation_maps/" title="Class activation maps" class="md-nav__link">
+      Class activation maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+      Conv filter visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/conv_lstm/" title="Conv lstm" class="md-nav__link">
+      Conv lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/deep_dream/" title="Deep dream" class="md-nav__link">
+      Deep dream
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/image_ocr/" title="Optical character recognition" class="md-nav__link">
+      Optical character recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+      Imdb bidirectional lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+      Imdb cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+      Imdb cnn lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+      Imdb fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+      Imdb lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+      Lstm seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+      Lstm seq2seq restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+      Lstm stateful
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+      Lstm text generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+      Mnist acgan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+      Mnist cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+      Mnist dataset api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+      Mnist denoising autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+      Mnist hierarchical rnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+      Mnist irnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+      Mnist mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_net2net/" title="Mnist net2net" class="md-nav__link">
+      Mnist net2net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+      Mnist siamese
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+      Mnist sklearn wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+      Mnist swwae
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+      Mnist tfrecord
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+      Mnist transfer cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/neural_doodle/" title="Neural doodle" class="md-nav__link">
+      Neural doodle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+      Neural style transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+      预训练的单词嵌入
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+      Reuters mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+      Reuters mlp relu vs selu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+      Tensorboard embeddings mnist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+      Variational autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+      Variational autoencoder deconv
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="什么是 「后端」？" class="md-nav__link">
+    什么是 「后端」？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="从一个后端切换到另一个后端" class="md-nav__link">
+    从一个后端切换到另一个后端
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kerasjson" title="keras.json 详细配置" class="md-nav__link">
+    keras.json 详细配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keras_1" title="使用抽象 Keras 后端编写新代码" class="md-nav__link">
+    使用抽象 Keras 后端编写新代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="后端函数" class="md-nav__link">
+    后端函数
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epsilon" title="epsilon" class="md-nav__link">
+    epsilon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_epsilon" title="set_epsilon" class="md-nav__link">
+    set_epsilon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floatx" title="floatx" class="md-nav__link">
+    floatx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_floatx" title="set_floatx" class="md-nav__link">
+    set_floatx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast_to_floatx" title="cast_to_floatx" class="md-nav__link">
+    cast_to_floatx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image_data_format" title="image_data_format" class="md-nav__link">
+    image_data_format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_image_data_format" title="set_image_data_format" class="md-nav__link">
+    set_image_data_format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_uids" title="reset_uids" class="md-nav__link">
+    reset_uids
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_uid" title="get_uid" class="md-nav__link">
+    get_uid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear_session" title="clear_session" class="md-nav__link">
+    clear_session
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual_variable_initialization" title="manual_variable_initialization" class="md-nav__link">
+    manual_variable_initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning_phase" title="learning_phase" class="md-nav__link">
+    learning_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_learning_phase" title="set_learning_phase" class="md-nav__link">
+    set_learning_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_sparse" title="is_sparse" class="md-nav__link">
+    is_sparse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_dense" title="to_dense" class="md-nav__link">
+    to_dense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable" title="variable" class="md-nav__link">
+    variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant" title="constant" class="md-nav__link">
+    constant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_keras_tensor" title="is_keras_tensor" class="md-nav__link">
+    is_keras_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_tensor" title="is_tensor" class="md-nav__link">
+    is_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placeholder" title="placeholder" class="md-nav__link">
+    placeholder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_placeholder" title="is_placeholder" class="md-nav__link">
+    is_placeholder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shape" title="shape" class="md-nav__link">
+    shape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#int_shape" title="int_shape" class="md-nav__link">
+    int_shape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ndim" title="ndim" class="md-nav__link">
+    ndim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dtype" title="dtype" class="md-nav__link">
+    dtype
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eval" title="eval" class="md-nav__link">
+    eval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zeros" title="zeros" class="md-nav__link">
+    zeros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones" title="ones" class="md-nav__link">
+    ones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye" title="eye" class="md-nav__link">
+    eye
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zeros_like" title="zeros_like" class="md-nav__link">
+    zeros_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones_like" title="ones_like" class="md-nav__link">
+    ones_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity" title="identity" class="md-nav__link">
+    identity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_uniform_variable" title="random_uniform_variable" class="md-nav__link">
+    random_uniform_variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_normal_variable" title="random_normal_variable" class="md-nav__link">
+    random_normal_variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_params" title="count_params" class="md-nav__link">
+    count_params
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast" title="cast" class="md-nav__link">
+    cast
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" title="update" class="md-nav__link">
+    update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_add" title="update_add" class="md-nav__link">
+    update_add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_sub" title="update_sub" class="md-nav__link">
+    update_sub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving_average_update" title="moving_average_update" class="md-nav__link">
+    moving_average_update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dot" title="dot" class="md-nav__link">
+    dot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_dot" title="batch_dot" class="md-nav__link">
+    batch_dot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transpose" title="transpose" class="md-nav__link">
+    transpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gather" title="gather" class="md-nav__link">
+    gather
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max" title="max" class="md-nav__link">
+    max
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min" title="min" class="md-nav__link">
+    min
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum" title="sum" class="md-nav__link">
+    sum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod" title="prod" class="md-nav__link">
+    prod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumsum" title="cumsum" class="md-nav__link">
+    cumsum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumprod" title="cumprod" class="md-nav__link">
+    cumprod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var" title="var" class="md-nav__link">
+    var
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#std" title="std" class="md-nav__link">
+    std
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean" title="mean" class="md-nav__link">
+    mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" title="any" class="md-nav__link">
+    any
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all" title="all" class="md-nav__link">
+    all
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argmax" title="argmax" class="md-nav__link">
+    argmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argmin" title="argmin" class="md-nav__link">
+    argmin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#square" title="square" class="md-nav__link">
+    square
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abs" title="abs" class="md-nav__link">
+    abs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt" title="sqrt" class="md-nav__link">
+    sqrt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" title="exp" class="md-nav__link">
+    exp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" title="log" class="md-nav__link">
+    log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logsumexp" title="logsumexp" class="md-nav__link">
+    logsumexp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round" title="round" class="md-nav__link">
+    round
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign" title="sign" class="md-nav__link">
+    sign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pow" title="pow" class="md-nav__link">
+    pow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clip" title="clip" class="md-nav__link">
+    clip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equal" title="equal" class="md-nav__link">
+    equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_equal" title="not_equal" class="md-nav__link">
+    not_equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater" title="greater" class="md-nav__link">
+    greater
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater_equal" title="greater_equal" class="md-nav__link">
+    greater_equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less" title="less" class="md-nav__link">
+    less
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less_equal" title="less_equal" class="md-nav__link">
+    less_equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum" title="maximum" class="md-nav__link">
+    maximum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum" title="minimum" class="md-nav__link">
+    minimum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sin" title="sin" class="md-nav__link">
+    sin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cos" title="cos" class="md-nav__link">
+    cos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalize_batch_in_training" title="normalize_batch_in_training" class="md-nav__link">
+    normalize_batch_in_training
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_normalization" title="batch_normalization" class="md-nav__link">
+    batch_normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concatenate" title="concatenate" class="md-nav__link">
+    concatenate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reshape" title="reshape" class="md-nav__link">
+    reshape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permute_dimensions" title="permute_dimensions" class="md-nav__link">
+    permute_dimensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize_images" title="resize_images" class="md-nav__link">
+    resize_images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize_volumes" title="resize_volumes" class="md-nav__link">
+    resize_volumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat_elements" title="repeat_elements" class="md-nav__link">
+    repeat_elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat" title="repeat" class="md-nav__link">
+    repeat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arange" title="arange" class="md-nav__link">
+    arange
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tile" title="tile" class="md-nav__link">
+    tile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flatten" title="flatten" class="md-nav__link">
+    flatten
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_flatten" title="batch_flatten" class="md-nav__link">
+    batch_flatten
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand_dims" title="expand_dims" class="md-nav__link">
+    expand_dims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#squeeze" title="squeeze" class="md-nav__link">
+    squeeze
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_padding" title="temporal_padding" class="md-nav__link">
+    temporal_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial_2d_padding" title="spatial_2d_padding" class="md-nav__link">
+    spatial_2d_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial_3d_padding" title="spatial_3d_padding" class="md-nav__link">
+    spatial_3d_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack" title="stack" class="md-nav__link">
+    stack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one_hot" title="one_hot" class="md-nav__link">
+    one_hot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse" title="reverse" class="md-nav__link">
+    reverse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice" title="slice" class="md-nav__link">
+    slice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_value" title="get_value" class="md-nav__link">
+    get_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_get_value" title="batch_get_value" class="md-nav__link">
+    batch_get_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_value" title="set_value" class="md-nav__link">
+    set_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_set_value" title="batch_set_value" class="md-nav__link">
+    batch_set_value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print_tensor" title="print_tensor" class="md-nav__link">
+    print_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" title="function" class="md-nav__link">
+    function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradients" title="gradients" class="md-nav__link">
+    gradients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop_gradient" title="stop_gradient" class="md-nav__link">
+    stop_gradient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnn" title="rnn" class="md-nav__link">
+    rnn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" title="switch" class="md-nav__link">
+    switch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_train_phase" title="in_train_phase" class="md-nav__link">
+    in_train_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_test_phase" title="in_test_phase" class="md-nav__link">
+    in_test_phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relu" title="relu" class="md-nav__link">
+    relu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elu" title="elu" class="md-nav__link">
+    elu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softmax" title="softmax" class="md-nav__link">
+    softmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softplus" title="softplus" class="md-nav__link">
+    softplus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softsign" title="softsign" class="md-nav__link">
+    softsign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorical_crossentropy" title="categorical_crossentropy" class="md-nav__link">
+    categorical_crossentropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse_categorical_crossentropy" title="sparse_categorical_crossentropy" class="md-nav__link">
+    sparse_categorical_crossentropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary_crossentropy" title="binary_crossentropy" class="md-nav__link">
+    binary_crossentropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigmoid" title="sigmoid" class="md-nav__link">
+    sigmoid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard_sigmoid" title="hard_sigmoid" class="md-nav__link">
+    hard_sigmoid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tanh" title="tanh" class="md-nav__link">
+    tanh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropout" title="dropout" class="md-nav__link">
+    dropout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l2_normalize" title="l2_normalize" class="md-nav__link">
+    l2_normalize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_top_k" title="in_top_k" class="md-nav__link">
+    in_top_k
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv1d" title="conv1d" class="md-nav__link">
+    conv1d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv2d" title="conv2d" class="md-nav__link">
+    conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv2d_transpose" title="conv2d_transpose" class="md-nav__link">
+    conv2d_transpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separable_conv1d" title="separable_conv1d" class="md-nav__link">
+    separable_conv1d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separable_conv2d" title="separable_conv2d" class="md-nav__link">
+    separable_conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depthwise_conv2d" title="depthwise_conv2d" class="md-nav__link">
+    depthwise_conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv3d" title="conv3d" class="md-nav__link">
+    conv3d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conv3d_transpose" title="conv3d_transpose" class="md-nav__link">
+    conv3d_transpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pool2d" title="pool2d" class="md-nav__link">
+    pool2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pool3d" title="pool3d" class="md-nav__link">
+    pool3d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias_add" title="bias_add" class="md-nav__link">
+    bias_add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_normal" title="random_normal" class="md-nav__link">
+    random_normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_uniform" title="random_uniform" class="md-nav__link">
+    random_uniform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random_binomial" title="random_binomial" class="md-nav__link">
+    random_binomial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truncated_normal" title="truncated_normal" class="md-nav__link">
+    truncated_normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctc_label_dense_to_sparse" title="ctc_label_dense_to_sparse" class="md-nav__link">
+    ctc_label_dense_to_sparse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctc_batch_cost" title="ctc_batch_cost" class="md-nav__link">
+    ctc_batch_cost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctc_decode" title="ctc_decode" class="md-nav__link">
+    ctc_decode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map_fn" title="map_fn" class="md-nav__link">
+    map_fn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldl" title="foldl" class="md-nav__link">
+    foldl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldr" title="foldr" class="md-nav__link">
+    foldr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_conv1d" title="local_conv1d" class="md-nav__link">
+    local_conv1d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_conv2d" title="local_conv2d" class="md-nav__link">
+    local_conv2d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend" title="backend" class="md-nav__link">
+    backend
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/backend.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="keras">Keras 后端</h1>
+<h2 id="_1">什么是 「后端」？</h2>
+<p>Keras 是一个模型级库，为开发深度学习模型提供了高层次的构建模块。它不处理诸如张量乘积和卷积等低级操作。相反，它依赖于一个专门的、优化的张量操作库来完成这个操作，它可以作为 Keras 的「后端引擎」。相比单独地选择一个张量库，而将 Keras 的实现与该库相关联，Keras 以模块方式处理这个问题，并且可以将几个不同的后端引擎无缝嵌入到 Keras 中。</p>
+<p>目前，Keras 有三个后端实现可用: <strong>TensorFlow</strong> 后端，<strong>Theano</strong> 后端，<strong>CNTK</strong> 后端。</p>
+<ul>
+<li><a href="http://www.tensorflow.org/">TensorFlow</a> 是由 Google 开发的一个开源符号级张量操作框架。</li>
+<li><a href="http://deeplearning.net/software/theano/">Theano</a> 是由蒙特利尔大学的 LISA Lab 开发的一个开源符号级张量操作框架。</li>
+<li><a href="https://www.microsoft.com/en-us/cognitive-toolkit/">CNTK</a> 是由微软开发的一个深度学习开源工具包。</li>
+</ul>
+<p>将来，我们可能会添加更多后端选项。</p>
+<hr />
+<h2 id="_2">从一个后端切换到另一个后端</h2>
+<p>如果您至少运行过一次 Keras，您将在以下位置找到 Keras 配置文件：</p>
+<p><code>$HOME/.keras/keras.json</code></p>
+<p>如果它不在那里，你可以创建它。</p>
+<p><strong>Windows用户注意事项：</strong> 请将 <code>$HOME</code> 修改为 <code>%USERPROFILE%</code>。</p>
+<p>默认的配置文件如下所示：</p>
+<pre><code>{
+    &quot;image_data_format&quot;: &quot;channels_last&quot;,
+    &quot;epsilon&quot;: 1e-07,
+    &quot;floatx&quot;: &quot;float32&quot;,
+    &quot;backend&quot;: &quot;tensorflow&quot;
+}
+</code></pre>
+
+<p>只需将字段 <code>backend</code> 更改为 <code>theano</code>，<code>tensorflow</code> 或 <code>cntk</code>，Keras 将在下次运行 Keras 代码时使用新的配置。</p>
+<p>你也可以定义环境变量 <code>KERAS_BACKEND</code>，这会覆盖配置文件中定义的内容：</p>
+<pre><code class="bash">KERAS_BACKEND=tensorflow python -c &quot;from keras import backend&quot;
+Using TensorFlow backend.
+</code></pre>
+
+<p>在 Keras 中，可以加载比 <code>"tensorflow"</code>, <code>"theano"</code> 和 <code>"cntk"</code> 更多的后端。
+Keras 也可以使用外部后端，这可以通过更改 <code>keras.json</code> 配置文件和 <code>"backend"</code> 设置来执行。 假设您有一个名为 <code>my_module</code> 的 Python 模块，您希望将其用作外部后端。<code>keras.json</code> 配置文件将更改如下：</p>
+<pre><code>{
+    &quot;image_data_format&quot;: &quot;channels_last&quot;,
+    &quot;epsilon&quot;: 1e-07,
+    &quot;floatx&quot;: &quot;float32&quot;,
+    &quot;backend&quot;: &quot;my_package.my_module&quot;
+}
+</code></pre>
+
+<p>必须验证外部后端才能使用，有效的后端必须具有以下函数：<code>placeholder</code>, <code>variable</code> and <code>function</code>.</p>
+<p>如果由于缺少必需的条目而导致外部后端无效，则会记录错误，通知缺少哪些条目。</p>
+<hr />
+<h2 id="kerasjson">keras.json 详细配置</h2>
+<p>The <code>keras.json</code> 配置文件包含以下设置：</p>
+<pre><code>{
+    &quot;image_data_format&quot;: &quot;channels_last&quot;,
+    &quot;epsilon&quot;: 1e-07,
+    &quot;floatx&quot;: &quot;float32&quot;,
+    &quot;backend&quot;: &quot;tensorflow&quot;
+}
+</code></pre>
+
+<p>您可以通过编辑 <code>$ HOME/.keras/keras.json</code> 来更改这些设置。</p>
+<ul>
+<li><code>image_data_format</code>: 字符串，<code>"channels_last"</code> 或者 <code>"channels_first"</code>。它指定了 Keras 将遵循的数据格式约定。(<code>keras.backend.image_data_format()</code> 返回它。)<ul>
+<li>对于 2D 数据 (例如图像)，<code>"channels_last"</code> 假定为 <code>(rows, cols, channels)</code>，而 <code>"channels_first"</code> 假定为 <code>(channels, rows, cols)</code>。</li>
+<li>对于 3D 数据， <code>"channels_last"</code> 假定为 <code>(conv_dim1, conv_dim2, conv_dim3, channels)</code>，而 <code>"channels_first"</code> 假定为 <code>(channels, conv_dim1, conv_dim2, conv_dim3)</code>。</li>
+</ul>
+</li>
+<li><code>epsilon</code>: 浮点数，用于避免在某些操作中被零除的数字模糊常量。</li>
+<li><code>floatx</code>: 字符串，<code>"float16"</code>, <code>"float32"</code>, 或 <code>"float64"</code>。默认浮点精度。</li>
+<li><code>backend</code>: 字符串， <code>"tensorflow"</code>, <code>"theano"</code>, 或 <code>"cntk"</code>。</li>
+</ul>
+<hr />
+<h2 id="keras_1">使用抽象 Keras 后端编写新代码</h2>
+<p>如果你希望你编写的 Keras 模块与 Theano (<code>th</code>) 和 TensorFlow (<code>tf</code>) 兼容，则必须通过抽象 Keras 后端 API 来编写它们。以下是一个介绍。</p>
+<p>您可以通过以下方式导入后端模块：</p>
+<pre><code class="python">from keras import backend as K
+</code></pre>
+
+<p>下面的代码实例化一个输入占位符。它等价于 <code>tf.placeholder()</code> 或 <code>th.tensor.matrix()</code>, <code>th.tensor.tensor3()</code>, 等等。</p>
+<pre><code class="python">inputs = K.placeholder(shape=(2, 4, 5))
+# 同样可以：
+inputs = K.placeholder(shape=(None, 4, 5))
+# 同样可以：
+inputs = K.placeholder(ndim=3)
+</code></pre>
+
+<p>下面的代码实例化一个变量。它等价于 <code>tf.Variable()</code> 或 <code>th.shared()</code>。</p>
+<pre><code class="python">import numpy as np
+val = np.random.random((3, 4, 5))
+var = K.variable(value=val)
+
+# 全 0 变量：
+var = K.zeros(shape=(3, 4, 5))
+# 全 1 变量：
+var = K.ones(shape=(3, 4, 5))
+</code></pre>
+
+<p>你需要的大多数张量操作都可以像在 TensorFlow 或 Theano 中那样完成：</p>
+<pre><code class="python"># 使用随机数初始化张量
+b = K.random_uniform_variable(shape=(3, 4), low=0, high=1) # 均匀分布
+c = K.random_normal_variable(shape=(3, 4), mean=0, scale=1) # 高斯分布
+d = K.random_normal_variable(shape=(3, 4), mean=0, scale=1)
+
+# 张量运算
+a = b + c * K.abs(d)
+c = K.dot(a, K.transpose(b))
+a = K.sum(b, axis=1)
+a = K.softmax(b)
+a = K.concatenate([b, c], axis=-1)
+# 等等
+</code></pre>
+
+<hr />
+<h2 id="_3">后端函数</h2>
+<h3 id="epsilon">epsilon</h3>
+<pre><code class="python">keras.backend.epsilon()
+</code></pre>
+
+<p>返回数字表达式中使用的模糊因子的值。</p>
+<p><strong>返回</strong></p>
+<p>一个浮点数。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; keras.backend.epsilon()
+1e-07
+</code></pre>
+
+<hr />
+<h3 id="set_epsilon">set_epsilon</h3>
+<pre><code class="python">keras.backend.set_epsilon(e)
+</code></pre>
+
+<p>设置数字表达式中使用的模糊因子的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>e</strong>: 浮点数。新的 epsilon 值。</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; K.epsilon()
+1e-07
+&gt;&gt;&gt; K.set_epsilon(1e-05)
+&gt;&gt;&gt; K.epsilon()
+1e-05
+</code></pre>
+
+<hr />
+<h3 id="floatx">floatx</h3>
+<pre><code class="python">keras.backend.floatx()
+</code></pre>
+
+<p>以字符串形式返回默认的浮点类型。
+(例如，'float16', 'float32', 'float64')。</p>
+<p><strong>返回</strong></p>
+<p>字符串，当前默认的浮点类型。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; keras.backend.floatx()
+'float32'
+</code></pre>
+
+<hr />
+<h3 id="set_floatx">set_floatx</h3>
+<pre><code class="python">keras.backend.set_floatx(floatx)
+</code></pre>
+
+<p>设置默认的浮点类型。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>floatx</strong>: 字符串，'float16', 'float32', 或 'float64'。</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; K.floatx()
+'float32'
+&gt;&gt;&gt; K.set_floatx('float16')
+&gt;&gt;&gt; K.floatx()
+'float16'
+</code></pre>
+
+<hr />
+<h3 id="cast_to_floatx">cast_to_floatx</h3>
+<pre><code class="python">keras.backend.cast_to_floatx(x)
+</code></pre>
+
+<p>将 Numpy 数组转换为默认的 Keras 浮点类型。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: Numpy 数组。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>相同的 Numpy 数组，转换为它的新类型。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; K.floatx()
+'float32'
+&gt;&gt;&gt; arr = numpy.array([1.0, 2.0], dtype='float64')
+&gt;&gt;&gt; arr.dtype
+dtype('float64')
+&gt;&gt;&gt; new_arr = K.cast_to_floatx(arr)
+&gt;&gt;&gt; new_arr
+array([ 1.,  2.], dtype=float32)
+&gt;&gt;&gt; new_arr.dtype
+dtype('float32')
+</code></pre>
+
+<hr />
+<h3 id="image_data_format">image_data_format</h3>
+<pre><code class="python">keras.backend.image_data_format()
+</code></pre>
+
+<p>返回默认图像数据格式约定 ('channels_first' 或 'channels_last')。</p>
+<p><strong>返回</strong></p>
+<p>一个字符串，<code>'channels_first'</code> 或 <code>'channels_last'</code></p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; keras.backend.image_data_format()
+'channels_first'
+</code></pre>
+
+<hr />
+<h3 id="set_image_data_format">set_image_data_format</h3>
+<pre><code class="python">keras.backend.set_image_data_format(data_format)
+</code></pre>
+
+<p>设置数据格式约定的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>data_format</strong>: 字符串。<code>'channels_first'</code> 或 <code>'channels_last'</code>。</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; K.image_data_format()
+'channels_first'
+&gt;&gt;&gt; K.set_image_data_format('channels_last')
+&gt;&gt;&gt; K.image_data_format()
+'channels_last'
+</code></pre>
+
+<hr />
+<h3 id="reset_uids">reset_uids</h3>
+<pre><code class="python">keras.backend.reset_uids()
+</code></pre>
+
+<p>重置图的标识符。</p>
+<hr />
+<h3 id="get_uid">get_uid</h3>
+<pre><code class="python">keras.backend.get_uid(prefix='')
+</code></pre>
+
+<p>获取默认计算图的 uid。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>prefix</strong>: 图的可选前缀。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>图的唯一标识符。</p>
+<hr />
+<h3 id="clear_session">clear_session</h3>
+<pre><code class="python">keras.backend.clear_session()
+</code></pre>
+
+<p>销毁当前的 TF 图并创建一个新图。</p>
+<p>有用于避免旧模型/网络层混乱。</p>
+<hr />
+<h3 id="manual_variable_initialization">manual_variable_initialization</h3>
+<pre><code class="python">keras.backend.manual_variable_initialization(value)
+</code></pre>
+
+<p>设置变量手动初始化的标志。</p>
+<p>这个布尔标志决定了变量是否应该在实例化时初始化（默认），
+或者用户是否应该自己处理初始化
+（例如通过 <code>tf.initialize_all_variables()</code>）。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>value</strong>: Python 布尔值。</li>
+</ul>
+<hr />
+<h3 id="learning_phase">learning_phase</h3>
+<pre><code class="python">keras.backend.learning_phase()
+</code></pre>
+
+<p>返回学习阶段的标志。</p>
+<p>学习阶段标志是一个布尔张量（0 = test，1 = train），
+它作为输入传递给任何的 Keras 函数，以在训练和测试
+时执行不同的行为操作。</p>
+<p><strong>返回</strong></p>
+<p>学习阶段 (标量整数张量或 python 整数)。</p>
+<hr />
+<h3 id="set_learning_phase">set_learning_phase</h3>
+<pre><code class="python">keras.backend.set_learning_phase(value)
+</code></pre>
+
+<p>将学习阶段设置为固定值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>value</strong>: 学习阶段的值，0 或 1（整数）。</li>
+</ul>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>value</code> 既不是 <code>0</code> 也不是 <code>1</code>。</li>
+</ul>
+<hr />
+<h3 id="is_sparse">is_sparse</h3>
+<pre><code class="python">keras.backend.is_sparse(tensor)
+</code></pre>
+
+<p>判断张量是否是稀疏张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>tensor</strong>: 一个张量实例。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>布尔值。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; a = K.placeholder((2, 2), sparse=False)
+&gt;&gt;&gt; print(K.is_sparse(a))
+False
+&gt;&gt;&gt; b = K.placeholder((2, 2), sparse=True)
+&gt;&gt;&gt; print(K.is_sparse(b))
+True
+</code></pre>
+
+<hr />
+<h3 id="to_dense">to_dense</h3>
+<pre><code class="python">keras.backend.to_dense(tensor)
+</code></pre>
+
+<p>将稀疏张量转换为稠密张量并返回。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>tensor</strong>: 张量实例（可能稀疏）。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个稠密张量。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; b = K.placeholder((2, 2), sparse=True)
+&gt;&gt;&gt; print(K.is_sparse(b))
+True
+&gt;&gt;&gt; c = K.to_dense(b)
+&gt;&gt;&gt; print(K.is_sparse(c))
+False
+</code></pre>
+
+<hr />
+<h3 id="variable">variable</h3>
+<pre><code class="python">keras.backend.variable(value, dtype=None, name=None, constraint=None)
+</code></pre>
+
+<p>实例化一个变量并返回它。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>value</strong>: Numpy 数组，张量的初始值。</li>
+<li><strong>dtype</strong>: 张量类型。</li>
+<li><strong>name</strong>: 张量的可选名称字符串。</li>
+<li><strong>constraint</strong>: 在优化器更新后应用于变量的可选投影函数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>变量实例（包含 Keras 元数据）</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; val = np.array([[1, 2], [3, 4]])
+&gt;&gt;&gt; kvar = K.variable(value=val, dtype='float64', name='example_var')
+&gt;&gt;&gt; K.dtype(kvar)
+'float64'
+&gt;&gt;&gt; print(kvar)
+example_var
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 1.,  2.],
+       [ 3.,  4.]])
+</code></pre>
+
+<hr />
+<h3 id="constant">constant</h3>
+<pre><code class="python">keras.backend.constant(value, dtype=None, shape=None, name=None)
+</code></pre>
+
+<p>创建一个常数张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>value</strong>: 一个常数值（或列表）</li>
+<li><strong>dtype</strong>: 结果张量的元素类型。</li>
+<li><strong>shape</strong>: 可选的结果张量的尺寸。</li>
+<li><strong>name</strong>: 可选的张量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个常数张量。</p>
+<hr />
+<h3 id="is_keras_tensor">is_keras_tensor</h3>
+<pre><code class="python">keras.backend.is_keras_tensor(x)
+</code></pre>
+
+<p>判断 <code>x</code> 是否是 Keras 张量</p>
+<p>「Keras张量」是由 Keras 层（<code>Layer</code>类）或 <code>Input</code> 返回的张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 候选张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>布尔值：参数是否是 Keras 张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>x</code> 不是一个符号张量。</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; from keras.layers import Input, Dense
+&gt;&gt;&gt; np_var = numpy.array([1, 2])
+&gt;&gt;&gt; K.is_keras_tensor(np_var) # 一个 Numpy 数组不是一个符号张量。
+ValueError
+&gt;&gt;&gt; k_var = tf.placeholder('float32', shape=(1,1))
+&gt;&gt;&gt; K.is_keras_tensor(k_var) # 在 Keras 之外间接创建的变量不是 Keras 张量。
+False
+&gt;&gt;&gt; keras_var = K.variable(np_var)
+&gt;&gt;&gt; K.is_keras_tensor(keras_var)  # Keras 后端创建的变量不是 Keras 张量。
+False
+&gt;&gt;&gt; keras_placeholder = K.placeholder(shape=(2, 4, 5))
+&gt;&gt;&gt; K.is_keras_tensor(keras_placeholder)  # 占位符不是 Keras 张量。
+False
+&gt;&gt;&gt; keras_input = Input([10])
+&gt;&gt;&gt; K.is_keras_tensor(keras_input) # 输入 Input 是 Keras 张量。
+True
+&gt;&gt;&gt; keras_layer_output = Dense(10)(keras_input)
+&gt;&gt;&gt; K.is_keras_tensor(keras_layer_output) # 任何 Keras 层输出都是 Keras 张量。
+True
+</code></pre>
+
+<hr />
+<h3 id="is_tensor">is_tensor</h3>
+<pre><code class="python">keras.backend.is_tensor(x)
+</code></pre>
+
+<hr />
+<h3 id="placeholder">placeholder</h3>
+<pre><code class="python">keras.backend.placeholder(shape=None, ndim=None, dtype=None, sparse=False, name=None)
+</code></pre>
+
+<p>实例化一个占位符张量并返回它。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 占位符尺寸
+(整数元组，可能包含 <code>None</code> 项)。</li>
+<li><strong>ndim</strong>: 张量的轴数。
+{<code>shape</code>, <code>ndim</code>} 至少一个需要被指定。
+如果两个都被指定，那么使用 <code>shape</code>。</li>
+<li><strong>dtype</strong>: 占位符类型。</li>
+<li><strong>sparse</strong>: 布尔值，占位符是否应该有一个稀疏类型。</li>
+<li><strong>name</strong>: 可选的占位符的名称字符串。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>张量实例（包括 Keras 元数据）。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; input_ph = K.placeholder(shape=(2, 4, 5))
+&gt;&gt;&gt; input_ph._keras_shape
+(2, 4, 5)
+&gt;&gt;&gt; input_ph
+&lt;tf.Tensor 'Placeholder_4:0' shape=(2, 4, 5) dtype=float32&gt;
+</code></pre>
+
+<hr />
+<h3 id="is_placeholder">is_placeholder</h3>
+<pre><code class="python">keras.backend.is_placeholder(x)
+</code></pre>
+
+<p>判断 <code>x</code> 是否是占位符。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 候选占位符。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>布尔值。</p>
+<hr />
+<h3 id="shape">shape</h3>
+<pre><code class="python">keras.backend.shape(x)
+</code></pre>
+
+<p>返回张量或变量的符号尺寸。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>符号尺寸（它本身就是张量）。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python"># TensorFlow 例子
+&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; tf_session = K.get_session()
+&gt;&gt;&gt; val = np.array([[1, 2], [3, 4]])
+&gt;&gt;&gt; kvar = K.variable(value=val)
+&gt;&gt;&gt; inputs = keras.backend.placeholder(shape=(2, 4, 5))
+&gt;&gt;&gt; K.shape(kvar)
+&lt;tf.Tensor 'Shape_8:0' shape=(2,) dtype=int32&gt;
+&gt;&gt;&gt; K.shape(inputs)
+&lt;tf.Tensor 'Shape_9:0' shape=(3,) dtype=int32&gt;
+# 要得到整数尺寸 (相反，你可以使用 K.int_shape(x))
+&gt;&gt;&gt; K.shape(kvar).eval(session=tf_session)
+array([2, 2], dtype=int32)
+&gt;&gt;&gt; K.shape(inputs).eval(session=tf_session)
+array([2, 4, 5], dtype=int32)
+</code></pre>
+
+<hr />
+<h3 id="int_shape">int_shape</h3>
+<pre><code class="python">keras.backend.int_shape(x)
+</code></pre>
+
+<p>返回张量或变量的尺寸，作为 int 或 None 项的元组。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>整数元组（或 None 项）。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; inputs = K.placeholder(shape=(2, 4, 5))
+&gt;&gt;&gt; K.int_shape(inputs)
+(2, 4, 5)
+&gt;&gt;&gt; val = np.array([[1, 2], [3, 4]])
+&gt;&gt;&gt; kvar = K.variable(value=val)
+&gt;&gt;&gt; K.int_shape(kvar)
+(2, 2)
+</code></pre>
+
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def int_shape(x):
+    return x.shape
+</code></pre>
+
+<hr />
+<h3 id="ndim">ndim</h3>
+<pre><code class="python">keras.backend.ndim(x)
+</code></pre>
+
+<p>以整数形式返回张量中的轴数。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>整数 (标量), 轴的数量。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; inputs = K.placeholder(shape=(2, 4, 5))
+&gt;&gt;&gt; val = np.array([[1, 2], [3, 4]])
+&gt;&gt;&gt; kvar = K.variable(value=val)
+&gt;&gt;&gt; K.ndim(inputs)
+3
+&gt;&gt;&gt; K.ndim(kvar)
+2
+</code></pre>
+
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def ndim(x):
+    return x.ndim
+</code></pre>
+
+<hr />
+<h3 id="dtype">dtype</h3>
+<pre><code class="python">keras.backend.dtype(x)
+</code></pre>
+
+<p>以字符串形式返回 Keras 张量或变量的 dtype。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>字符串，<code>x</code> 的 dtype。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; K.dtype(K.placeholder(shape=(2,4,5)))
+'float32'
+&gt;&gt;&gt; K.dtype(K.placeholder(shape=(2,4,5), dtype='float32'))
+'float32'
+&gt;&gt;&gt; K.dtype(K.placeholder(shape=(2,4,5), dtype='float64'))
+'float64'
+# Keras 变量
+&gt;&gt;&gt; kvar = K.variable(np.array([[1, 2], [3, 4]]))
+&gt;&gt;&gt; K.dtype(kvar)
+'float32_ref'
+&gt;&gt;&gt; kvar = K.variable(np.array([[1, 2], [3, 4]]), dtype='float32')
+&gt;&gt;&gt; K.dtype(kvar)
+'float32_ref'
+</code></pre>
+
+<hr />
+<h3 id="eval">eval</h3>
+<pre><code class="python">keras.backend.eval(x)
+</code></pre>
+
+<p>估计一个变量的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>Numpy 数组。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; kvar = K.variable(np.array([[1, 2], [3, 4]]), dtype='float32')
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 1.,  2.],
+       [ 3.,  4.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="zeros">zeros</h3>
+<pre><code class="python">keras.backend.zeros(shape, dtype=None, name=None)
+</code></pre>
+
+<p>实例化一个全零变量并返回它。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 整数元组，返回的Keras变量的尺寸。</li>
+<li><strong>dtype</strong>: 字符串，返回的 Keras 变量的数据类型。</li>
+<li><strong>name</strong>: 字符串，返回的 Keras 变量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个变量（包括 Keras 元数据），用 <code>0.0</code> 填充。
+请注意，如果 <code>shape</code> 是符号化的，我们不能返回一个变量，
+而会返回一个动态尺寸的张量。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; kvar = K.zeros((3,4))
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="ones">ones</h3>
+<pre><code class="python">keras.backend.ones(shape, dtype=None, name=None)
+</code></pre>
+
+<p>实例化一个全一变量并返回它。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 整数元组，返回的Keras变量的尺寸。</li>
+<li><strong>dtype</strong>: 字符串，返回的 Keras 变量的数据类型。</li>
+<li><strong>name</strong>: 字符串，返回的 Keras 变量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Keras 变量，用 <code>1.0</code> 填充。
+请注意，如果 <code>shape</code> 是符号化的，我们不能返回一个变量，
+而会返回一个动态尺寸的张量。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; kvar = K.ones((3,4))
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="eye">eye</h3>
+<pre><code class="python">keras.backend.eye(size, dtype=None, name=None)
+</code></pre>
+
+<p>实例化一个单位矩阵并返回它。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>size</strong>: 整数，行/列的数目。</li>
+<li><strong>dtype</strong>: 字符串，返回的 Keras 变量的数据类型。</li>
+<li><strong>name</strong>: 字符串，返回的 Keras 变量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>Keras 变量，一个单位矩阵。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; kvar = K.eye(3)
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 1.,  0.,  0.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="zeros_like">zeros_like</h3>
+<pre><code class="python">keras.backend.zeros_like(x, dtype=None, name=None)
+</code></pre>
+
+<p>实例化与另一个张量相同尺寸的全零变量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: Keras 变量或 Keras 张量。</li>
+<li><strong>dtype</strong>: 字符串，返回的 Keras 变量的类型。
+如果为 None，则使用 x 的类型。</li>
+<li><strong>name</strong>: 字符串，所创建的变量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Keras 变量，其形状为 x，用零填充。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; kvar = K.variable(np.random.random((2,3)))
+&gt;&gt;&gt; kvar_zeros = K.zeros_like(kvar)
+&gt;&gt;&gt; K.eval(kvar_zeros)
+array([[ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="ones_like">ones_like</h3>
+<pre><code class="python">keras.backend.ones_like(x, dtype=None, name=None)
+</code></pre>
+
+<p>实例化与另一个张量相同形状的全一变量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: Keras 变量或张量。</li>
+<li><strong>dtype</strong>: 字符串，返回的 Keras 变量的类型。
+如果为 None，则使用 x 的类型。</li>
+<li><strong>name</strong>: 字符串，所创建的变量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Keras 变量，其形状为 x，用一填充。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; kvar = K.variable(np.random.random((2,3)))
+&gt;&gt;&gt; kvar_ones = K.ones_like(kvar)
+&gt;&gt;&gt; K.eval(kvar_ones)
+array([[ 1.,  1.,  1.],
+       [ 1.,  1.,  1.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="identity">identity</h3>
+<pre><code class="python">keras.backend.identity(x, name=None)
+</code></pre>
+
+<p>返回与输入张量相同内容的张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量。</li>
+<li><strong>name</strong>: 字符串，所创建的变量的名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个相同尺寸、类型和内容的张量。</p>
+<hr />
+<h3 id="random_uniform_variable">random_uniform_variable</h3>
+<pre><code class="python">keras.backend.random_uniform_variable(shape, low, high, dtype=None, name=None, seed=None)
+</code></pre>
+
+<p>使用从均匀分布中抽样出来的值来实例化变量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 整数元组，返回的 Keras 变量的尺寸。</li>
+<li><strong>low</strong>: 浮点数，输出间隔的下界。</li>
+<li><strong>high</strong>: 浮点数，输出间隔的上界。</li>
+<li><strong>dtype</strong>: 字符串，返回的 Keras 变量的数据类型。</li>
+<li><strong>name</strong>: 字符串，返回的 Keras 变量的名称。</li>
+<li><strong>seed</strong>: 整数，随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Keras 变量，以抽取的样本填充。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python"># TensorFlow 示例
+&gt;&gt;&gt; kvar = K.random_uniform_variable((2,3), 0, 1)
+&gt;&gt;&gt; kvar
+&lt;tensorflow.python.ops.variables.Variable object at 0x10ab40b10&gt;
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 0.10940075,  0.10047495,  0.476143  ],
+       [ 0.66137183,  0.00869417,  0.89220798]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="random_normal_variable">random_normal_variable</h3>
+<pre><code class="python">keras.backend.random_normal_variable(shape, mean, scale, dtype=None, name=None, seed=None)
+</code></pre>
+
+<p>使用从正态分布中抽取的值实例化一个变量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 整数元组，返回的Keras变量的尺寸。</li>
+<li><strong>mean</strong>: 浮点型，正态分布平均值。</li>
+<li><strong>scale</strong>: 浮点型，正态分布标准差。</li>
+<li><strong>dtype</strong>: 字符串，返回的Keras变量的 dtype。</li>
+<li><strong>name</strong>: 字符串，返回的Keras变量的名称。</li>
+<li><strong>seed</strong>: 整数，随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Keras 变量，以抽取的样本填充。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python"># TensorFlow 示例
+&gt;&gt;&gt; kvar = K.random_normal_variable((2,3), 0, 1)
+&gt;&gt;&gt; kvar
+&lt;tensorflow.python.ops.variables.Variable object at 0x10ab12dd0&gt;
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 1.19591331,  0.68685907, -0.63814116],
+       [ 0.92629528,  0.28055015,  1.70484698]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="count_params">count_params</h3>
+<pre><code class="python">keras.backend.count_params(x)
+</code></pre>
+
+<p>返回 Keras 变量或张量中的静态元素数。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: Keras 变量或张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>整数，<code>x</code> 中的元素数量，即，数组中静态维度的乘积。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; kvar = K.zeros((2,3))
+&gt;&gt;&gt; K.count_params(kvar)
+6
+&gt;&gt;&gt; K.eval(kvar)
+array([[ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]], dtype=float32)
+</code></pre>
+
+<hr />
+<h3 id="cast">cast</h3>
+<pre><code class="python">keras.backend.cast(x, dtype)
+</code></pre>
+
+<p>将张量转换到不同的 dtype 并返回。</p>
+<p>你可以转换一个 Keras 变量，但它仍然返回一个 Keras 张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: Keras 张量（或变量）。</li>
+<li><strong>dtype</strong>: 字符串， (<code>'float16'</code>, <code>'float32'</code> 或 <code>'float64'</code>)。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>Keras 张量，类型为 <code>dtype</code>。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; from keras import backend as K
+&gt;&gt;&gt; input = K.placeholder((2, 3), dtype='float32')
+&gt;&gt;&gt; input
+&lt;tf.Tensor 'Placeholder_2:0' shape=(2, 3) dtype=float32&gt;
+# It doesn't work in-place as below.
+&gt;&gt;&gt; K.cast(input, dtype='float16')
+&lt;tf.Tensor 'Cast_1:0' shape=(2, 3) dtype=float16&gt;
+&gt;&gt;&gt; input
+&lt;tf.Tensor 'Placeholder_2:0' shape=(2, 3) dtype=float32&gt;
+# you need to assign it.
+&gt;&gt;&gt; input = K.cast(input, dtype='float16')
+&gt;&gt;&gt; input
+&lt;tf.Tensor 'Cast_2:0' shape=(2, 3) dtype=float16&gt;
+</code></pre>
+
+<hr />
+<h3 id="update">update</h3>
+<pre><code class="python">keras.backend.update(x, new_x)
+</code></pre>
+
+<p>将 <code>x</code> 的值更新为 <code>new_x</code>。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个 <code>Variable</code>。</li>
+<li><strong>new_x</strong>: 一个与 <code>x</code> 尺寸相同的张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>更新后的变量 <code>x</code>。</p>
+<hr />
+<h3 id="update_add">update_add</h3>
+<pre><code class="python">keras.backend.update_add(x, increment)
+</code></pre>
+
+<p>通过增加 <code>increment</code> 来更新 <code>x</code> 的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个 <code>Variable</code>。</li>
+<li><strong>increment</strong>: 与 <code>x</code> 形状相同的张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>更新后的变量 <code>x</code>。</p>
+<hr />
+<h3 id="update_sub">update_sub</h3>
+<pre><code class="python">keras.backend.update_sub(x, decrement)
+</code></pre>
+
+<p>通过减 <code>decrement</code> 来更新 <code>x</code> 的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个 <code>Variable</code>。</li>
+<li><strong>decrement</strong>: 与 <code>x</code> 形状相同的张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>更新后的变量 <code>x</code>。</p>
+<hr />
+<h3 id="moving_average_update">moving_average_update</h3>
+<pre><code class="python">keras.backend.moving_average_update(x, value, momentum)
+</code></pre>
+
+<p>计算变量的移动平均值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个 <code>Variable</code>。</li>
+<li><strong>value</strong>: 与 <code>x</code> 形状相同的张量。</li>
+<li><strong>momentum</strong>: 移动平均动量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>更新变量的操作。</p>
+<hr />
+<h3 id="dot">dot</h3>
+<pre><code class="python">keras.backend.dot(x, y)
+</code></pre>
+
+<p>将 2 个张量（和/或变量）相乘并返回一个<em>张量</em>。</p>
+<p>当试图将 nD 张量与 nD 张量相乘时，
+它会重现 Theano 行为。
+(例如 <code>(2, 3) * (4, 3, 5) -&gt; (2, 4, 5)</code>)</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，<code>x</code> 和 <code>y</code> 的点积。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python"># 张量之间的点积
+&gt;&gt;&gt; x = K.placeholder(shape=(2, 3))
+&gt;&gt;&gt; y = K.placeholder(shape=(3, 4))
+&gt;&gt;&gt; xy = K.dot(x, y)
+&gt;&gt;&gt; xy
+&lt;tf.Tensor 'MatMul_9:0' shape=(2, 4) dtype=float32&gt;
+</code></pre>
+
+<pre><code class="python"># 张量之间的点积
+&gt;&gt;&gt; x = K.placeholder(shape=(32, 28, 3))
+&gt;&gt;&gt; y = K.placeholder(shape=(3, 4))
+&gt;&gt;&gt; xy = K.dot(x, y)
+&gt;&gt;&gt; xy
+&lt;tf.Tensor 'MatMul_9:0' shape=(32, 28, 4) dtype=float32&gt;
+</code></pre>
+
+<pre><code class="python"># 类 Theano 行为的例子
+&gt;&gt;&gt; x = K.random_uniform_variable(shape=(2, 3), low=0, high=1)
+&gt;&gt;&gt; y = K.ones((4, 3, 5))
+&gt;&gt;&gt; xy = K.dot(x, y)
+&gt;&gt;&gt; K.int_shape(xy)
+(2, 4, 5)
+</code></pre>
+
+<hr />
+<h3 id="batch_dot">batch_dot</h3>
+<pre><code class="python">keras.backend.batch_dot(x, y, axes=None)
+</code></pre>
+
+<p>批量化的点积。</p>
+<p>当 <code>x</code> 和 <code>y</code> 是批量数据时，
+<code>batch_dot</code> 用于计算 <code>x</code> 和 <code>y</code> 的点积，
+即尺寸为 <code>(batch_size, :)</code>。</p>
+<p><code>batch_dot</code> 产生一个比输入尺寸更小的张量或变量。 
+如果维数减少到 1，我们使用 <code>expand_dims</code> 来确保 ndim 至少为 2。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: <code>ndim &gt;= 2</code> 的 Keras 张量或变量。</li>
+<li><strong>y</strong>: <code>ndim &gt;= 2</code> 的 Keras 张量或变量。</li>
+<li><strong>axes</strong>: 表示目标维度的整数或列表。
+<code>axes[0]</code> 和 <code>axes[1]</code> 的长度必须相同。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个尺寸等于 <code>x</code> 的尺寸（减去总和的维度）和 <code>y</code> 的尺寸（减去批次维度和总和的维度）的连接的张量。
+如果最后的秩为 1，我们将它重新转换为 <code>(batch_size, 1)</code>。</p>
+<p><strong>例子</strong></p>
+<p>假设 <code>x = [[1, 2], [3, 4]]</code> 和 <code>y = [[5, 6], [7, 8]]</code>，
+<code>batch_dot(x, y, axes=1) = [[17], [53]]</code> 是 <code>x.dot(y.T)</code> 的主对角线，
+尽管我们不需要计算非对角元素。</p>
+<p>伪代码：</p>
+<pre><code class="python">inner_products = []
+for xi, yi in zip(x, y):
+    inner_products.append(xi.dot(yi))
+result = stack(inner_products)
+</code></pre>
+
+<p>尺寸推断：
+让 <code>x</code> 的尺寸为 <code>(100, 20)</code>，以及 <code>y</code> 的尺寸为 <code>(100, 30, 20)</code>。
+如果 <code>axes</code> 是 (1, 2)，要找出结果张量的尺寸，
+循环 <code>x</code> 和 <code>y</code> 的尺寸的每一个维度。</p>
+<ul>
+<li><code>x.shape[0]</code> : 100 : 附加到输出形状，</li>
+<li><code>x.shape[1]</code> : 20 : 不附加到输出形状，
+<code>x</code> 的第一个维度已经被加和了 (<code>dot_axes[0]</code> = 1)。</li>
+<li><code>y.shape[0]</code> : 100 : 不附加到输出形状，总是忽略 <code>y</code> 的第一维</li>
+<li><code>y.shape[1]</code> : 30 : 附加到输出形状，</li>
+<li><code>y.shape[2]</code> : 20 : 不附加到输出形状，
+<code>y</code> 的第二个维度已经被加和了 (<code>dot_axes[0]</code> = 2)。
+<code>output_shape</code> = <code>(100, 30)</code></li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; x_batch = K.ones(shape=(32, 20, 1))
+&gt;&gt;&gt; y_batch = K.ones(shape=(32, 30, 20))
+&gt;&gt;&gt; xy_batch_dot = K.batch_dot(x_batch, y_batch, axes=[1, 2])
+&gt;&gt;&gt; K.int_shape(xy_batch_dot)
+(32, 1, 30)
+</code></pre>
+
+<hr />
+<h3 id="transpose">transpose</h3>
+<pre><code class="python">keras.backend.transpose(x)
+</code></pre>
+
+<p>将张量转置并返回。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; var = K.variable([[1, 2, 3], [4, 5, 6]])
+&gt;&gt;&gt; K.eval(var)
+array([[ 1.,  2.,  3.],
+       [ 4.,  5.,  6.]], dtype=float32)
+&gt;&gt;&gt; var_transposed = K.transpose(var)
+&gt;&gt;&gt; K.eval(var_transposed)
+array([[ 1.,  4.],
+       [ 2.,  5.],
+       [ 3.,  6.]], dtype=float32)
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; inputs = K.placeholder((2, 3))
+&gt;&gt;&gt; inputs
+&lt;tf.Tensor 'Placeholder_11:0' shape=(2, 3) dtype=float32&gt;
+&gt;&gt;&gt; input_transposed = K.transpose(inputs)
+&gt;&gt;&gt; input_transposed
+&lt;tf.Tensor 'transpose_4:0' shape=(3, 2) dtype=float32&gt;
+
+</code></pre>
+
+<hr />
+<h3 id="gather">gather</h3>
+<pre><code class="python">keras.backend.gather(reference, indices)
+</code></pre>
+
+<p>在张量 <code>reference</code> 中检索索引 <code>indices</code> 的元素。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>reference</strong>: 一个张量。</li>
+<li><strong>indices</strong>: 索引的整数张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>与 <code>reference</code> 类型相同的张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def gather(reference, indices):
+    return reference[indices]
+</code></pre>
+
+<hr />
+<h3 id="max">max</h3>
+<pre><code class="python">keras.backend.max(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>张量中的最大值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，需要在哪个轴寻找最大值。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 中最大值的张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def max(x, axis=None, keepdims=False):
+    if isinstance(axis, list):
+        axis = tuple(axis)
+    return np.max(x, axis=axis, keepdims=keepdims)
+</code></pre>
+
+<hr />
+<h3 id="min">min</h3>
+<pre><code class="python">keras.backend.min(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>张量中的最小值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，需要在哪个轴寻找最大值。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 中最小值的张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def min(x, axis=None, keepdims=False):
+    if isinstance(axis, list):
+        axis = tuple(axis)
+    return np.min(x, axis=axis, keepdims=keepdims)
+</code></pre>
+
+<hr />
+<h3 id="sum">sum</h3>
+<pre><code class="python">keras.backend.sum(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>计算张量在某一指定轴的和。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，需要加和的轴。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 的和的张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def sum(x, axis=None, keepdims=False):
+    if isinstance(axis, list):
+        axis = tuple(axis)
+    return np.sum(x, axis=axis, keepdims=keepdims)
+</code></pre>
+
+<hr />
+<h3 id="prod">prod</h3>
+<pre><code class="python">keras.backend.prod(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>在某一指定轴，计算张量中的值的乘积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数需要计算乘积的轴。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 的元素的乘积的张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def prod(x, axis=None, keepdims=False):
+    if isinstance(axis, list):
+        axis = tuple(axis)
+    return np.prod(x, axis=axis, keepdims=keepdims)
+</code></pre>
+
+<hr />
+<h3 id="cumsum">cumsum</h3>
+<pre><code class="python">keras.backend.cumsum(x, axis=0)
+</code></pre>
+
+<p>在某一指定轴，计算张量中的值的累加和。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，需要加和的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 在 <code>axis</code> 轴的累加和的张量。</p>
+<hr />
+<h3 id="cumprod">cumprod</h3>
+<pre><code class="python">keras.backend.cumprod(x, axis=0)
+</code></pre>
+
+<p>在某一指定轴，计算张量中的值的累积乘积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，需要计算乘积的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 在 <code>axis</code> 轴的累乘的张量。</p>
+<hr />
+<h3 id="var">var</h3>
+<pre><code class="python">keras.backend.var(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>张量在某一指定轴的方差。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，要计算方差的轴。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 元素的方差的张量。</p>
+<hr />
+<h3 id="std">std</h3>
+<pre><code class="python">keras.backend.std(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>张量在某一指定轴的标准差。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，要计算标准差的轴。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 元素的标准差的张量。</p>
+<hr />
+<h3 id="mean">mean</h3>
+<pre><code class="python">keras.backend.mean(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>张量在某一指定轴的均值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: A tensor or variable.</li>
+<li><strong>axis</strong>: 整数或列表。需要计算均值的轴。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则 <code>axis</code> 中每一项的张量秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，则缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p><code>x</code> 元素的均值的张量。</p>
+<hr />
+<h3 id="any">any</h3>
+<pre><code class="python">keras.backend.any(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>reduction</p>
+<p>按位归约（逻辑 OR）。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 执行归约操作的轴。</li>
+<li><strong>keepdims</strong>: 是否放弃或广播归约的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 uint8 张量 (0s 和 1s)。</p>
+<hr />
+<h3 id="all">all</h3>
+<pre><code class="python">keras.backend.all(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>按位归约（逻辑 AND）。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 执行归约操作的轴。</li>
+<li><strong>keepdims</strong>: 是否放弃或广播归约的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 uint8 张量 (0s 和 1s)。</p>
+<hr />
+<h3 id="argmax">argmax</h3>
+<pre><code class="python">keras.backend.argmax(x, axis=-1)
+</code></pre>
+
+<p>返回指定轴的最大值的索引。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 执行归约操作的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="argmin">argmin</h3>
+<pre><code class="python">keras.backend.argmin(x, axis=-1)
+</code></pre>
+
+<p>返回指定轴的最小值的索引。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 执行归约操作的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="square">square</h3>
+<pre><code class="python">keras.backend.square(x)
+</code></pre>
+
+<p>元素级的平方操作。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="abs">abs</h3>
+<pre><code class="python">keras.backend.abs(x)
+</code></pre>
+
+<p>元素级的绝对值操作。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="sqrt">sqrt</h3>
+<pre><code class="python">keras.backend.sqrt(x)
+</code></pre>
+
+<p>元素级的平方根操作。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="exp">exp</h3>
+<pre><code class="python">keras.backend.exp(x)
+</code></pre>
+
+<p>元素级的指数运算操作。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="log">log</h3>
+<pre><code class="python">keras.backend.log(x)
+</code></pre>
+
+<p>元素级的对数运算操作。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="logsumexp">logsumexp</h3>
+<pre><code class="python">keras.backend.logsumexp(x, axis=None, keepdims=False)
+</code></pre>
+
+<p>计算 log(sum(exp(张量在某一轴的元素)))。</p>
+<p>这个函数在数值上比 log(sum(exp(x))) 更稳定。
+它避免了求大输入的指数造成的上溢，以及求小输入的对数造成的下溢。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 一个整数，需要归约的轴。</li>
+<li><strong>keepdims</strong>: 布尔值，是否保留原尺寸。
+如果 <code>keepdims</code> 为 <code>False</code>，则张量的秩减 1。
+如果 <code>keepdims</code> 为 <code>True</code>，缩小的维度保留为长度 1。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>归约后的张量。</p>
+<hr />
+<h3 id="round">round</h3>
+<pre><code class="python">keras.backend.round(x)
+</code></pre>
+
+<p>元素级地四舍五入到最接近的整数。</p>
+<p>在平局的情况下，使用的舍入模式是「偶数的一半」。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="sign">sign</h3>
+<pre><code class="python">keras.backend.sign(x)
+</code></pre>
+
+<p>元素级的符号运算。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="pow">pow</h3>
+<pre><code class="python">keras.backend.pow(x, a)
+</code></pre>
+
+<p>元素级的指数运算操作。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>a</strong>: Python 整数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="clip">clip</h3>
+<pre><code class="python">keras.backend.clip(x, min_value, max_value)
+</code></pre>
+
+<p>元素级裁剪。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>min_value</strong>: Python 浮点或整数。</li>
+<li><strong>max_value</strong>: Python 浮点或整数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="equal">equal</h3>
+<pre><code class="python">keras.backend.equal(x, y)
+</code></pre>
+
+<p>逐个元素对比两个张量的相等情况。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个布尔张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def equal(x, y):
+    return x == y
+</code></pre>
+
+<hr />
+<h3 id="not_equal">not_equal</h3>
+<pre><code class="python">keras.backend.not_equal(x, y)
+</code></pre>
+
+<p>逐个元素对比两个张量的不相等情况。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个布尔张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def not_equal(x, y):
+    return x != y
+</code></pre>
+
+<hr />
+<h3 id="greater">greater</h3>
+<pre><code class="python">keras.backend.greater(x, y)
+</code></pre>
+
+<p>逐个元素比对 (x &gt; y) 的真值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个布尔张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def greater(x, y):
+    return x &gt; y
+</code></pre>
+
+<hr />
+<h3 id="greater_equal">greater_equal</h3>
+<pre><code class="python">keras.backend.greater_equal(x, y)
+</code></pre>
+
+<p>逐个元素比对 (x &gt;= y) 的真值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个布尔张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def greater_equal(x, y):
+    return x &gt;= y
+</code></pre>
+
+<hr />
+<h3 id="less">less</h3>
+<pre><code class="python">keras.backend.less(x, y)
+</code></pre>
+
+<p>逐个元素比对 (x &lt; y) 的真值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个布尔张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def less(x, y):
+    return x &lt; y
+</code></pre>
+
+<hr />
+<h3 id="less_equal">less_equal</h3>
+<pre><code class="python">keras.backend.less_equal(x, y)
+</code></pre>
+
+<p>逐个元素比对 (x &lt;= y) 的真值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个布尔张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def less_equal(x, y):
+    return x &lt;= y
+</code></pre>
+
+<hr />
+<h3 id="maximum">maximum</h3>
+<pre><code class="python">keras.backend.maximum(x, y)
+</code></pre>
+
+<p>逐个元素比对两个张量的最大值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def maximum(x, y):
+    return np.maximum(x, y)
+</code></pre>
+
+<h3 id="minimum">minimum</h3>
+<pre><code class="python">keras.backend.minimum(x, y)
+</code></pre>
+
+<p>逐个元素比对两个张量的最小值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>y</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def minimum(x, y):
+    return np.minimum(x, y)
+</code></pre>
+
+<hr />
+<h3 id="sin">sin</h3>
+<pre><code class="python">keras.backend.sin(x)
+</code></pre>
+
+<p>逐个元素计算 x 的 sin 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="cos">cos</h3>
+<pre><code class="python">keras.backend.cos(x)
+</code></pre>
+
+<p>逐个元素计算 x 的 cos 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="normalize_batch_in_training">normalize_batch_in_training</h3>
+<pre><code class="python">keras.backend.normalize_batch_in_training(x, gamma, beta, reduction_axes, epsilon=0.001)
+</code></pre>
+
+<p>计算批次的均值和标准差，然后在批次上应用批次标准化。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量或变量。</li>
+<li><strong>gamma</strong>: 用于缩放输入的张量。</li>
+<li><strong>beta</strong>: 用于中心化输入的张量。</li>
+<li><strong>reduction_axes</strong>: 整数迭代，需要标准化的轴。</li>
+<li><strong>epsilon</strong>: 模糊因子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>长度为 3 个元组，<code>(normalized_tensor, mean, variance)</code>。</p>
+<hr />
+<h3 id="batch_normalization">batch_normalization</h3>
+<pre><code class="python">keras.backend.batch_normalization(x, mean, var, beta, gamma, epsilon=0.001)
+</code></pre>
+
+<p>在给定的 mean，var，beta 和 gamma 上应用批量标准化。</p>
+<p>即，返回：
+<code>output = (x - mean) / (sqrt(var) + epsilon) * gamma + beta</code></p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量或变量。</li>
+<li><strong>mean</strong>: 批次的均值。</li>
+<li><strong>var</strong>: 批次的方差。</li>
+<li><strong>beta</strong>: 用于中心化输入的张量。</li>
+<li><strong>gamma</strong>: 用于缩放输入的张量。</li>
+<li><strong>epsilon</strong>: 模糊因子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="concatenate">concatenate</h3>
+<pre><code class="python">keras.backend.concatenate(tensors, axis=-1)
+</code></pre>
+
+<p>基于指定的轴，连接张量的列表。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>tensors</strong>: 需要连接的张量列表。</li>
+<li><strong>axis</strong>: 连接的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="reshape">reshape</h3>
+<pre><code class="python">keras.backend.reshape(x, shape)
+</code></pre>
+
+<p>将张量重塑为指定的尺寸。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>shape</strong>: 目标尺寸元组。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="permute_dimensions">permute_dimensions</h3>
+<pre><code class="python">keras.backend.permute_dimensions(x, pattern)
+</code></pre>
+
+<p>重新排列张量的轴。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>pattern</strong>: 维度索引的元组，例如 <code>(0, 2, 1)</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="resize_images">resize_images</h3>
+<pre><code class="python">keras.backend.resize_images(x, height_factor, width_factor, data_format)
+</code></pre>
+
+<p>调整 4D 张量中包含的图像的大小。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要调整的张量或变量。</li>
+<li><strong>height_factor</strong>: 正整数。</li>
+<li><strong>width_factor</strong>: 正整数。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>"channels_last"</code> 也不是 <code>"channels_first"</code>。</li>
+</ul>
+<hr />
+<h3 id="resize_volumes">resize_volumes</h3>
+<pre><code class="python">keras.backend.resize_volumes(x, depth_factor, height_factor, width_factor, data_format)
+</code></pre>
+
+<p>调整 5D 张量中包含的体积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要调整的张量或变量。</li>
+<li><strong>depth_factor</strong>: 正整数。</li>
+<li><strong>height_factor</strong>: 正整数。</li>
+<li><strong>width_factor</strong>: 正整数。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>"channels_last"</code> 也不是 <code>"channels_first"</code>。</li>
+</ul>
+<hr />
+<h3 id="repeat_elements">repeat_elements</h3>
+<pre><code class="python">keras.backend.repeat_elements(x, rep, axis)
+</code></pre>
+
+<p>沿某一轴重复张量的元素，如 <code>np.repeat</code>。</p>
+<p>如果 <code>x</code> 的尺寸为 <code>(s1，s2，s3)</code> 而 <code>axis</code> 为 <code>1</code>，
+则输出尺寸为 <code>(s1，s2 * rep，s3）</code>。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>rep</strong>: Python 整数，重复次数。</li>
+<li><strong>axis</strong>: 需要重复的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="repeat">repeat</h3>
+<pre><code class="python">keras.backend.repeat(x, n)
+</code></pre>
+
+<p>重复一个 2D 张量。</p>
+<p>如果 <code>x</code> 的尺寸为 <code>(samples, dim)</code> 并且 <code>n</code> 为 <code>2</code>，
+则输出的尺寸为 <code>(samples, 2, dim)</code>。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>n</strong>: Python 整数，重复次数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="arange">arange</h3>
+<pre><code class="python">keras.backend.arange(start, stop=None, step=1, dtype='int32')
+</code></pre>
+
+<p>创建一个包含整数序列的 1D 张量。</p>
+<p>该函数参数与 Theano 的 <code>arange</code> 函数的约定相同：
+如果只提供了一个参数，那它就是 <code>stop</code> 参数。</p>
+<p>返回的张量的默认类型是 <code>int32</code>，以匹配 TensorFlow 的默认值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>start</strong>: 起始值。</li>
+<li><strong>stop</strong>: 结束值。</li>
+<li><strong>step</strong>: 两个连续值之间的差。</li>
+<li><strong>dtype</strong>: 要使用的整数类型。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个整数张量。</p>
+<hr />
+<h3 id="tile">tile</h3>
+<pre><code class="python">keras.backend.tile(x, n)
+</code></pre>
+
+<p>创建一个用 <code>n</code> 平铺 的 <code>x</code> 张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>n</strong>: 整数列表。长度必须与 <code>x</code> 中的维数相同。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个平铺的张量。</p>
+<hr />
+<h3 id="flatten">flatten</h3>
+<pre><code class="python">keras.backend.flatten(x)
+</code></pre>
+
+<p>展平一个张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个重新调整为 1D 的张量。</p>
+<hr />
+<h3 id="batch_flatten">batch_flatten</h3>
+<pre><code class="python">keras.backend.batch_flatten(x)
+</code></pre>
+
+<p>将一个 nD 张量变成一个 第 0 维相同的 2D 张量。</p>
+<p>换句话说，它将批次中的每一个样本展平。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="expand_dims">expand_dims</h3>
+<pre><code class="python">keras.backend.expand_dims(x, axis=-1)
+</code></pre>
+
+<p>在索引 <code>axis</code> 轴，添加 1 个尺寸的维度。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 需要添加新的轴的位置。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个扩展维度的轴。</p>
+<hr />
+<h3 id="squeeze">squeeze</h3>
+<pre><code class="python">keras.backend.squeeze(x, axis)
+</code></pre>
+
+<p>在索引 <code>axis</code> 轴，移除 1 个尺寸的维度。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 需要丢弃的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个与 <code>x</code> 数据相同但维度降低的张量。</p>
+<hr />
+<h3 id="temporal_padding">temporal_padding</h3>
+<pre><code class="python">keras.backend.temporal_padding(x, padding=(1, 1))
+</code></pre>
+
+<p>填充 3D 张量的中间维度。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>padding</strong>: 2 个整数的元组，在第一个维度的开始和结束处添加多少个零。
+<strong>返回</strong></li>
+</ul>
+<p>一个填充的 3D 张量。</p>
+<hr />
+<h3 id="spatial_2d_padding">spatial_2d_padding</h3>
+<pre><code class="python">keras.backend.spatial_2d_padding(x, padding=((1, 1), (1, 1)), data_format=None)
+</code></pre>
+
+<p>填充 4D 张量的第二维和第三维。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>padding</strong>: 2 元组的元组，填充模式。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个填充的 4D 张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>"channels_last"</code> 也不是 <code>"channels_first"</code>。</li>
+</ul>
+<hr />
+<h3 id="spatial_3d_padding">spatial_3d_padding</h3>
+<pre><code class="python">keras.backend.spatial_3d_padding(x, padding=((1, 1), (1, 1), (1, 1)), data_format=None)
+</code></pre>
+
+<p>沿着深度、高度宽度三个维度填充 5D 张量。</p>
+<p>分别使用 "padding[0]", "padding[1]" 和 "padding[2]" 来左右填充这些维度。</p>
+<p>对于 'channels_last' 数据格式，
+第 2、3、4 维将被填充。
+对于 'channels_first' 数据格式，
+第 3、4、5 维将被填充。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>padding</strong>: 3 元组的元组，填充模式。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个填充的 5D 张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>"channels_last"</code> 也不是 <code>"channels_first"</code>。</li>
+</ul>
+<hr />
+<h3 id="stack">stack</h3>
+<pre><code class="python">keras.backend.stack(x, axis=0)
+</code></pre>
+
+<p>将秩 为 <code>R</code> 的张量列表堆叠成秩为 <code>R + 1</code> 的张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量列表。</li>
+<li><strong>axis</strong>: 需要执行堆叠的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="one_hot">one_hot</h3>
+<pre><code class="python">keras.backend.one_hot(indices, num_classes)
+</code></pre>
+
+<p>计算一个整数张量的 one-hot 表示。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>indices</strong>: nD 整数，尺寸为
+<code>(batch_size, dim1, dim2, ... dim(n-1))</code></li>
+<li><strong>num_classes</strong>: 整数，需要考虑的类别数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输入的 (n + 1)D one-hot 表示，
+尺寸为 <code>(batch_size, dim1, dim2, ... dim(n-1), num_classes)</code>。</p>
+<hr />
+<h3 id="reverse">reverse</h3>
+<pre><code class="python">keras.backend.reverse(x, axes)
+</code></pre>
+
+<p>沿指定的轴反转张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要反转的张量。</li>
+<li><strong>axes</strong>: 整数或整数迭代。需要反转的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def reverse(x, axes):
+    if isinstance(axes, list):
+        axes = tuple(axes)
+    return np.flip(x, axes)
+</code></pre>
+
+<hr />
+<h3 id="slice">slice</h3>
+<pre><code class="python">keras.backend.slice(x, start, size)
+</code></pre>
+
+<p>从张量中提取一个切片。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量。</li>
+<li><strong>start</strong>: 整数列表/元组，表明每个轴的起始切片索引位置。</li>
+<li><strong>size</strong>: 整数列表/元组，表明每个轴上切片多少维度。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个切片张量：</p>
+<pre><code class="python">new_x = x[start[0]: start[0] + size[0], ..., start[-1]: start[-1] + size[-1]]
+</code></pre>
+
+<hr />
+<h3 id="get_value">get_value</h3>
+<pre><code class="python">keras.backend.get_value(x)
+</code></pre>
+
+<p>返回一个变量的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Numpy 数组。</p>
+<hr />
+<h3 id="batch_get_value">batch_get_value</h3>
+<pre><code class="python">keras.backend.batch_get_value(ops)
+</code></pre>
+
+<p>返回多个张量变量的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>ops</strong>: 要运行的操作列表。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Numpy 数组的列表。</p>
+<hr />
+<h3 id="set_value">set_value</h3>
+<pre><code class="python">keras.backend.set_value(x, value)
+</code></pre>
+
+<p>使用 Numpy 数组设置变量的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要设置新值的张量。</li>
+<li><strong>value</strong>: 需要设置的值，
+一个尺寸相同的 Numpy 数组。</li>
+</ul>
+<hr />
+<h3 id="batch_set_value">batch_set_value</h3>
+<pre><code class="python">keras.backend.batch_set_value(tuples)
+</code></pre>
+
+<p>一次设置多个张量变量的值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>tuples</strong>: 元组 <code>(tensor, value)</code> 的列表。
+<code>value</code> 应该是一个 Numpy 数组。</li>
+</ul>
+<hr />
+<h3 id="print_tensor">print_tensor</h3>
+<pre><code class="python">keras.backend.print_tensor(x, message='')
+</code></pre>
+
+<p>在评估时打印 <code>message</code> 和张量的值。</p>
+<p>请注意，<code>print_tensor</code> 返回一个与 <code>x</code> 相同的新张量，应该在后面的代码中使用它。否则在评估过程中不会考虑打印操作。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; x = K.print_tensor(x, message=&quot;x is: &quot;)
+</code></pre>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要打印的张量。</li>
+<li><strong>message</strong>: 需要与张量一起打印的消息。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>同一个不变的张量 <code>x</code>。</p>
+<hr />
+<h3 id="function">function</h3>
+<pre><code class="python">keras.backend.function(inputs, outputs, updates=None)
+</code></pre>
+
+<p>实例化 Keras 函数。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>inputs</strong>: 占位符张量列表。</li>
+<li><strong>outputs</strong>: 输出张量列表。</li>
+<li><strong>updates</strong>: 更新操作列表。</li>
+<li><strong>**kwargs</strong>: 需要传递给 <code>tf.Session.run</code> 的参数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出值为 Numpy 数组。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果无效的 kwargs 被传入。</li>
+</ul>
+<hr />
+<h3 id="gradients">gradients</h3>
+<pre><code class="python">keras.backend.gradients(loss, variables)
+</code></pre>
+
+<p>返回 <code>variables</code> 在 <code>loss</code> 上的梯度。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>loss</strong>: 需要最小化的标量张量。</li>
+<li><strong>variables</strong>: 变量列表。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个梯度张量。</p>
+<hr />
+<h3 id="stop_gradient">stop_gradient</h3>
+<pre><code class="python">keras.backend.stop_gradient(variables)
+</code></pre>
+
+<p>返回 <code>variables</code>，但是对于其他变量，其梯度为零。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>variables</strong>: 需要考虑的张量或张量列表，任何的其他变量保持不变。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>单个张量或张量列表（取决于传递的参数），
+与任何其他变量具有恒定的梯度。</p>
+<hr />
+<h3 id="rnn">rnn</h3>
+<pre><code class="python">keras.backend.rnn(step_function, inputs, initial_states, go_backwards=False, mask=None, constants=None, unroll=False, input_length=None)
+</code></pre>
+
+<p>在张量的时间维度迭代。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>step_function</strong>: RNN 步骤函数，</li>
+<li><strong>inputs</strong>: 尺寸为 <code>(samples, ...)</code> 的张量
+(不含时间维度), 表示批次样品在某个时间步的输入。</li>
+<li><strong>states</strong>: 张量列表。</li>
+<li><strong>outputs</strong>: 尺寸为 <code>(samples, output_dim)</code> 的张量
+(不含时间维度)</li>
+<li><strong>new_states</strong>: 张量列表，与 <code>states</code> 长度和尺寸相同。
+列表中的第一个状态必须是前一个时间步的输出张量。</li>
+<li><strong>inputs</strong>: 时序数据张量 <code>(samples, time, ...)</code>
+(最少 3D)。</li>
+<li><strong>initial_states</strong>: 尺寸为 <code>(samples, output_dim)</code> 的张量
+(不含时间维度)，包含步骤函数中使用的状态的初始值。</li>
+<li><strong>go_backwards</strong>: 布尔值。如果为 True，以相反的顺序在时间维上进行迭代并返回相反的序列。</li>
+<li><strong>mask</strong>: 尺寸为 <code>(samples, time, 1)</code> 的二进制张量，对于被屏蔽的每个元素都为零。</li>
+<li><strong>constants</strong>: 每个步骤传递的常量值列表。</li>
+<li><strong>unroll</strong>: 是否展开 RNN 或使用符号循环（依赖于后端的 <code>while_loop</code>或 <code>scan</code>）。</li>
+<li><strong>input_length</strong>: 与 TensorFlow 实现不相关。如果使用 Theano 展开，则必须指定。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个元组，<code>(last_output, outputs, new_states)</code>。</p>
+<ul>
+<li><strong>last_output</strong>: rnn 的最后输出，尺寸为 <code>(samples, ...)</code>。</li>
+<li><strong>outputs</strong>: 尺寸为 <code>(samples, time, ...)</code> 的张量，其中
+每一项 <code>outputs[s, t]</code> 是样本 <code>s</code> 在时间 <code>t</code> 的步骤函数输出值。</li>
+<li><strong>new_states</strong>: 张量列表，有步骤函数返回的最后状态，
+尺寸为 <code>(samples, ...)</code>。</li>
+</ul>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果输入的维度小于 3。</li>
+<li><strong>ValueError</strong>: 如果 <code>unroll</code> 为 <code>True</code> 但输入时间步并不是固定的数字。</li>
+<li><strong>ValueError</strong>: 如果提供了 <code>mask</code> (非 <code>None</code>) 但未提供 <code>states</code> (<code>len(states)</code> == 0)。</li>
+</ul>
+<hr />
+<h3 id="switch">switch</h3>
+<pre><code class="python">keras.backend.switch(condition, then_expression, else_expression)
+</code></pre>
+
+<p>根据一个标量值在两个操作之间切换。</p>
+<p>请注意，<code>then_expression</code> 和 <code>else_expression</code> 
+都应该是<em>相同尺寸</em>的符号张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>condition</strong>: 张量 (<code>int</code> 或 <code>bool</code>)。</li>
+<li><strong>then_expression</strong>: 张量或返回张量的可调用函数。</li>
+<li><strong>else_expression</strong>: 张量或返回张量的可调用函数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>选择的张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>condition</code> 的秩大于两个表达式的秩序。</li>
+</ul>
+<hr />
+<h3 id="in_train_phase">in_train_phase</h3>
+<pre><code class="python">keras.backend.in_train_phase(x, alt, training=None)
+</code></pre>
+
+<p>在训练阶段选择 <code>x</code>，其他阶段选择 <code>alt</code>。</p>
+<p>请注意 <code>alt</code> 应该与 <code>x</code> 尺寸相同。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 在训练阶段需要返回的 x 
+(张量或返回张量的可调用函数)。</li>
+<li><strong>alt</strong>: 在其他阶段需要返回的 alt 
+(张量或返回张量的可调用函数)。</li>
+<li><strong>training</strong>: 可选的标量张量
+(或 Python 布尔值，或者 Python 整数)，
+以指定学习阶段。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>基于 <code>training</code> 标志，要么返回 <code>x</code>，要么返回 <code>alt</code>。
+<code>training</code> 标志默认为 <code>K.learning_phase()</code>。</p>
+<hr />
+<h3 id="in_test_phase">in_test_phase</h3>
+<pre><code class="python">keras.backend.in_test_phase(x, alt, training=None)
+</code></pre>
+
+<p>在测试阶段选择 <code>x</code>，其他阶段选择 <code>alt</code>。</p>
+<p>请注意 <code>alt</code> 应该与 <code>x</code> 尺寸相同。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 在训练阶段需要返回的 x 
+(张量或返回张量的可调用函数)。</li>
+<li><strong>alt</strong>: 在其他阶段需要返回的 alt 
+(张量或返回张量的可调用函数)。</li>
+<li><strong>training</strong>: 可选的标量张量
+(或 Python 布尔值，或者 Python 整数)，
+以指定学习阶段。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>基于 <code>K.learning_phase</code>，要么返回 <code>x</code>，要么返回 <code>alt</code>。</p>
+<hr />
+<h3 id="relu">relu</h3>
+<pre><code class="python">keras.backend.relu(x, alpha=0.0, max_value=None)
+</code></pre>
+
+<p>ReLU 整流线性单位。</p>
+<p>默认情况下，它返回逐个元素的 <code>max(x, 0)</code> 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个张量或变量。</li>
+<li><strong>alpha</strong>: 一个标量，负数部分的斜率（默认为 <code>0.</code>）。</li>
+<li><strong>max_value</strong>: 饱和度阈值。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def relu(x, alpha=0., max_value=None, threshold=0.):
+    if max_value is None:
+        max_value = np.inf
+    above_threshold = x * (x &gt;= threshold)
+    above_threshold = np.clip(above_threshold, 0.0, max_value)
+    below_threshold = alpha * (x - threshold) * (x &lt; threshold)
+    return below_threshold + above_threshold
+</code></pre>
+
+<hr />
+<h3 id="elu">elu</h3>
+<pre><code class="python">keras.backend.elu(x, alpha=1.0)
+</code></pre>
+
+<p>指数线性单元。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 用于计算激活函数的张量或变量。</li>
+<li><strong>alpha</strong>: 一个标量，负数部分的斜率。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def elu(x, alpha=1.):
+    return x * (x &gt; 0) + alpha * (np.exp(x) - 1.) * (x &lt; 0)
+</code></pre>
+
+<hr />
+<h3 id="softmax">softmax</h3>
+<pre><code class="python">keras.backend.softmax(x)
+</code></pre>
+
+<p>张量的 Softmax 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def softmax(x, axis=-1):
+    y = np.exp(x - np.max(x, axis, keepdims=True))
+    return y / np.sum(y, axis, keepdims=True)
+</code></pre>
+
+<hr />
+<h3 id="softplus">softplus</h3>
+<pre><code class="python">keras.backend.softplus(x)
+</code></pre>
+
+<p>张量的 Softplus 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def softplus(x):
+    return np.log(1. + np.exp(x))
+</code></pre>
+
+<hr />
+<h3 id="softsign">softsign</h3>
+<pre><code class="python">keras.backend.softsign(x)
+</code></pre>
+
+<p>张量的 Softsign 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="categorical_crossentropy">categorical_crossentropy</h3>
+<pre><code class="python">keras.backend.categorical_crossentropy(target, output, from_logits=False)
+</code></pre>
+
+<p>输出张量与目标张量之间的分类交叉熵。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>target</strong>: 与 <code>output</code> 尺寸相同的张量。</li>
+<li><strong>output</strong>: 由 softmax 产生的张量
+(除非 <code>from_logits</code> 为 True，
+在这种情况下 <code>output</code> 应该是对数形式)。</li>
+<li><strong>from_logits</strong>: 布尔值，<code>output</code> 是 softmax 的结果，
+还是对数形式的张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出张量。</p>
+<hr />
+<h3 id="sparse_categorical_crossentropy">sparse_categorical_crossentropy</h3>
+<pre><code class="python">keras.backend.sparse_categorical_crossentropy(target, output, from_logits=False)
+</code></pre>
+
+<p>稀疏表示的整数值目标的分类交叉熵。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>target</strong>: 一个整数张量。</li>
+<li><strong>output</strong>: 由 softmax 产生的张量
+(除非 <code>from_logits</code> 为 True，
+在这种情况下 <code>output</code> 应该是对数形式)。</li>
+<li><strong>from_logits</strong>: 布尔值，<code>output</code> 是 softmax 的结果，
+还是对数形式的张量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出张量。</p>
+<hr />
+<h3 id="binary_crossentropy">binary_crossentropy</h3>
+<pre><code class="python">keras.backend.binary_crossentropy(target, output, from_logits=False)
+</code></pre>
+
+<p>输出张量与目标张量之间的二进制交叉熵。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>target</strong>: 与 <code>output</code> 尺寸相同的张量。</li>
+<li><strong>output</strong>: 一个张量。</li>
+<li><strong>from_logits</strong>: <code>output</code> 是否是对数张量。
+默认情况下，我们认为 <code>output</code> 编码了概率分布。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="sigmoid">sigmoid</h3>
+<pre><code class="python">keras.backend.sigmoid(x)
+</code></pre>
+
+<p>逐个元素求 sigmoid 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def sigmoid(x):
+    return 1. / (1. + np.exp(-x))
+</code></pre>
+
+<hr />
+<h3 id="hard_sigmoid">hard_sigmoid</h3>
+<pre><code class="python">keras.backend.hard_sigmoid(x)
+</code></pre>
+
+<p>分段的 sigmoid 线性近似。速度比 sigmoid 更快。</p>
+<ul>
+<li>如果 <code>x &lt; -2.5</code>，返回 <code>0</code>。</li>
+<li>如果 <code>x &gt; 2.5</code>，返回 <code>1</code>。</li>
+<li>如果 <code>-2.5 &lt;= x &lt;= 2.5</code>，返回 <code>0.2 * x + 0.5</code>。</li>
+</ul>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def hard_sigmoid(x):
+    y = 0.2 * x + 0.5
+    return np.clip(y, 0, 1)
+</code></pre>
+
+<hr />
+<h3 id="tanh">tanh</h3>
+<pre><code class="python">keras.backend.tanh(x)
+</code></pre>
+
+<p>逐个元素求 tanh 值。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 一个张量或变量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def tanh(x):
+    return np.tanh(x)
+</code></pre>
+
+<hr />
+<h3 id="dropout">dropout</h3>
+<pre><code class="python">keras.backend.dropout(x, level, noise_shape=None, seed=None)
+</code></pre>
+
+<p>将 <code>x</code> 中的某些项随机设置为零，同时缩放整个张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量</li>
+<li><strong>level</strong>: 张量中将被设置为 0 的项的比例。</li>
+<li><strong>noise_shape</strong>: 随机生成的 保留/丢弃 标志的尺寸，
+必须可以广播到 <code>x</code> 的尺寸。</li>
+<li><strong>seed</strong>: 保证确定性的随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="l2_normalize">l2_normalize</h3>
+<pre><code class="python">keras.backend.l2_normalize(x, axis=None)
+</code></pre>
+
+<p>在指定的轴使用 L2 范式 标准化一个张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>axis</strong>: 需要执行标准化的轴。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<p><strong>Numpy 实现</strong></p>
+<pre><code class="python">def l2_normalize(x, axis=-1):
+    y = np.max(np.sum(x ** 2, axis, keepdims=True), axis, keepdims=True)
+    return x / np.sqrt(y)
+</code></pre>
+
+<hr />
+<h3 id="in_top_k">in_top_k</h3>
+<pre><code class="python">keras.backend.in_top_k(predictions, targets, k)
+</code></pre>
+
+<p>判断 <code>targets</code> 是否在 <code>predictions</code> 的前 <code>k</code> 个中。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>predictions</strong>: 一个张量，尺寸为 <code>(batch_size, classes)</code>，类型为 <code>float32</code>。</li>
+<li><strong>targets</strong>: 一个 1D 张量，长度为 <code>batch_size</code>，类型为 <code>int32</code> 或 <code>int64</code>。</li>
+<li><strong>k</strong>: 一个 <code>int</code>，要考虑的顶部元素的数量。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 1D 张量，长度为 <code>batch_size</code>，类型为 <code>bool</code>。
+如果 <code>predictions[i, targets[i]]</code> 在 
+<code>predictions[i]</code> 的 top-<code>k</code> 值中，
+则 <code>output[i]</code> 为 <code>True</code>。</p>
+<hr />
+<h3 id="conv1d">conv1d</h3>
+<pre><code class="python">keras.backend.conv1d(x, kernel, strides=1, padding='valid', data_format=None, dilation_rate=1)
+</code></pre>
+
+<p>1D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>kernel</strong>: 核张量。</li>
+<li><strong>strides</strong>: 步长整型。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code>, <code>"causal"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>dilation_rate</strong>: 整数膨胀率。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，1D 卷积结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="conv2d">conv2d</h3>
+<pre><code class="python">keras.backend.conv2d(x, kernel, strides=(1, 1), padding='valid', data_format=None, dilation_rate=(1, 1))
+</code></pre>
+
+<p>2D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>kernel</strong>: 核张量。</li>
+<li><strong>strides</strong>: 步长元组。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。
+对于输入/卷积核/输出，是否使用 Theano 或 TensorFlow/CNTK数据格式。</li>
+<li><strong>dilation_rate</strong>: 2 个整数的元组。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，2D 卷积结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="conv2d_transpose">conv2d_transpose</h3>
+<pre><code class="python">keras.backend.conv2d_transpose(x, kernel, output_shape, strides=(1, 1), padding='valid', data_format=None)
+</code></pre>
+
+<p>2D 反卷积 (即转置卷积)。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>kernel</strong>: 核张量。</li>
+<li><strong>output_shape</strong>: 表示输出尺寸的 1D 整型张量。</li>
+<li><strong>strides</strong>: 步长元组。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。
+对于输入/卷积核/输出，是否使用 Theano 或 TensorFlow/CNTK数据格式。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，转置的 2D 卷积的结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="separable_conv1d">separable_conv1d</h3>
+<pre><code class="python">keras.backend.separable_conv1d(x, depthwise_kernel, pointwise_kernel, strides=1, padding='valid', data_format=None, dilation_rate=1)
+</code></pre>
+
+<p>带可分离滤波器的 1D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量。</li>
+<li><strong>depthwise_kernel</strong>: 用于深度卷积的卷积核。</li>
+<li><strong>pointwise_kernel</strong>: 1x1 卷积核。</li>
+<li><strong>strides</strong>: 步长整数。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>dilation_rate</strong>: 整数膨胀率。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="separable_conv2d">separable_conv2d</h3>
+<pre><code class="python">keras.backend.separable_conv2d(x, depthwise_kernel, pointwise_kernel, strides=(1, 1), padding='valid', data_format=None, dilation_rate=(1, 1))
+</code></pre>
+
+<p>带可分离滤波器的 2D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量。</li>
+<li><strong>depthwise_kernel</strong>: 用于深度卷积的卷积核。</li>
+<li><strong>pointwise_kernel</strong>: 1x1 卷积核。</li>
+<li><strong>strides</strong>: 步长元组 (长度为 2)。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>dilation_rate</strong>: 整数元组，可分离卷积的膨胀率。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="depthwise_conv2d">depthwise_conv2d</h3>
+<pre><code class="python">keras.backend.depthwise_conv2d(x, depthwise_kernel, strides=(1, 1), padding='valid', data_format=None, dilation_rate=(1, 1))
+</code></pre>
+
+<p>带可分离滤波器的 2D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量。</li>
+<li><strong>depthwise_kernel</strong>: 用于深度卷积的卷积核。</li>
+<li><strong>strides</strong>: 步长元组 (长度为 2)。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>dilation_rate</strong>: 整数元组，可分离卷积的膨胀率。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="conv3d">conv3d</h3>
+<pre><code class="python">keras.backend.conv3d(x, kernel, strides=(1, 1, 1), padding='valid', data_format=None, dilation_rate=(1, 1, 1))
+</code></pre>
+
+<p>3D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>kernel</strong>: 核张量。</li>
+<li><strong>strides</strong>: 步长元组。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>dilation_rate</strong>: 3 个整数的元组。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，3D 卷积的结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="conv3d_transpose">conv3d_transpose</h3>
+<pre><code class="python">keras.backend.conv3d_transpose(x, kernel, output_shape, strides=(1, 1, 1), padding='valid', data_format=None)
+</code></pre>
+
+<p>3D 反卷积 (即转置卷积)。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 输入张量。</li>
+<li><strong>kernel</strong>: 核张量。</li>
+<li><strong>output_shape</strong>: 表示输出尺寸的 1D 整数张量。</li>
+<li><strong>strides</strong>: 步长元组。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。
+对于输入/卷积核/输出，是否使用 Theano 或 TensorFlow/CNTK数据格式。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，3D 转置卷积的结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="pool2d">pool2d</h3>
+<pre><code class="python">keras.backend.pool2d(x, pool_size, strides=(1, 1), padding='valid', data_format=None, pool_mode='max')
+</code></pre>
+
+<p>2D 池化。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>pool_size</strong>: 2 个整数的元组。</li>
+<li><strong>strides</strong>: 2 个整数的元组。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>pool_mode</strong>: 字符串，<code>"max"</code> 或 <code>"avg"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，2D 池化的结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+<li><strong>ValueError</strong>: if <code>pool_mode</code> 既不是 <code>"max"</code> 也不是 <code>"avg"</code>。</li>
+</ul>
+<hr />
+<h3 id="pool3d">pool3d</h3>
+<pre><code class="python">keras.backend.pool3d(x, pool_size, strides=(1, 1, 1), padding='valid', data_format=None, pool_mode='max')
+</code></pre>
+
+<p>3D 池化。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>pool_size</strong>: 3 个整数的元组。</li>
+<li><strong>strides</strong>: 3 个整数的元组。</li>
+<li><strong>padding</strong>: 字符串，<code>"same"</code> 或 <code>"valid"</code>。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+<li><strong>pool_mode</strong>: 字符串，<code>"max"</code> 或 <code>"avg"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量，3D 池化的结果。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+<li><strong>ValueError</strong>: if <code>pool_mode</code> 既不是 <code>"max"</code> 也不是 <code>"avg"</code>。</li>
+</ul>
+<hr />
+<h3 id="bias_add">bias_add</h3>
+<pre><code class="python">keras.backend.bias_add(x, bias, data_format=None)
+</code></pre>
+
+<p>给张量添加一个偏置向量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 张量或变量。</li>
+<li><strong>bias</strong>: 需要添加的偏置向量。</li>
+<li><strong>data_format</strong>: 字符串，<code>"channels_last"</code> 或 <code>"channels_first"</code>。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>输出张量。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 以下两种情况之一：</li>
+<li>无效的 <code>data_format</code> 参数。</li>
+<li>无效的偏置向量尺寸。
+偏置应该是一个 <code>ndim(x)-1</code> 维的向量或张量。</li>
+</ul>
+<hr />
+<h3 id="random_normal">random_normal</h3>
+<pre><code class="python">keras.backend.random_normal(shape, mean=0.0, stddev=1.0, dtype=None, seed=None)
+</code></pre>
+
+<p>返回正态分布值的张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 一个整数元组，需要创建的张量的尺寸。</li>
+<li><strong>mean</strong>: 一个浮点数，抽样的正态分布平均值。</li>
+<li><strong>stddev</strong>: 一个浮点数，抽样的正态分布标准差。</li>
+<li><strong>dtype</strong>: 字符串，返回的张量的数据类型。</li>
+<li><strong>seed</strong>: 整数，随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="random_uniform">random_uniform</h3>
+<pre><code class="python">keras.backend.random_uniform(shape, minval=0.0, maxval=1.0, dtype=None, seed=None)
+</code></pre>
+
+<p>返回均匀分布值的张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 一个整数元组，需要创建的张量的尺寸。</li>
+<li><strong>minval</strong>: 一个浮点数，抽样的均匀分布下界。</li>
+<li><strong>maxval</strong>: 一个浮点数，抽样的均匀分布上界。</li>
+<li><strong>dtype</strong>: 字符串，返回的张量的数据类型。</li>
+<li><strong>seed</strong>: 整数，随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="random_binomial">random_binomial</h3>
+<pre><code class="python">keras.backend.random_binomial(shape, p=0.0, dtype=None, seed=None)
+</code></pre>
+
+<p>返回随机二项分布值的张量。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 一个整数元组，需要创建的张量的尺寸。</li>
+<li><strong>p</strong>: 一个浮点数，<code>0. &lt;= p &lt;= 1</code>，二项分布的概率。</li>
+<li><strong>dtype</strong>: 字符串，返回的张量的数据类型。</li>
+<li><strong>seed</strong>: 整数，随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="truncated_normal">truncated_normal</h3>
+<pre><code class="python">keras.backend.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=None, seed=None)
+</code></pre>
+
+<p>返回截断的随机正态分布值的张量。</p>
+<p>生成的值遵循具有指定平均值和标准差的正态分布，
+此外，其中数值大于平均值两个标准差的将被丢弃和重新挑选。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>shape</strong>: 一个整数元组，需要创建的张量的尺寸。</li>
+<li><strong>mean</strong>: 平均值。</li>
+<li><strong>stddev</strong>: 标准差。</li>
+<li><strong>dtype</strong>: 字符串，返回的张量的数据类型。</li>
+<li><strong>seed</strong>: 整数，随机种子。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个张量。</p>
+<hr />
+<h3 id="ctc_label_dense_to_sparse">ctc_label_dense_to_sparse</h3>
+<pre><code class="python">keras.backend.ctc_label_dense_to_sparse(labels, label_lengths)
+</code></pre>
+
+<p>将 CTC 标签从密集转换为稀疏表示。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>labels</strong>: 密集 CTC 标签。</li>
+<li><strong>label_lengths</strong>: 标签长度。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个表示标签的稀疏张量。</p>
+<hr />
+<h3 id="ctc_batch_cost">ctc_batch_cost</h3>
+<pre><code class="python">keras.backend.ctc_batch_cost(y_true, y_pred, input_length, label_length)
+</code></pre>
+
+<p>在每个批次元素上运行 CTC 损失算法。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>y_true</strong>: 张量 <code>(samples, max_string_length)</code>，
+包含真实标签。</li>
+<li><strong>y_pred</strong>: 张量 <code>(samples, time_steps, num_categories)</code>，
+包含预测值，或 softmax 输出。</li>
+<li><strong>input_length</strong>: 张量 <code>(samples, 1)</code>，
+包含 <code>y_pred</code> 中每个批次样本的序列长度。</li>
+<li><strong>label_length</strong>: 张量 <code>(samples, 1)</code>，
+包含 <code>y_true</code> 中每个批次样本的序列长度。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>尺寸为 (samples,1) 的张量，包含每一个元素的 CTC 损失。</p>
+<hr />
+<h3 id="ctc_decode">ctc_decode</h3>
+<pre><code class="python">keras.backend.ctc_decode(y_pred, input_length, greedy=True, beam_width=100, top_paths=1)
+</code></pre>
+
+<p>解码 softmax 的输出。</p>
+<p>可以使用贪心搜索（也称为最优路径）或受限字典搜索。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>y_pred</strong>: 张量 <code>(samples, time_steps, num_categories)</code>，
+包含预测值，或 softmax 输出。</li>
+<li><strong>input_length</strong>: 张量 <code>(samples,)</code>，
+包含 <code>y_pred</code> 中每个批次样本的序列长度。</li>
+<li><strong>greedy</strong>: 如果为 <code>True</code>，则执行更快速的最优路径搜索，而不使用字典。</li>
+<li><strong>beam_width</strong>: 如果 <code>greedy</code> 为 <code>false</code>，将使用该宽度的 beam 搜索解码器搜索。</li>
+<li><strong>top_paths</strong>: 如果 <code>greedy</code> 为 <code>false</code>，
+将返回多少条最可能的路径。</li>
+</ul>
+<p><strong>返回</strong></p>
+<ul>
+<li><strong>Tuple</strong>:</li>
+<li><strong>List</strong>: 如果 <code>greedy</code> 为 <code>true</code>，返回包含解码序列的一个元素的列表。
+如果为 <code>false</code>，返回最可能解码序列的 <code>top_paths</code>。</li>
+<li><strong>Important</strong>: 空白标签返回为 <code>-1</code>。包含每个解码序列的对数概率的张量 <code>(top_paths,)</code>。</li>
+</ul>
+<hr />
+<h3 id="map_fn">map_fn</h3>
+<pre><code class="python">keras.backend.map_fn(fn, elems, name=None, dtype=None)
+</code></pre>
+
+<p>将函数fn映射到元素 <code>elems</code> 上并返回输出。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>fn</strong>: 将在每个元素上调用的可调用函数。</li>
+<li><strong>elems</strong>: 张量。</li>
+<li><strong>name</strong>: 映射节点在图中的字符串名称。</li>
+<li><strong>dtype</strong>: 输出数据格式。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>数据类型为 <code>dtype</code> 的张量。</p>
+<hr />
+<h3 id="foldl">foldl</h3>
+<pre><code class="python">keras.backend.foldl(fn, elems, initializer=None, name=None)
+</code></pre>
+
+<p>使用 fn 归约 elems，以从左到右组合它们。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>fn</strong>: 将在每个元素和一个累加器上调用的可调用函数，例如 <code>lambda acc, x: acc + x</code>。</li>
+<li><strong>elems</strong>: 张量。</li>
+<li><strong>initializer</strong>: 第一个使用的值 (如果为 None，使用<code>elems[0]</code>)。</li>
+<li><strong>name</strong>: foldl 节点在图中的字符串名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>与 <code>initializer</code> 类型和尺寸相同的张量。</p>
+<hr />
+<h3 id="foldr">foldr</h3>
+<pre><code class="python">keras.backend.foldr(fn, elems, initializer=None, name=None)
+</code></pre>
+
+<p>使用 fn 归约 elems，以从右到左组合它们。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>fn</strong>: 将在每个元素和一个累加器上调用的可调用函数，例如 <code>lambda acc, x: acc + x</code>。</li>
+<li><strong>elems</strong>: 张量。</li>
+<li><strong>initializer</strong>: 第一个使用的值 (如果为 None，使用<code>elems[-1]</code>)。</li>
+<li><strong>name</strong>: foldr 节点在图中的字符串名称。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>与 <code>initializer</code> 类型和尺寸相同的张量。</p>
+<hr />
+<h3 id="local_conv1d">local_conv1d</h3>
+<pre><code class="python">keras.backend.local_conv1d(inputs, kernel, kernel_size, strides, data_format=None)
+</code></pre>
+
+<p>在不共享权值的情况下，运用 1D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>inputs</strong>: 3D 张量，尺寸为 (batch_size, steps, input_dim)</li>
+<li><strong>kernel</strong>: 卷积的非共享权重,
+尺寸为 (output_items, feature_dim, filters)</li>
+<li><strong>kernel_size</strong>: 一个整数的元组，
+指定 1D 卷积窗口的长度。</li>
+<li><strong>strides</strong>: 一个整数的元组，
+指定卷积步长。</li>
+<li><strong>data_format</strong>: 数据格式，channels_first 或 channels_last。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>运用不共享权重的 1D 卷积之后的张量，尺寸为 (batch_size, output_length, filters)。</p>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="local_conv2d">local_conv2d</h3>
+<pre><code class="python">keras.backend.local_conv2d(inputs, kernel, kernel_size, strides, output_shape, data_format=None)
+</code></pre>
+
+<p>在不共享权值的情况下，运用 2D 卷积。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>inputs</strong>: 如果 <code>data_format='channels_first'</code>，
+则为尺寸为 (batch_size, filters, new_rows, new_cols) 的 4D 张量。
+如果 <code>data_format='channels_last'</code>，
+则为尺寸为 (batch_size, new_rows, new_cols, filters) 的 4D 张量。</li>
+<li><strong>kernel</strong>: 卷积的非共享权重,
+尺寸为 (output_items, feature_dim, filters)</li>
+<li><strong>kernel_size</strong>: 2 个整数的元组，
+指定 2D 卷积窗口的宽度和高度。</li>
+<li><strong>strides</strong>: 2 个整数的元组，
+指定 2D 卷积沿宽度和高度方向的步长。</li>
+<li><strong>output_shape</strong>: 元组 (output_row, output_col) 。</li>
+<li><strong>data_format</strong>: 数据格式，channels_first 或 channels_last。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 4D 张量。</p>
+<ul>
+<li>如果 <code>data_format='channels_first'</code>，尺寸为 (batch_size, filters, new_rows, new_cols)。</li>
+<li>如果 <code>data_format='channels_last'</code>，尺寸为 (batch_size, new_rows, new_cols, filters)</li>
+</ul>
+<p><strong>异常</strong></p>
+<ul>
+<li><strong>ValueError</strong>: 如果 <code>data_format</code> 既不是 <code>channels_last</code> 也不是 <code>channels_first</code>。</li>
+</ul>
+<hr />
+<h3 id="backend">backend</h3>
+<pre><code class="python">backend.backend()
+</code></pre>
+
+<p>公开可用的方法，以确定当前后端。</p>
+<p><strong>返回</strong></p>
+<p>字符串，Keras 目前正在使用的后端名。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">&gt;&gt;&gt; keras.backend.backend()
+'tensorflow'
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../applications/" title="应用 Applications" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                应用 Applications
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../callbacks/" title="Callbacks" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Callbacks
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/wohugb" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/wohugb" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/wohugb" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

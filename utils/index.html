@@ -1,0 +1,2097 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Keras，Python 深度学习库中文文档。">
+      
+      
+        <link rel="canonical" href="http://keras.io/zh/utils/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>Utils - Keras 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-61785484-1", "keras.io")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#customobjectscope" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Keras 中文文档
+            </span>
+            <span class="md-header-nav__topic">
+              Utils
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Keras 文档" class="md-tabs__link md-tabs__link--active">
+        Keras 文档
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0.getting-started/0.sequential-model-guide/" title="0.getting started" class="md-tabs__link">
+          0.getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../1.models/0.about-keras-models/" title="1.models" class="md-tabs__link">
+          1.models
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../2.layers/0.about-keras-layers/" title="2.layers" class="md-tabs__link">
+          2.layers
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../3.preprocessing/0.sequence/" title="3.preprocessing" class="md-tabs__link">
+          3.preprocessing
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../4.examples/" title="4.examples" class="md-tabs__link">
+          4.examples
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Keras 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Keras 文档" class="md-nav__link">
+      Keras 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../activations/" title="Activations" class="md-nav__link">
+      Activations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../applications/" title="应用 Applications" class="md-nav__link">
+      应用 Applications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Keras 后端" class="md-nav__link">
+      Keras 后端
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../callbacks/" title="Callbacks" class="md-nav__link">
+      Callbacks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../constraints/" title="Constraints" class="md-nav__link">
+      Constraints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+      关于 Github Issues 和 Pull Requests
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/" title="数据集" class="md-nav__link">
+      数据集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../initializers/" title="Initializers" class="md-nav__link">
+      Initializers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../losses/" title="Losses" class="md-nav__link">
+      Losses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/" title="Metrics" class="md-nav__link">
+      Metrics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../optimizers/" title="Optimizers" class="md-nav__link">
+      Optimizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../regularizers/" title="Regularizers" class="md-nav__link">
+      Regularizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+      Scikit-Learn API 的封装器
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Utils
+      </label>
+    
+    <a href="./" title="Utils" class="md-nav__link md-nav__link--active">
+      Utils
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#customobjectscope" title="CustomObjectScope" class="md-nav__link">
+    CustomObjectScope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hdf5matrix" title="HDF5Matrix" class="md-nav__link">
+    HDF5Matrix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence" title="Sequence" class="md-nav__link">
+    Sequence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to_categorical" title="to_categorical" class="md-nav__link">
+    to_categorical
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalize" title="normalize" class="md-nav__link">
+    normalize
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_file" title="get_file" class="md-nav__link">
+    get_file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#print_summary" title="print_summary" class="md-nav__link">
+    print_summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot_model" title="plot_model" class="md-nav__link">
+    plot_model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi_gpu_model" title="multi_gpu_model" class="md-nav__link">
+    multi_gpu_model
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../visualization/" title="Visualization" class="md-nav__link">
+      Visualization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+      为什么选择 Keras？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      0.getting started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        0.getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+      开始使用 Keras Sequential 顺序模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+      开始使用 Keras 函数式 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.getting-started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+      Keras FAQ: 常见问题解答
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      1.models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        1.models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+      关于 Keras 模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+      Sequential 模型 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+      Model 类（函数式 API）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      2.layers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        2.layers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+      关于 Keras 网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/1.core/" title="核心网络层" class="md-nav__link">
+      核心网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/2.convolutional/" title="卷积层" class="md-nav__link">
+      卷积层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/3.pooling/" title="池化层" class="md-nav__link">
+      池化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/4.local/" title="局部连接层" class="md-nav__link">
+      局部连接层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/5.recurrent/" title="循环层" class="md-nav__link">
+      循环层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+      嵌入层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/7.merge/" title="融合层" class="md-nav__link">
+      融合层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+      高级激活层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/9.normalization/" title="标准化层" class="md-nav__link">
+      标准化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/90.noise/" title="噪声层" class="md-nav__link">
+      噪声层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/91.wrappers/" title="层封装器" class="md-nav__link">
+      层封装器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+      编写你自己的 Keras 层
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21">
+    
+    <label class="md-nav__link" for="nav-21">
+      3.preprocessing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        3.preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
+      序列预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/1.text/" title="文本预处理" class="md-nav__link">
+      文本预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.preprocessing/2.image/" title="图像预处理" class="md-nav__link">
+      图像预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      4.examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        4.examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/" title="经典样例" class="md-nav__link">
+      经典样例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+      实现一个用来执行加法的序列到序列学习模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/antirectifier/" title="Antirectifier" class="md-nav__link">
+      Antirectifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+      在 bAbI 数据集上训练一个记忆网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+      基于故事和问题训练两个循环神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+      Cifar10 cnn tfaugment2d
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+      Cifar10 resnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/class_activation_maps/" title="Class activation maps" class="md-nav__link">
+      Class activation maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+      Conv filter visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/conv_lstm/" title="Conv lstm" class="md-nav__link">
+      Conv lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/deep_dream/" title="Deep dream" class="md-nav__link">
+      Deep dream
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/image_ocr/" title="Optical character recognition" class="md-nav__link">
+      Optical character recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+      Imdb bidirectional lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+      Imdb cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+      Imdb cnn lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+      Imdb fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+      Imdb lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+      Lstm seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+      Lstm seq2seq restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+      Lstm stateful
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+      Lstm text generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+      Mnist acgan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+      Mnist cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+      Mnist dataset api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+      Mnist denoising autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+      Mnist hierarchical rnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+      Mnist irnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+      Mnist mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_net2net/" title="Mnist net2net" class="md-nav__link">
+      Mnist net2net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+      Mnist siamese
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+      Mnist sklearn wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+      Mnist swwae
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+      Mnist tfrecord
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+      Mnist transfer cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/neural_doodle/" title="Neural doodle" class="md-nav__link">
+      Neural doodle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+      Neural style transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+      预训练的单词嵌入
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+      Reuters mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+      Reuters mlp relu vs selu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+      Tensorboard embeddings mnist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+      Variational autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.examples/variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+      Variational autoencoder deconv
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#customobjectscope" title="CustomObjectScope" class="md-nav__link">
+    CustomObjectScope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hdf5matrix" title="HDF5Matrix" class="md-nav__link">
+    HDF5Matrix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence" title="Sequence" class="md-nav__link">
+    Sequence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to_categorical" title="to_categorical" class="md-nav__link">
+    to_categorical
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalize" title="normalize" class="md-nav__link">
+    normalize
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_file" title="get_file" class="md-nav__link">
+    get_file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#print_summary" title="print_summary" class="md-nav__link">
+    print_summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot_model" title="plot_model" class="md-nav__link">
+    plot_model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi_gpu_model" title="multi_gpu_model" class="md-nav__link">
+    multi_gpu_model
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/utils.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Utils</h1>
+                
+                <p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/utils/generic_utils.py#L21">[source]</a></span></p>
+<h3 id="customobjectscope">CustomObjectScope</h3>
+<pre><code class="python">keras.utils.CustomObjectScope()
+</code></pre>
+
+<p>提供更改为 <code>_GLOBAL_CUSTOM_OBJECTS</code> 无法转义的范围。</p>
+<p><code>with</code> 语句中的代码将能够通过名称访问自定义对象。
+对全局自定义对象的更改会在封闭的 <code>with</code> 语句中持续存在。
+在<code>with</code>语句结束时，
+全局自定义对象将恢复到 <code>with</code> 语句开始时的状态。</p>
+<p><strong>例子</strong></p>
+<p>考虑自定义对象 <code>MyObject</code> (例如一个类)：</p>
+<pre><code class="python">with CustomObjectScope({'MyObject':MyObject}):
+    layer = Dense(..., kernel_regularizer='MyObject')
+    # 保存，加载等操作将按这个名称来识别自定义对象
+</code></pre>
+
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/utils/io_utils.py#L25">[source]</a></span></p>
+<h3 id="hdf5matrix">HDF5Matrix</h3>
+<pre><code class="python">keras.utils.HDF5Matrix(datapath, dataset, start=0, end=None, normalizer=None)
+</code></pre>
+
+<p>使用 HDF5 数据集表示，而不是 Numpy 数组。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">x_data = HDF5Matrix('input/file.hdf5', 'data')
+model.predict(x_data)
+</code></pre>
+
+<p>提供 <code>start</code> 和 <code>end</code> 将允许使用数据集的一个切片。</p>
+<p>你还可以给出标准化函数（或 lambda）（可选）。
+这将在检索到的每一个数据切片上调用它。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>datapath</strong>: 字符串，HDF5 文件路径。</li>
+<li><strong>dataset</strong>: 字符串，datapath指定的文件中的 HDF5 数据集名称。</li>
+<li><strong>start</strong>: 整数，所需的指定数据集的切片的开始位置。</li>
+<li><strong>end</strong>: 整数，所需的指定数据集的切片的结束位置。</li>
+<li><strong>normalizer</strong>: 在检索数据时调用的函数。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个类似于数组的 HDF5 数据集。</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/keras-team/keras/blob/master/keras/utils/data_utils.py#L302">[source]</a></span></p>
+<h3 id="sequence">Sequence</h3>
+<pre><code class="python">keras.utils.Sequence()
+</code></pre>
+
+<p>用于拟合数据序列的基对象，例如一个数据集。</p>
+<p>每一个 <code>Sequence</code> 必须实现 <code>__getitem__</code> 和 <code>__len__</code> 方法。
+如果你想在迭代之间修改你的数据集，你可以实现 <code>on_epoch_end</code>。
+<code>__getitem__</code> 方法应该范围一个完整的批次。</p>
+<p><strong>注意</strong></p>
+<p><code>Sequence</code> 是进行多进程处理的更安全的方法。这种结构保证网络在每个时期每个样本只训练一次，这与生成器不同。</p>
+<p><strong>例子</strong></p>
+<pre><code class="python">from skimage.io import imread
+from skimage.transform import resize
+import numpy as np
+
+# 这里，`x_set` 是图像的路径列表
+# 以及 `y_set` 是对应的类别
+
+class CIFAR10Sequence(Sequence):
+
+    def __init__(self, x_set, y_set, batch_size):
+        self.x, self.y = x_set, y_set
+        self.batch_size = batch_size
+
+    def __len__(self):
+        return int(np.ceil(len(self.x) / float(self.batch_size)))
+
+    def __getitem__(self, idx):
+        batch_x = self.x[idx * self.batch_size:(idx + 1) * self.batch_size]
+        batch_y = self.y[idx * self.batch_size:(idx + 1) * self.batch_size]
+
+        return np.array([
+            resize(imread(file_name), (200, 200))
+               for file_name in batch_x]), np.array(batch_y)
+</code></pre>
+
+<hr />
+<h3 id="to_categorical">to_categorical</h3>
+<pre><code class="python">keras.utils.to_categorical(y, num_classes=None, dtype='float32')
+</code></pre>
+
+<p>将类向量（整数）转换为二进制类矩阵。</p>
+<p>例如，用于 categorical_crossentropy。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>y</strong>: 需要转换成矩阵的类矢量
+(从 0 到 num_classes 的整数)。</li>
+<li><strong>num_classes</strong>: 总类别数。</li>
+<li><strong>dtype</strong>: 字符串，输入所期望的数据类型 (<code>float32</code>, <code>float64</code>, <code>int32</code>...)</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre><code class="python"># 考虑一组 3 个类 {0,1,2} 中的 5 个标签数组：
+&gt; labels
+array([0, 2, 1, 2, 0])
+# `to_categorical` 将其转换为具有尽可能多表示类别数的列的矩阵。
+# 行数保持不变。
+&gt; to_categorical(labels)
+array([[ 1.,  0.,  0.],
+       [ 0.,  0.,  1.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.],
+       [ 1.,  0.,  0.]], dtype=float32)
+</code></pre>
+
+<p><strong>返回</strong></p>
+<p>输入的二进制矩阵表示。</p>
+<hr />
+<h3 id="normalize">normalize</h3>
+<pre><code class="python">keras.utils.normalize(x, axis=-1, order=2)
+</code></pre>
+
+<p>标准化一个 Numpy 数组。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>x</strong>: 需要标准化的 Numpy 数组。</li>
+<li><strong>axis</strong>: 需要标准化的轴。</li>
+<li><strong>order</strong>: 标准化顺序(例如，2 表示 L2 规范化)。</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>数组的标准化副本。</p>
+<hr />
+<h3 id="get_file">get_file</h3>
+<pre><code class="python">keras.utils.get_file(fname, origin, untar=False, md5_hash=None, file_hash=None, cache_subdir='datasets', hash_algorithm='auto', extract=False, archive_format='auto', cache_dir=None)
+</code></pre>
+
+<p>从一个 URL 下载文件，如果它不存在缓存中。</p>
+<p>默认情况下，URL <code>origin</code>处的文件
+被下载到缓存目录 <code>〜/.keras</code> 中，
+放在缓存子目录 <code>datasets</code>中，并命名为 <code>fname</code>。
+文件 <code>example.txt</code> 的最终位置为 <code>~/.keras/datasets/example.txt</code>。</p>
+<p>tar, tar.gz, tar.bz, 以及 zip 格式的文件也可以被解压。
+传递一个哈希值将在下载后校验文件。
+命令行程序 <code>shasum</code> 和 <code>sha256sum</code> 可以计算哈希。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>fname</strong>: 文件名。如果指定了绝对路径 <code>/path/to/file.txt</code>，
+那么文件将会保存到那个路径。</li>
+<li><strong>origin</strong>: 文件的原始 URL。</li>
+<li><strong>untar</strong>: 由于使用 'extract' 而已被弃用。
+布尔值，是否需要解压文件。</li>
+<li><strong>md5_hash</strong>: 由于使用 'file_hash' 而已被弃用。
+用于校验的 md5 哈希值。</li>
+<li><strong>file_hash</strong>: 下载后的文件的期望哈希字符串。
+支持 sha256 和 md5 两个哈希算法。</li>
+<li><strong>cache_subdir</strong>: 在 Keras 缓存目录下的保存文件的子目录。
+如果指定了绝对路径 <code>/path/to/folder</code>，则文件将被保存在该位置。</li>
+<li><strong>hash_algorithm</strong>: 选择哈希算法来校验文件。
+可选的有 'md5', 'sha256', 以及 'auto'。
+默认的 'auto' 将自动检测所使用的哈希算法。</li>
+<li><strong>extract</strong>: True 的话会尝试将解压缩存档文件，如tar或zip。</li>
+<li><strong>archive_format</strong>: 尝试提取文件的存档格式。
+可选的有 'auto', 'tar', 'zip', 以及 None。
+'tar' 包含 tar, tar.gz, 和 tar.bz 文件。
+默认 'auto' 为 ['tar', 'zip']。
+None 或 空列表将返回未找到任何匹配。
+ke xu az z'auto', 'tar', 'zip', and None.</li>
+<li><strong>cache_dir</strong>: 存储缓存文件的位置，为 None 时默认为
+<a href="/faq/#where-is-the-keras-configuration-filed-stored">Keras 目录</a>.</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>下载的文件的路径。</p>
+<hr />
+<h3 id="print_summary">print_summary</h3>
+<pre><code class="python">keras.utils.print_summary(model, line_length=None, positions=None, print_fn=None)
+</code></pre>
+
+<p>打印模型概况。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>model</strong>: Keras 模型实例。</li>
+<li><strong>line_length</strong>: 打印的每行的总长度
+(例如，设置此项以使其显示适应不同的终端窗口大小)。</li>
+<li><strong>positions</strong>: 每行中日志元素的相对或绝对位置。
+如果未提供，默认为 <code>[.33, .55, .67, 1.]</code>。</li>
+<li><strong>print_fn</strong>: 需要使用的打印函数。
+它将在每一行概述时调用。
+您可以将其设置为自定义函数以捕获字符串概述。
+默认为 <code>print</code> (打印到标准输出)。</li>
+</ul>
+<hr />
+<h3 id="plot_model">plot_model</h3>
+<pre><code class="python">keras.utils.plot_model(model, to_file='model.png', show_shapes=False, show_layer_names=True, rankdir='TB', expand_nested=False, dpi=96)
+</code></pre>
+
+<p>将 Keras 模型转换为 dot 格式并保存到文件中。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>model</strong>: 一个 Keras 模型实例。</li>
+<li><strong>to_file</strong>: 绘制图像的文件名。</li>
+<li><strong>show_shapes</strong>: 是否显示尺寸信息。</li>
+<li><strong>show_layer_names</strong>: 是否显示层的名称。</li>
+<li><strong>rankdir</strong>: 传递给 PyDot 的 <code>rankdir</code> 参数，
+一个指定绘图格式的字符串：
+'TB' 创建一个垂直绘图；
+'LR' 创建一个水平绘图。</li>
+<li><strong>expand_nested</strong>: 是否扩展嵌套模型为聚类。 </li>
+<li><strong>dpi</strong>: 点 DPI。</li>
+</ul>
+<hr />
+<h3 id="multi_gpu_model">multi_gpu_model</h3>
+<pre><code class="python">keras.utils.multi_gpu_model(model, gpus=None, cpu_merge=True, cpu_relocation=False)
+</code></pre>
+
+<p>将模型复制到不同的 GPU 上。</p>
+<p>具体来说，该功能实现了单机多 GPU 数据并行性。
+它的工作原理如下：</p>
+<ul>
+<li>将模型的输入分成多个子批次。</li>
+<li>在每个子批次上应用模型副本。
+每个模型副本都在专用 GPU 上执行。</li>
+<li>将结果（在 CPU 上）连接成一个大批量。</li>
+</ul>
+<p>例如， 如果你的 <code>batch_size</code> 是 64，且你使用 <code>gpus=2</code>，
+那么我们将把输入分为两个 32 个样本的子批次，
+在 1 个 GPU 上处理 1 个子批次，然后返回完整批次的 64 个处理过的样本。</p>
+<p>这实现了多达 8 个 GPU 的准线性加速。</p>
+<p>此功能目前仅适用于 TensorFlow 后端。</p>
+<p><strong>参数</strong></p>
+<ul>
+<li><strong>model</strong>: 一个 Keras 模型实例。为了避免OOM错误，该模型可以建立在 CPU 上，
+详见下面的使用样例。</li>
+<li><strong>gpus</strong>: 整数 &gt;= 2 或整数列表，创建模型副本的 GPU 数量，
+或 GPU ID 的列表。</li>
+<li><strong>cpu_merge</strong>: 一个布尔值，用于标识是否强制合并 CPU 范围内的模型权重。</li>
+<li><strong>cpu_relocation</strong>: 一个布尔值，用来确定是否在 CPU 的范围内创建模型的权重。如果模型没有在任何一个设备范围内定义，您仍然可以通过激活这个选项来拯救它。</li>
+</ul>
+<p><strong>返回</strong></p>
+<p>一个 Keras <code>Model</code> 实例，它可以像初始 <code>model</code> 参数一样使用，但它将工作负载分布在多个 GPU 上。</p>
+<p><strong>例子</strong></p>
+<p>例 1 - 训练在 CPU 上合并权重的模型</p>
+<pre><code class="python">import tensorflow as tf
+from keras.applications import Xception
+from keras.utils import multi_gpu_model
+import numpy as np
+
+num_samples = 1000
+height = 224
+width = 224
+num_classes = 1000
+
+# 实例化基础模型（或者「模版」模型）。
+# 我们推荐在 CPU 设备范围内做此操作，
+# 这样模型的权重就会存储在 CPU 内存中。
+# 否则它们会存储在 GPU 上，而完全被共享。
+with tf.device('/cpu:0'):
+    model = Xception(weights=None,
+                     input_shape=(height, width, 3),
+                     classes=num_classes)
+
+# 复制模型到 8 个 GPU 上。
+# 这假设你的机器有 8 个可用 GPU。
+parallel_model = multi_gpu_model(model, gpus=8)
+parallel_model.compile(loss='categorical_crossentropy',
+                       optimizer='rmsprop')
+
+# 生成虚拟数据
+x = np.random.random((num_samples, height, width, 3))
+y = np.random.random((num_samples, num_classes))
+
+# 这个 `fit` 调用将分布在 8 个 GPU 上。
+# 由于 batch size 是 256, 每个 GPU 将处理 32 个样本。
+parallel_model.fit(x, y, epochs=20, batch_size=256)
+
+# 通过模版模型存储模型（共享相同权重）：
+model.save('my_model.h5')
+</code></pre>
+
+<p>例 2 - 训练在 CPU 上利用 cpu_relocation 合并权重的模型</p>
+<pre><code class="python">..
+# 不需要更改模型定义的设备范围：
+model = Xception(weights=None, ..)
+
+try:
+    parallel_model = multi_gpu_model(model, cpu_relocation=True)
+    print(&quot;Training using multiple GPUs..&quot;)
+except ValueError:
+    parallel_model = model
+    print(&quot;Training using single GPU or CPU..&quot;)
+parallel_model.compile(..)
+..
+</code></pre>
+
+<p>例 3 - 训练在 GPU 上合并权重的模型（建议用于 NV-link）</p>
+<pre><code class="python">..
+# 不需要更改模型定义的设备范围：
+model = Xception(weights=None, ..)
+
+try:
+    parallel_model = multi_gpu_model(model, cpu_merge=False)
+    print(&quot;Training using multiple GPUs..&quot;)
+except:
+    parallel_model = model
+    print(&quot;Training using single GPU or CPU..&quot;)
+
+parallel_model.compile(..)
+..
+</code></pre>
+
+<p><strong>关于模型保存</strong></p>
+<p>要保存多 GPU 模型，请通过模板模型（传递给 <code>multi_gpu_model</code> 的参数）调用 <code>.save(fname)</code> 或 <code>.save_weights(fname)</code> 以进行存储，而不是通过 <code>multi_gpu_model</code> 返回的模型。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Scikit-Learn API 的封装器
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../visualization/" title="Visualization" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Visualization
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/wohugb" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/wohugb" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/wohugb" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

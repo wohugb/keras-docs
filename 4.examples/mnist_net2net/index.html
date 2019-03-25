@@ -1,0 +1,2040 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Keras，Python 深度学习库中文文档。">
+      
+      
+        <link rel="canonical" href="http://keras.io/zh/4.examples/mnist_net2net/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>Mnist net2net - Keras 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-61785484-1", "keras.io")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#notes" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Keras 中文文档
+            </span>
+            <span class="md-header-nav__topic">
+              Mnist net2net
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Keras 文档" class="md-tabs__link">
+        Keras 文档
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../0.getting-started/0.sequential-model-guide/" title="0.getting started" class="md-tabs__link">
+          0.getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../1.models/0.about-keras-models/" title="1.models" class="md-tabs__link">
+          1.models
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../2.layers/0.about-keras-layers/" title="2.layers" class="md-tabs__link">
+          2.layers
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../3.preprocessing/0.sequence/" title="3.preprocessing" class="md-tabs__link">
+          3.preprocessing
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../" title="4.examples" class="md-tabs__link md-tabs__link--active">
+          4.examples
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://keras.io/zh/" title="Keras 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Keras 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wohugb/keras-docs/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Keras 文档" class="md-nav__link">
+      Keras 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../activations/" title="Activations" class="md-nav__link">
+      Activations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../applications/" title="应用 Applications" class="md-nav__link">
+      应用 Applications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../backend/" title="Keras 后端" class="md-nav__link">
+      Keras 后端
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../callbacks/" title="Callbacks" class="md-nav__link">
+      Callbacks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../constraints/" title="Constraints" class="md-nav__link">
+      Constraints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="关于 Github Issues 和 Pull Requests" class="md-nav__link">
+      关于 Github Issues 和 Pull Requests
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../datasets/" title="数据集" class="md-nav__link">
+      数据集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../initializers/" title="Initializers" class="md-nav__link">
+      Initializers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../losses/" title="Losses" class="md-nav__link">
+      Losses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../metrics/" title="Metrics" class="md-nav__link">
+      Metrics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../optimizers/" title="Optimizers" class="md-nav__link">
+      Optimizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../regularizers/" title="Regularizers" class="md-nav__link">
+      Regularizers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../scikit-learn-api/" title="Scikit-Learn API 的封装器" class="md-nav__link">
+      Scikit-Learn API 的封装器
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../utils/" title="Utils" class="md-nav__link">
+      Utils
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../visualization/" title="Visualization" class="md-nav__link">
+      Visualization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../why-use-keras/" title="为什么选择 Keras？" class="md-nav__link">
+      为什么选择 Keras？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      0.getting started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        0.getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0.getting-started/0.sequential-model-guide/" title="开始使用 Keras Sequential 顺序模型" class="md-nav__link">
+      开始使用 Keras Sequential 顺序模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0.getting-started/1.functional-api-guide/" title="开始使用 Keras 函数式 API" class="md-nav__link">
+      开始使用 Keras 函数式 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0.getting-started/2.faq/" title="Keras FAQ: 常见问题解答" class="md-nav__link">
+      Keras FAQ: 常见问题解答
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      1.models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        1.models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1.models/0.about-keras-models/" title="关于 Keras 模型" class="md-nav__link">
+      关于 Keras 模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1.models/1.sequential/" title="Sequential 模型 API" class="md-nav__link">
+      Sequential 模型 API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1.models/2.model/" title="Model 类（函数式 API）" class="md-nav__link">
+      Model 类（函数式 API）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      2.layers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        2.layers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/0.about-keras-layers/" title="关于 Keras 网络层" class="md-nav__link">
+      关于 Keras 网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/1.core/" title="核心网络层" class="md-nav__link">
+      核心网络层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/2.convolutional/" title="卷积层" class="md-nav__link">
+      卷积层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/3.pooling/" title="池化层" class="md-nav__link">
+      池化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/4.local/" title="局部连接层" class="md-nav__link">
+      局部连接层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/5.recurrent/" title="循环层" class="md-nav__link">
+      循环层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/6.embeddings/" title="嵌入层" class="md-nav__link">
+      嵌入层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/7.merge/" title="融合层" class="md-nav__link">
+      融合层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/8.advanced-activations/" title="高级激活层" class="md-nav__link">
+      高级激活层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/9.normalization/" title="标准化层" class="md-nav__link">
+      标准化层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/90.noise/" title="噪声层" class="md-nav__link">
+      噪声层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/91.wrappers/" title="层封装器" class="md-nav__link">
+      层封装器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.layers/92.writing-your-own-keras-layers/" title="编写你自己的 Keras 层" class="md-nav__link">
+      编写你自己的 Keras 层
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21">
+    
+    <label class="md-nav__link" for="nav-21">
+      3.preprocessing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        3.preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.preprocessing/0.sequence/" title="序列预处理" class="md-nav__link">
+      序列预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.preprocessing/1.text/" title="文本预处理" class="md-nav__link">
+      文本预处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.preprocessing/2.image/" title="图像预处理" class="md-nav__link">
+      图像预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22" checked>
+    
+    <label class="md-nav__link" for="nav-22">
+      4.examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        4.examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="经典样例" class="md-nav__link">
+      经典样例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../addition_rnn/" title="实现一个用来执行加法的序列到序列学习模型" class="md-nav__link">
+      实现一个用来执行加法的序列到序列学习模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../antirectifier/" title="Antirectifier" class="md-nav__link">
+      Antirectifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../babi_memnn/" title="在 bAbI 数据集上训练一个记忆网络。" class="md-nav__link">
+      在 bAbI 数据集上训练一个记忆网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../babi_rnn/" title="基于故事和问题训练两个循环神经网络。" class="md-nav__link">
+      基于故事和问题训练两个循环神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_cnn/" title="在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个深度卷积神经网络。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_cnn_capsule/" title="在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。" class="md-nav__link">
+      在 CIFAR10 小型图像数据集上训练一个简单的 CNN-Capsule Network。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_cnn_tfaugment2d/" title="Cifar10 cnn tfaugment2d" class="md-nav__link">
+      Cifar10 cnn tfaugment2d
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cifar10_resnet/" title="Cifar10 resnet" class="md-nav__link">
+      Cifar10 resnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../class_activation_maps/" title="Class activation maps" class="md-nav__link">
+      Class activation maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conv_filter_visualization/" title="Conv filter visualization" class="md-nav__link">
+      Conv filter visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conv_lstm/" title="Conv lstm" class="md-nav__link">
+      Conv lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deep_dream/" title="Deep dream" class="md-nav__link">
+      Deep dream
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../image_ocr/" title="Optical character recognition" class="md-nav__link">
+      Optical character recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_bidirectional_lstm/" title="Imdb bidirectional lstm" class="md-nav__link">
+      Imdb bidirectional lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_cnn/" title="Imdb cnn" class="md-nav__link">
+      Imdb cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_cnn_lstm/" title="Imdb cnn lstm" class="md-nav__link">
+      Imdb cnn lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_fasttext/" title="Imdb fasttext" class="md-nav__link">
+      Imdb fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imdb_lstm/" title="Imdb lstm" class="md-nav__link">
+      Imdb lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_seq2seq/" title="Lstm seq2seq" class="md-nav__link">
+      Lstm seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_seq2seq_restore/" title="Lstm seq2seq restore" class="md-nav__link">
+      Lstm seq2seq restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_stateful/" title="Lstm stateful" class="md-nav__link">
+      Lstm stateful
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lstm_text_generation/" title="Lstm text generation" class="md-nav__link">
+      Lstm text generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_acgan/" title="Mnist acgan" class="md-nav__link">
+      Mnist acgan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_cnn/" title="Mnist cnn" class="md-nav__link">
+      Mnist cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_dataset_api/" title="Mnist dataset api" class="md-nav__link">
+      Mnist dataset api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_denoising_autoencoder/" title="Mnist denoising autoencoder" class="md-nav__link">
+      Mnist denoising autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_hierarchical_rnn/" title="Mnist hierarchical rnn" class="md-nav__link">
+      Mnist hierarchical rnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_irnn/" title="Mnist irnn" class="md-nav__link">
+      Mnist irnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_mlp/" title="Mnist mlp" class="md-nav__link">
+      Mnist mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Mnist net2net" class="md-nav__link md-nav__link--active">
+      Mnist net2net
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_siamese/" title="Mnist siamese" class="md-nav__link">
+      Mnist siamese
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_sklearn_wrapper/" title="Mnist sklearn wrapper" class="md-nav__link">
+      Mnist sklearn wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_swwae/" title="Mnist swwae" class="md-nav__link">
+      Mnist swwae
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_tfrecord/" title="Mnist tfrecord" class="md-nav__link">
+      Mnist tfrecord
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mnist_transfer_cnn/" title="Mnist transfer cnn" class="md-nav__link">
+      Mnist transfer cnn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../neural_doodle/" title="Neural doodle" class="md-nav__link">
+      Neural doodle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../neural_style_transfer/" title="Neural style transfer" class="md-nav__link">
+      Neural style transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pretrained_word_embeddings/" title="预训练的单词嵌入" class="md-nav__link">
+      预训练的单词嵌入
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reuters_mlp/" title="Reuters mlp" class="md-nav__link">
+      Reuters mlp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reuters_mlp_relu_vs_selu/" title="Reuters mlp relu vs selu" class="md-nav__link">
+      Reuters mlp relu vs selu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tensorboard_embeddings_mnist/" title="Tensorboard embeddings mnist" class="md-nav__link">
+      Tensorboard embeddings mnist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variational_autoencoder/" title="Variational autoencoder" class="md-nav__link">
+      Variational autoencoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variational_autoencoder_deconv/" title="Variational autoencoder deconv" class="md-nav__link">
+      Variational autoencoder deconv
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wohugb/keras-docs/edit/master/docs/4.examples/mnist_net2net.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <p>This is an implementation of Net2Net experiment with MNIST in
+'Net2Net: Accelerating Learning via Knowledge Transfer'
+by Tianqi Chen, Ian Goodfellow, and Jonathon Shlens</p>
+<p>arXiv:1511.05641v4 [cs.LG] 23 Apr 2016
+http://arxiv.org/abs/1511.05641</p>
+<h1 id="notes">Notes</h1>
+<ul>
+<li>What:</li>
+<li>Net2Net is a group of methods to transfer knowledge from a teacher neural
+    net to a student net,so that the student net can be trained faster than
+    from scratch.</li>
+<li>The paper discussed two specific methods of Net2Net, i.e. Net2WiderNet
+    and Net2DeeperNet.</li>
+<li>Net2WiderNet replaces a model with an equivalent wider model that has
+    more units in each hidden layer.</li>
+<li>Net2DeeperNet replaces a model with an equivalent deeper model.</li>
+<li>Both are based on the idea of 'function-preserving transformations of
+    neural nets'.</li>
+<li>Why:</li>
+<li>Enable fast exploration of multiple neural nets in experimentation and
+    design process,by creating a series of wider and deeper models with
+    transferable knowledge.</li>
+<li>Enable 'lifelong learning system' by gradually adjusting model complexity
+    to data availability,and reusing transferable knowledge.</li>
+</ul>
+<h1 id="experiments">Experiments</h1>
+<ul>
+<li>Teacher model: a basic CNN model trained on MNIST for 3 epochs.</li>
+<li>Net2WiderNet experiment:</li>
+<li>Student model has a wider Conv2D layer and a wider FC layer.</li>
+<li>Comparison of 'random-padding' vs 'net2wider' weight initialization.</li>
+<li>With both methods, after 1 epoch, student model should perform as well as
+    teacher model, but 'net2wider' is slightly better.</li>
+<li>Net2DeeperNet experiment:</li>
+<li>Student model has an extra Conv2D layer and an extra FC layer.</li>
+<li>Comparison of 'random-init' vs 'net2deeper' weight initialization.</li>
+<li>After 1 epoch, performance of 'net2deeper' is better than 'random-init'.</li>
+<li>Hyper-parameters:</li>
+<li>SGD with momentum=0.9 is used for training teacher and student models.</li>
+<li>Learning rate adjustment: it's suggested to reduce learning rate
+    to 1/10 for student model.</li>
+<li>Addition of noise in 'net2wider' is used to break weight symmetry
+    and thus enable full capacity of student models. It is optional
+    when a Dropout layer is used.</li>
+</ul>
+<h1 id="results">Results</h1>
+<ul>
+<li>Tested with TF backend and 'channels_last' image_data_format.</li>
+<li>Running on GPU GeForce GTX Titan X Maxwell</li>
+<li>Performance Comparisons - validation loss values during first 3 epochs:</li>
+</ul>
+<p>Teacher model ...
+(0) teacher_model:             0.0537   0.0354   0.0356</p>
+<p>Experiment of Net2WiderNet ...
+(1) wider_random_pad:          0.0320   0.0317   0.0289
+(2) wider_net2wider:           0.0271   0.0274   0.0270</p>
+<p>Experiment of Net2DeeperNet ...
+(3) deeper_random_init:        0.0682   0.0506   0.0468
+(4) deeper_net2deeper:         0.0292   0.0294   0.0286</p>
+<pre><code class="python">from __future__ import print_function
+import numpy as np
+import keras
+from keras import backend as K
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from keras.optimizers import SGD
+from keras.datasets import mnist
+
+if K.image_data_format() == 'channels_first':
+    input_shape = (1, 28, 28)  # image shape
+else:
+    input_shape = (28, 28, 1)  # image shape
+num_classes = 10  # number of classes
+epochs = 3
+
+
+# load and pre-process data
+def preprocess_input(x):
+    return x.astype('float32').reshape((-1,) + input_shape) / 255
+
+
+def preprocess_output(y):
+    return keras.utils.to_categorical(y)
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train, x_test = map(preprocess_input, [x_train, x_test])
+y_train, y_test = map(preprocess_output, [y_train, y_test])
+print('Loading MNIST data...')
+print('x_train shape:', x_train.shape, 'y_train shape:', y_train.shape)
+print('x_test shape:', x_test.shape, 'y_test shape', y_test.shape)
+
+
+# knowledge transfer algorithms
+def wider2net_conv2d(teacher_w1, teacher_b1, teacher_w2, new_width, init):
+    '''Get initial weights for a wider conv2d layer with a bigger filters,
+    by 'random-padding' or 'net2wider'.
+
+    # Arguments
+        teacher_w1: `weight` of conv2d layer to become wider,
+          of shape (filters1, num_channel1, kh1, kw1)
+        teacher_b1: `bias` of conv2d layer to become wider,
+          of shape (filters1, )
+        teacher_w2: `weight` of next connected conv2d layer,
+          of shape (filters2, num_channel2, kh2, kw2)
+        new_width: new `filters` for the wider conv2d layer
+        init: initialization algorithm for new weights,
+          either 'random-pad' or 'net2wider'
+    '''
+    assert teacher_w1.shape[0] == teacher_w2.shape[1], (
+        'successive layers from teacher model should have compatible shapes')
+    assert teacher_w1.shape[3] == teacher_b1.shape[0], (
+        'weight and bias from same layer should have compatible shapes')
+    assert new_width &gt; teacher_w1.shape[3], (
+        'new width (filters) should be bigger than the existing one')
+
+    n = new_width - teacher_w1.shape[3]
+    if init == 'random-pad':
+        new_w1 = np.random.normal(0, 0.1, size=teacher_w1.shape[:3] + (n,))
+        new_b1 = np.ones(n) * 0.1
+        new_w2 = np.random.normal(
+            0, 0.1,
+            size=teacher_w2.shape[:2] + (n, teacher_w2.shape[3]))
+    elif init == 'net2wider':
+        index = np.random.randint(teacher_w1.shape[3], size=n)
+        factors = np.bincount(index)[index] + 1.
+        new_w1 = teacher_w1[:, :, :, index]
+        new_b1 = teacher_b1[index]
+        new_w2 = teacher_w2[:, :, index, :] / factors.reshape((1, 1, -1, 1))
+    else:
+        raise ValueError('Unsupported weight initializer: %s' % init)
+
+    student_w1 = np.concatenate((teacher_w1, new_w1), axis=3)
+    if init == 'random-pad':
+        student_w2 = np.concatenate((teacher_w2, new_w2), axis=2)
+    elif init == 'net2wider':
+        # add small noise to break symmetry, so that student model will have
+        # full capacity later
+        noise = np.random.normal(0, 5e-2 * new_w2.std(), size=new_w2.shape)
+        student_w2 = np.concatenate((teacher_w2, new_w2 + noise), axis=2)
+        student_w2[:, :, index, :] = new_w2
+    student_b1 = np.concatenate((teacher_b1, new_b1), axis=0)
+
+    return student_w1, student_b1, student_w2
+
+
+def wider2net_fc(teacher_w1, teacher_b1, teacher_w2, new_width, init):
+    '''Get initial weights for a wider fully connected (dense) layer
+       with a bigger nout, by 'random-padding' or 'net2wider'.
+
+    # Arguments
+        teacher_w1: `weight` of fc layer to become wider,
+          of shape (nin1, nout1)
+        teacher_b1: `bias` of fc layer to become wider,
+          of shape (nout1, )
+        teacher_w2: `weight` of next connected fc layer,
+          of shape (nin2, nout2)
+        new_width: new `nout` for the wider fc layer
+        init: initialization algorithm for new weights,
+          either 'random-pad' or 'net2wider'
+    '''
+    assert teacher_w1.shape[1] == teacher_w2.shape[0], (
+        'successive layers from teacher model should have compatible shapes')
+    assert teacher_w1.shape[1] == teacher_b1.shape[0], (
+        'weight and bias from same layer should have compatible shapes')
+    assert new_width &gt; teacher_w1.shape[1], (
+        'new width (nout) should be bigger than the existing one')
+
+    n = new_width - teacher_w1.shape[1]
+    if init == 'random-pad':
+        new_w1 = np.random.normal(0, 0.1, size=(teacher_w1.shape[0], n))
+        new_b1 = np.ones(n) * 0.1
+        new_w2 = np.random.normal(0, 0.1, size=(n, teacher_w2.shape[1]))
+    elif init == 'net2wider':
+        index = np.random.randint(teacher_w1.shape[1], size=n)
+        factors = np.bincount(index)[index] + 1.
+        new_w1 = teacher_w1[:, index]
+        new_b1 = teacher_b1[index]
+        new_w2 = teacher_w2[index, :] / factors[:, np.newaxis]
+    else:
+        raise ValueError('Unsupported weight initializer: %s' % init)
+
+    student_w1 = np.concatenate((teacher_w1, new_w1), axis=1)
+    if init == 'random-pad':
+        student_w2 = np.concatenate((teacher_w2, new_w2), axis=0)
+    elif init == 'net2wider':
+        # add small noise to break symmetry, so that student model will have
+        # full capacity later
+        noise = np.random.normal(0, 5e-2 * new_w2.std(), size=new_w2.shape)
+        student_w2 = np.concatenate((teacher_w2, new_w2 + noise), axis=0)
+        student_w2[index, :] = new_w2
+    student_b1 = np.concatenate((teacher_b1, new_b1), axis=0)
+
+    return student_w1, student_b1, student_w2
+
+
+def deeper2net_conv2d(teacher_w):
+    '''Get initial weights for a deeper conv2d layer by net2deeper'.
+
+    # Arguments
+        teacher_w: `weight` of previous conv2d layer,
+          of shape (kh, kw, num_channel, filters)
+    '''
+    kh, kw, num_channel, filters = teacher_w.shape
+    student_w = np.zeros_like(teacher_w)
+    for i in range(filters):
+        student_w[(kh - 1) // 2, (kw - 1) // 2, i, i] = 1.
+    student_b = np.zeros(filters)
+    return student_w, student_b
+
+
+def copy_weights(teacher_model, student_model, layer_names):
+    '''Copy weights from teacher_model to student_model,
+     for layers with names listed in layer_names
+    '''
+    for name in layer_names:
+        weights = teacher_model.get_layer(name=name).get_weights()
+        student_model.get_layer(name=name).set_weights(weights)
+
+
+# methods to construct teacher_model and student_models
+def make_teacher_model(x_train, y_train,
+                       x_test, y_test,
+                       epochs):
+    '''Train and benchmark performance of a simple CNN.
+    (0) Teacher model
+    '''
+    model = Sequential()
+    model.add(Conv2D(64, 3, input_shape=input_shape,
+                     padding='same', name='conv1'))
+    model.add(MaxPooling2D(2, name='pool1'))
+    model.add(Conv2D(64, 3, padding='same', name='conv2'))
+    model.add(MaxPooling2D(2, name='pool2'))
+    model.add(Flatten(name='flatten'))
+    model.add(Dense(64, activation='relu', name='fc1'))
+    model.add(Dense(num_classes, activation='softmax', name='fc2'))
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=SGD(lr=0.01, momentum=0.9),
+                  metrics=['accuracy'])
+
+    model.fit(x_train, y_train,
+              epochs=epochs,
+              validation_data=(x_test, y_test))
+    return model
+
+
+def make_wider_student_model(teacher_model,
+                             x_train, y_train,
+                             x_test, y_test,
+                             init, epochs):
+    '''Train a wider student model based on teacher_model,
+       with either 'random-pad' (baseline) or 'net2wider'
+    '''
+    new_conv1_width = 128
+    new_fc1_width = 128
+
+    model = Sequential()
+    # a wider conv1 compared to teacher_model
+    model.add(Conv2D(new_conv1_width, 3, input_shape=input_shape,
+                     padding='same', name='conv1'))
+    model.add(MaxPooling2D(2, name='pool1'))
+    model.add(Conv2D(64, 3, padding='same', name='conv2'))
+    model.add(MaxPooling2D(2, name='pool2'))
+    model.add(Flatten(name='flatten'))
+    # a wider fc1 compared to teacher model
+    model.add(Dense(new_fc1_width, activation='relu', name='fc1'))
+    model.add(Dense(num_classes, activation='softmax', name='fc2'))
+
+    # The weights for other layers need to be copied from teacher_model
+    # to student_model, except for widened layers
+    # and their immediate downstreams, which will be initialized separately.
+    # For this example there are no other layers that need to be copied.
+
+    w_conv1, b_conv1 = teacher_model.get_layer('conv1').get_weights()
+    w_conv2, b_conv2 = teacher_model.get_layer('conv2').get_weights()
+    new_w_conv1, new_b_conv1, new_w_conv2 = wider2net_conv2d(
+        w_conv1, b_conv1, w_conv2, new_conv1_width, init)
+    model.get_layer('conv1').set_weights([new_w_conv1, new_b_conv1])
+    model.get_layer('conv2').set_weights([new_w_conv2, b_conv2])
+
+    w_fc1, b_fc1 = teacher_model.get_layer('fc1').get_weights()
+    w_fc2, b_fc2 = teacher_model.get_layer('fc2').get_weights()
+    new_w_fc1, new_b_fc1, new_w_fc2 = wider2net_fc(
+        w_fc1, b_fc1, w_fc2, new_fc1_width, init)
+    model.get_layer('fc1').set_weights([new_w_fc1, new_b_fc1])
+    model.get_layer('fc2').set_weights([new_w_fc2, b_fc2])
+
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=SGD(lr=0.001, momentum=0.9),
+                  metrics=['accuracy'])
+
+    model.fit(x_train, y_train,
+              epochs=epochs,
+              validation_data=(x_test, y_test))
+
+
+def make_deeper_student_model(teacher_model,
+                              x_train, y_train,
+                              x_test, y_test,
+                              init, epochs):
+    '''Train a deeper student model based on teacher_model,
+       with either 'random-init' (baseline) or 'net2deeper'
+    '''
+    model = Sequential()
+    model.add(Conv2D(64, 3, input_shape=input_shape,
+                     padding='same', name='conv1'))
+    model.add(MaxPooling2D(2, name='pool1'))
+    model.add(Conv2D(64, 3, padding='same', name='conv2'))
+    # add another conv2d layer to make original conv2 deeper
+    if init == 'net2deeper':
+        prev_w, _ = model.get_layer('conv2').get_weights()
+        new_weights = deeper2net_conv2d(prev_w)
+        model.add(Conv2D(64, 3, padding='same',
+                         name='conv2-deeper', weights=new_weights))
+    elif init == 'random-init':
+        model.add(Conv2D(64, 3, padding='same', name='conv2-deeper'))
+    else:
+        raise ValueError('Unsupported weight initializer: %s' % init)
+    model.add(MaxPooling2D(2, name='pool2'))
+    model.add(Flatten(name='flatten'))
+    model.add(Dense(64, activation='relu', name='fc1'))
+    # add another fc layer to make original fc1 deeper
+    if init == 'net2deeper':
+        # net2deeper for fc layer with relu, is just an identity initializer
+        model.add(Dense(64, kernel_initializer='identity',
+                        activation='relu', name='fc1-deeper'))
+    elif init == 'random-init':
+        model.add(Dense(64, activation='relu', name='fc1-deeper'))
+    else:
+        raise ValueError('Unsupported weight initializer: %s' % init)
+    model.add(Dense(num_classes, activation='softmax', name='fc2'))
+
+    # copy weights for other layers
+    copy_weights(teacher_model, model, layer_names=[
+                 'conv1', 'conv2', 'fc1', 'fc2'])
+
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=SGD(lr=0.001, momentum=0.9),
+                  metrics=['accuracy'])
+
+    model.fit(x_train, y_train,
+              epochs=epochs,
+              validation_data=(x_test, y_test))
+
+
+# experiments setup
+def net2wider_experiment():
+    '''Benchmark performances of
+    (1) a wider student model with `random_pad` initializer
+    (2) a wider student model with `Net2WiderNet` initializer
+    '''
+    print('\nExperiment of Net2WiderNet ...')
+
+    print('\n(1) building wider student model by random padding ...')
+    make_wider_student_model(teacher_model,
+                             x_train, y_train,
+                             x_test, y_test,
+                             init='random-pad',
+                             epochs=epochs)
+    print('\n(2) building wider student model by net2wider ...')
+    make_wider_student_model(teacher_model,
+                             x_train, y_train,
+                             x_test, y_test,
+                             init='net2wider',
+                             epochs=epochs)
+
+
+def net2deeper_experiment():
+    '''Benchmark performances of
+    (3) a deeper student model with `random_init` initializer
+    (4) a deeper student model with `Net2DeeperNet` initializer
+    '''
+    print('\nExperiment of Net2DeeperNet ...')
+
+    print('\n(3) building deeper student model by random init ...')
+    make_deeper_student_model(teacher_model,
+                              x_train, y_train,
+                              x_test, y_test,
+                              init='random-init',
+                              epochs=epochs)
+    print('\n(4) building deeper student model by net2deeper ...')
+    make_deeper_student_model(teacher_model,
+                              x_train, y_train,
+                              x_test, y_test,
+                              init='net2deeper',
+                              epochs=epochs)
+
+
+print('\n(0) building teacher model ...')
+teacher_model = make_teacher_model(x_train, y_train,
+                                   x_test, y_test,
+                                   epochs=epochs)
+
+# run the experiments
+net2wider_experiment()
+net2deeper_experiment()
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../mnist_mlp/" title="Mnist mlp" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Mnist mlp
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../mnist_siamese/" title="Mnist siamese" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Mnist siamese
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="http://wohugb.github.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/wohugb" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/wohugb" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/wohugb" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.2ba8dec4.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
