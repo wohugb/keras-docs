@@ -1,15 +1,11 @@
-This script loads pre-trained word embeddings (GloVe embeddings)
-into a frozen Keras Embedding layer, and uses it to
-train a text classification model on the 20 Newsgroup dataset
-(classification of newsgroup messages into 20 different categories).
+# 预训练的单词嵌入
 
-GloVe embedding data can be found at:
-http://nlp.stanford.edu/data/glove.6B.zip
-(source page: http://nlp.stanford.edu/projects/glove/)
+此脚本将预先训练的单词嵌入（GloVe 嵌入）加载到冻结的 Keras 嵌入层中，并使用它在 20 个新闻组数据集上训练文本分类模型（将新闻组消息分类为 20 个不同的类别）。
 
-20 Newsgroup data can be found at:
-http://www.cs.cmu.edu/afs/cs.cmu.edu/project/theo-20/www/data/news20.html
+可以在以下位置找到 GloVe 嵌入数据:
+http://nlp.stanford.edu/data/glove.6B.zip(源页面: http://nlp.stanford.edu/projects/glove/)
 
+20 个新闻组数据可以在: http://www.cs.cmu.edu/afs/cs.cmu.edu/project/theo-20/www/data/news20.html
 
 ```python
 from __future__ import print_function
